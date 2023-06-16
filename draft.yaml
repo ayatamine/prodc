@@ -1,10 +1,10 @@
 models:
     Language:
         id: id
-        name: string
+        name: string unique
         label: string
         file: string
-        direction: string
+        direction: enum:ltr,rtl
         status: boolean default:true
     Speciality:
         id: id
@@ -14,20 +14,20 @@ models:
         language_id: id foreign
     Skill:
         id: id
-        name: string
+        name: string unique
         slug: string unique
         language_id: id foreign
     Country:
         id: id
-        name: string
-        code: string unique
+        name: string unique
+        # code: string unique
         phone_code: string unique
         flag: string
         is_active: boolean default:true
     ProfessionalSkill:
         id: id
-        professional_id: bigInteger unique foreign:professionals.id
-        skill_id: bigInteger unique foreign:skills.id
+        professional_id: bigInteger  foreign:professionals.id
+        skill_id: bigInteger  foreign:skills.id
     # Invoice:
     #     id: id
     #     invoice_number: integer
@@ -39,7 +39,8 @@ models:
         id: id
         title: string unique
         status: boolean default:true
-        speciality_id: bigInteger foreign:speciality.id
+        speciality_id: id foreign
+        language_id: id foreign
     Professional:
         id: id
         first_name: string
@@ -51,14 +52,14 @@ models:
         profile_photo_path: string
         bio: mediumText nullable
         account_type: enum:freelancer,company_single_person,company_multiple_person default:"freelancer" comment:"{freelancer, company_single_person,company_multiple_person)"
-        company_id: bigInteger nullable foreign:professional_company.id
+        company_id: bigInteger nullable foreign:professional_companies.id
         country_id: bigInteger foreign:countries.id
         birth_date: date
         account_status: boolean default:true
         is_reported: boolean default:false
         is_account_verified: boolean default:false
-        phone_verified_at: dateTime
-        gender: enum default:"male" comment:"male or female"
+        phone_verified_at: dateTime nullable
+        gender: enum:male,female default:"male" comment:"male or female"
         oauth_taken: string
         is_closed_tomporary: boolean  default:false
         city: string
@@ -72,14 +73,13 @@ models:
         is_subscribed_to_newsletter: boolean default:false
         swear_on_ethiks: boolean default:false
         is_giving_promotions: boolean default:false 
-        is_subscribed_to_newsletter: boolean default:false
         has_service_after_sale: boolean default:false
         accept_installment_sale : boolean default:false
 
     ProfessionalSubscription:
         id: id
-        professional_id: bigInteger unique foreign:professionals.id
-        subscription_plan_id: bigInteger unique foreign:subscription_plans.id
+        professional_id: bigInteger  foreign:professionals.id
+        subscription_plan_id: bigInteger  foreign:subscription_plans.id
         start_date: dateTime
     ProfessionalCompany:
         id: id
@@ -91,16 +91,16 @@ models:
         field: string nullable
         website_url: string nullable
         presenter_name: string nullable
-        presenter_phone_number: string
-        presenter_email: string
-        presenter_job: string
+        presenter_phone_number: string nullable
+        presenter_email: string nullable unique
+        presenter_job: string nullable
     SubscriptionPlan:
         id: id
         name: string
-        type: enum:free default:"free"
+        type: enum:free,paid default:"free"
         commission: integer
-        features: mediumText
-        duration_in_months: integer
+        features: mediumText nullable
+        duration_in_months: integer default:12
         # trial_until: dateTime
         status: boolean default:true
         price: float
@@ -115,10 +115,10 @@ models:
         profile_photo_path: string
         account_stattus: boolean default:true
         is_reported: boolean default:false
-        country_id: string
-        city: string
+        country_id: id foreign nullable
+        city: string nullable
         job_id: bigInteger unsigned foreign:jobs.id
-        points: smallInteger
+        points: smallInteger default:0
     Project:
         id: id
         title: string
@@ -128,9 +128,9 @@ models:
         timeline_point: enum:pending,published,processing,finished default:"pending" comment:"receiving offers or in_progress or done"
         min_budget: float nullable
         max_budget: float nullable
-        real_amount: float
-        professional_id: bigInteger nullable unsigned
-        client_id: bigInteger index unsigned
+        real_amount: float nullable
+        professional_id: id foreign nullable
+        client_id: id foreign
     ProjectSkill:
         id: id
         project_id: bigInteger unsigned foreign:project.id
@@ -163,12 +163,12 @@ models:
         id: id
         question: string
         answer: mediumText
-        language_id: bigInteger unsigned foreign:langugages.id
+        language_id: bigInteger unsigned foreign:languages.id
     Badge:
         id: id
         title: string
         icon: mediumText
-        language_id: bigInteger unsigned foreign:langugages.id
+        language_id: bigInteger unsigned foreign:languages.id
     Work:
         id: id
         title: string
@@ -235,6 +235,6 @@ controllers:
       render: work.index with:skills
     show:
       render: work.show with:job
-seeders: Language, Speciality,Skill, Professional, Project, FAQ, Work, Badge
+seeders: Language, Speciality,Job, Skill, Professional, Project, FAQ, Work, Badge
 
 

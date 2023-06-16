@@ -1,2 +1,124 @@
+created:
+    - app/Http/Controllers/LanguageController.php
+    - app/Http/Controllers/SpecialityController.php
+    - app/Http/Controllers/SkillController.php
+    - app/Http/Controllers/ProfessionalController.php
+    - app/Http/Controllers/ProjectController.php
+    - app/Http/Controllers/FAQController.php
+    - app/Http/Controllers/WorkController.php
+    - database/factories/LanguageFactory.php
+    - database/factories/SpecialityFactory.php
+    - database/factories/SkillFactory.php
+    - database/factories/CountryFactory.php
+    - database/factories/ProfessionalSkillFactory.php
+    - database/factories/JobFactory.php
+    - database/factories/ProfessionalFactory.php
+    - database/factories/ProfessionalSubscriptionFactory.php
+    - database/factories/ProfessionalCompanyFactory.php
+    - database/factories/SubscriptionPlanFactory.php
+    - database/factories/ClientFactory.php
+    - database/factories/ProjectFactory.php
+    - database/factories/ProjectSkillFactory.php
+    - database/factories/ProjectReviewFactory.php
+    - database/factories/OffersFactory.php
+    - database/factories/PurchaseFactory.php
+    - database/factories/FAQFactory.php
+    - database/factories/BadgeFactory.php
+    - database/factories/WorkFactory.php
+    - database/factories/AttachementFactory.php
+    - database/factories/PageFactory.php
+    - database/migrations/2023_06_16_150701_create_languages_table.php
+    - database/migrations/2023_06_16_150702_create_specialities_table.php
+    - database/migrations/2023_06_16_150703_create_skills_table.php
+    - database/migrations/2023_06_16_150704_create_countries_table.php
+    - database/migrations/2023_06_16_150705_create_professional_skills_table.php
+    - database/migrations/2023_06_16_150706_create_jobs_table.php
+    - database/migrations/2023_06_16_150707_create_professionals_table.php
+    - database/migrations/2023_06_16_150708_create_professional_subscriptions_table.php
+    - database/migrations/2023_06_16_150709_create_professional_companies_table.php
+    - database/migrations/2023_06_16_150710_create_subscription_plans_table.php
+    - database/migrations/2023_06_16_150711_create_clients_table.php
+    - database/migrations/2023_06_16_150712_create_projects_table.php
+    - database/migrations/2023_06_16_150713_create_project_skills_table.php
+    - database/migrations/2023_06_16_150714_create_project_reviews_table.php
+    - database/migrations/2023_06_16_150715_create_offers_table.php
+    - database/migrations/2023_06_16_150716_create_purchases_table.php
+    - database/migrations/2023_06_16_150717_create_f_a_q_s_table.php
+    - database/migrations/2023_06_16_150718_create_badges_table.php
+    - database/migrations/2023_06_16_150719_create_works_table.php
+    - database/migrations/2023_06_16_150720_create_attachements_table.php
+    - database/migrations/2023_06_16_150721_create_pages_table.php
+    - app/Models/Language.php
+    - app/Models/Speciality.php
+    - app/Models/Skill.php
+    - app/Models/Country.php
+    - app/Models/ProfessionalSkill.php
+    - app/Models/Job.php
+    - app/Models/Professional.php
+    - app/Models/ProfessionalSubscription.php
+    - app/Models/ProfessionalCompany.php
+    - app/Models/SubscriptionPlan.php
+    - app/Models/Client.php
+    - app/Models/Project.php
+    - app/Models/ProjectSkill.php
+    - app/Models/ProjectReview.php
+    - app/Models/offers.php
+    - app/Models/Purchase.php
+    - app/Models/FAQ.php
+    - app/Models/Badge.php
+    - app/Models/Work.php
+    - app/Models/Attachement.php
+    - app/Models/Page.php
+    - database/seeders/LanguageSeeder.php
+    - database/seeders/SpecialitySeeder.php
+    - database/seeders/SkillSeeder.php
+    - database/seeders/ProfessionalSeeder.php
+    - database/seeders/ProjectSeeder.php
+    - database/seeders/FAQSeeder.php
+    - database/seeders/WorkSeeder.php
+    - database/seeders/BadgeSeeder.php
+    - tests/Feature/Http/Controllers/LanguageControllerTest.php
+    - tests/Feature/Http/Controllers/SpecialityControllerTest.php
+    - tests/Feature/Http/Controllers/SkillControllerTest.php
+    - tests/Feature/Http/Controllers/ProfessionalControllerTest.php
+    - tests/Feature/Http/Controllers/ProjectControllerTest.php
+    - tests/Feature/Http/Controllers/FAQControllerTest.php
+    - tests/Feature/Http/Controllers/WorkControllerTest.php
+    - resources/views/language/index.blade.php
+    - resources/views/speciality/index.blade.php
+    - resources/views/speciality/show.blade.php
+    - resources/views/skill/index.blade.php
+    - resources/views/skill/show.blade.php
+    - resources/views/professional/index.blade.php
+    - resources/views/professional/show.blade.php
+    - resources/views/project/index.blade.php
+    - resources/views/project/show.blade.php
+    - resources/views/faq/index.blade.php
+    - resources/views/faq/show.blade.php
+    - resources/views/work/index.blade.php
+    - resources/views/work/show.blade.php
+updated:
+    - routes/web.php
 models:
     User: {  }
+    Language: { id: id, name: string, label: string, file: string, direction: string, status: 'boolean default:true' }
+    Speciality: { id: id, title: string, image: string, status: 'boolean default:true', language_id: 'id foreign' }
+    Skill: { id: id, name: string, slug: 'string unique', language_id: 'id foreign' }
+    Country: { id: id, name: string, code: 'string unique', phone_code: 'string unique', flag: string, is_active: 'boolean default:true' }
+    ProfessionalSkill: { id: id, professional_id: 'bigInteger unique foreign:professionals.id', skill_id: 'bigInteger unique foreign:skills.id' }
+    Job: { id: id, title: 'string unique', status: 'boolean default:true', speciality_id: 'bigInteger foreign:speciality.id' }
+    Professional: { id: id, first_name: string, last_name: string, email: 'string unique', password: string, email_verified_at: dateTime, phone_number: string, profile_photo_path: string, bio: 'mediumText nullable', account_type: 'enum:freelancer,company_single_person,company_multiple_person default:"freelancer" comment:"{freelancer, company_single_person,company_multiple_person)"', company_id: 'bigInteger nullable foreign:professional_company.id', country_id: 'bigInteger foreign:countries.id', birth_date: date, account_status: 'boolean default:true', is_reported: 'boolean default:false', is_account_verified: 'boolean default:false', phone_verified_at: dateTime, gender: 'enum default:"male" comment:"male or female"', oauth_taken: string, is_closed_tomporary: 'boolean  default:false', city: string, job_id: 'bigInteger foreign:jobs.id nullable', 'employment rate': 'mediumInteger unsigned', work_days: 'json nullable', last_seen: 'dateTime nullable', location: 'json nullable', website_url: 'string nullable', commercial_register_no: 'string nullable', is_subscribed_to_newsletter: 'boolean default:false', swear_on_ethiks: 'boolean default:false', is_giving_promotions: 'boolean default:false', has_service_after_sale: 'boolean default:false', accept_installment_sale: 'boolean default:false' }
+    ProfessionalSubscription: { id: id, professional_id: 'bigInteger unique foreign:professionals.id', subscription_plan_id: 'bigInteger unique foreign:subscription_plans.id', start_date: dateTime }
+    ProfessionalCompany: { id: id, name: 'string nullable', address: 'string nullable', country: 'string nullable', phone_number: 'string nullable', email: 'string nullable unique', field: 'string nullable', website_url: 'string nullable', presenter_name: 'string nullable', presenter_phone_number: string, presenter_email: string, presenter_job: string }
+    SubscriptionPlan: { id: id, name: string, type: 'enum:free default:"free"', commission: integer, features: mediumText, duration_in_months: integer, status: 'boolean default:true', price: float }
+    Client: { id: id, first_name: string, last_name: bigInteger, email: 'string unique', password: string, nationality: string, email_verified_at: dateTime, profile_photo_path: string, account_stattus: 'boolean default:true', is_reported: 'boolean default:false', country_id: string, city: string, job_id: 'bigInteger unsigned foreign:jobs.id', points: smallInteger }
+    Project: { id: id, title: string, description: mediumText, is_open: 'boolean default:false', duration: bigInteger, timeline_point: 'enum:pending,published,processing,finished default:"pending" comment:"receiving offers or in_progress or done"', min_budget: 'float nullable', max_budget: 'float nullable', real_amount: float, professional_id: 'bigInteger nullable unsigned', client_id: 'bigInteger index unsigned' }
+    ProjectSkill: { id: id, project_id: 'bigInteger unsigned foreign:project.id', skill_id: 'bigInteger unsigned foreign:skills.id' }
+    ProjectReview: { id: id, client_id: 'id foreign', professional_id: 'id foreign', project_id: 'id foreign', comment: mediumText, is_approved: 'boolean default:true', is_reported: 'boolean default:false', ratings: 'json nullable' }
+    offers: { id: id, amount: float, professional_id: 'id foreign', project_id: 'id foreign', delivery_duration: integer, content: mediumText, is_reported: 'boolean default:false' }
+    Purchase: { id: id, description: mediumText, amount: float, client_id: 'bigInteger unsigned', professional_id: 'bigInteger unsigned' }
+    FAQ: { id: id, question: string, answer: mediumText, language_id: 'bigInteger unsigned foreign:langugages.id' }
+    Badge: { id: id, title: string, icon: mediumText, language_id: 'bigInteger unsigned foreign:langugages.id' }
+    Work: { id: id, title: string, slug: string, image: mediumText, views_count: 'integer default:0', link: 'string nullable', status: 'boolean default:false', professional_id: 'id forign', job_id: 'id forign', price: 'float default :0.00' }
+    Attachement: { id: id, path: string, attacheable_type: string, attacheable_id: 'bigInteger unsigned' }
+    Page: { id: id, title: string, slug: string, content: text, image: string, meta_title: string, meta_description: string, laguage_id: 'id foreign' }

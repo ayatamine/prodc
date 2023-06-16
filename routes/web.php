@@ -54,3 +54,18 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', LogoutController::class)
         ->name('logout');
 });
+
+
+Route::resource('language', App\Http\Controllers\LanguageController::class)->only('index');
+
+Route::resource('speciality', App\Http\Controllers\SpecialityController::class)->only('index', 'show');
+
+Route::resource('skill', App\Http\Controllers\SkillController::class)->only('index', 'show');
+
+Route::resource('professional', App\Http\Controllers\ProfessionalController::class)->only('index', 'show');
+
+Route::resource('project', App\Http\Controllers\ProjectController::class)->only('index', 'show');
+
+Route::resource('f-a-q', App\Http\Controllers\FAQController::class)->only('index', 'show');
+
+Route::resource('work', App\Http\Controllers\WorkController::class)->only('index', 'show');
