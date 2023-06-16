@@ -1,0 +1,240 @@
+models:
+    Language:
+        id: id
+        name: string
+        label: string
+        file: string
+        direction: string
+        status: boolean default:true
+    Speciality:
+        id: id
+        title: string
+        image: string
+        status: boolean default:true
+        language_id: id foreign
+    Skill:
+        id: id
+        name: string
+        slug: string unique
+        language_id: id foreign
+    Country:
+        id: id
+        name: string
+        code: string unique
+        phone_code: string unique
+        flag: string
+        is_active: boolean default:true
+    ProfessionalSkill:
+        id: id
+        professional_id: bigInteger unique foreign:professionals.id
+        skill_id: bigInteger unique foreign:skills.id
+    # Invoice:
+    #     id: id
+    #     invoice_number: integer
+    #     invoice_date: dateTime
+    #     amount: float
+    #     invoicable_type: enum default:"project" comment:"project or purshase"
+    #     invoicable_id: bigInteger unsigned foreign:project.id
+    Job:
+        id: id
+        title: string unique
+        status: boolean default:true
+        speciality_id: bigInteger foreign:speciality.id
+    Professional:
+        id: id
+        first_name: string
+        last_name: string
+        email: string unique
+        password: string
+        email_verified_at: dateTime
+        phone_number: string
+        profile_photo_path: string
+        bio: mediumText nullable
+        account_type: enum:freelancer,company_single_person,company_multiple_person default:"freelancer" comment:"{freelancer, company_single_person,company_multiple_person)"
+        company_id: bigInteger nullable foreign:professional_company.id
+        country_id: bigInteger foreign:countries.id
+        birth_date: date
+        account_status: boolean default:true
+        is_reported: boolean default:false
+        is_account_verified: boolean default:false
+        phone_verified_at: dateTime
+        gender: enum default:"male" comment:"male or female"
+        oauth_taken: string
+        is_closed_tomporary: boolean  default:false
+        city: string
+        job_id: bigInteger foreign:jobs.id nullable
+        employment rate: mediumInteger unsigned
+        work_days: json nullable
+        last_seen: dateTime nullable
+        location: json nullable
+        website_url: string nullable
+        commercial_register_no: string nullable
+        is_subscribed_to_newsletter: boolean default:false
+        swear_on_ethiks: boolean default:false
+        is_giving_promotions: boolean default:false 
+        is_subscribed_to_newsletter: boolean default:false
+        has_service_after_sale: boolean default:false
+        accept_installment_sale : boolean default:false
+
+    ProfessionalSubscription:
+        id: id
+        professional_id: bigInteger unique foreign:professionals.id
+        subscription_plan_id: bigInteger unique foreign:subscription_plans.id
+        start_date: dateTime
+    ProfessionalCompany:
+        id: id
+        name: string nullable
+        address: string nullable
+        country: string nullable
+        phone_number: string nullable
+        email: string nullable unique
+        field: string nullable
+        website_url: string nullable
+        presenter_name: string nullable
+        presenter_phone_number: string
+        presenter_email: string
+        presenter_job: string
+    SubscriptionPlan:
+        id: id
+        name: string
+        type: enum:free default:"free"
+        commission: integer
+        features: mediumText
+        duration_in_months: integer
+        # trial_until: dateTime
+        status: boolean default:true
+        price: float
+    Client:
+        id: id
+        first_name: string
+        last_name: bigInteger
+        email: string unique
+        password: string
+        nationality: string
+        email_verified_at: dateTime
+        profile_photo_path: string
+        account_stattus: boolean default:true
+        is_reported: boolean default:false
+        country_id: string
+        city: string
+        job_id: bigInteger unsigned foreign:jobs.id
+        points: smallInteger
+    Project:
+        id: id
+        title: string
+        description: mediumText
+        is_open: boolean default:false
+        duration: bigInteger
+        timeline_point: enum:pending,published,processing,finished default:"pending" comment:"receiving offers or in_progress or done"
+        min_budget: float nullable
+        max_budget: float nullable
+        real_amount: float
+        professional_id: bigInteger nullable unsigned
+        client_id: bigInteger index unsigned
+    ProjectSkill:
+        id: id
+        project_id: bigInteger unsigned foreign:project.id
+        skill_id: bigInteger unsigned foreign:skills.id
+    ProjectReview:
+        id: id
+        # invoice_id: bigInteger unsigned foreign:invoices.id
+        client_id: id foreign
+        professional_id: id foreign
+        project_id: id foreign
+        comment: mediumText
+        is_approved: boolean default:true
+        is_reported: boolean default:false
+        ratings: json nullable
+    offers:
+        id: id
+        amount: float
+        professional_id: id foreign
+        project_id: id foreign
+        delivery_duration: integer
+        content: mediumText
+        is_reported: boolean default:false
+    Purchase:
+        id: id
+        description: mediumText
+        amount: float
+        client_id: bigInteger unsigned
+        professional_id: bigInteger unsigned
+    FAQ:
+        id: id
+        question: string
+        answer: mediumText
+        language_id: bigInteger unsigned foreign:langugages.id
+    Badge:
+        id: id
+        title: string
+        icon: mediumText
+        language_id: bigInteger unsigned foreign:langugages.id
+    Work:
+        id: id
+        title: string
+        slug: string
+        image: mediumText
+        views_count: integer default:0
+        link: string nullable
+        status: boolean default:false
+        professional_id: id forign
+        job_id: id forign
+        price: float default :0.00
+    Attachement:
+        id: id
+        path: string
+        attacheable_type: string
+        attacheable_id: bigInteger unsigned
+    Page:
+        id: id
+        title: string
+        slug: string
+        content: text
+        image: string
+        meta_title: string
+        meta_description: string
+        laguage_id: id foreign
+controllers:
+  Language:
+    index:
+      query: all
+      render: language.index with:laguages
+  Speciality:
+    index:
+      query: all
+      render: speciality.index with:specialities
+    show:
+      render: speciality.show 
+  Skill:
+    index:
+      query: all
+      render: skill.index with:skills
+    show:
+      render: skill.show 
+  Professional:
+    index:
+      query: all
+      render: professional.index with:professionals
+    show:
+      render: professional.show 
+  Project:
+    index:
+      query: all
+      render: project.index with:skills
+    show:
+      render: project.show 
+  FAQ:
+    index:
+      query: all
+      render: faq.index with:faqs
+    show:
+      render: faq.show 
+  Work:
+    index:
+      query: all
+      render: work.index with:skills
+    show:
+      render: work.show with:job
+seeders: Language, Speciality,Skill, Professional, Project, FAQ, Work, Badge
+
+
