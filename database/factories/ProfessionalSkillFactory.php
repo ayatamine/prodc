@@ -23,8 +23,8 @@ class ProfessionalSkillFactory extends Factory
     public function definition(): array
     {
         return [
-            'professional_id' => Professional::factory(),
-            'skill_id' => Skill::factory(),
+            'professional_id' => Professional::first()?->id ?? Professional::factory(),
+            'skill_id' => $this->faker->randomElement(Skill::pluck('id')),
         ];
     }
 }

@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\Client;
 use App\Models\Job;
+use App\Models\Client;
+use App\Models\Country;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ClientFactory extends Factory
 {
@@ -31,9 +32,9 @@ class ClientFactory extends Factory
             'profile_photo_path' => $this->faker->word,
             'account_stattus' => $this->faker->boolean,
             'is_reported' => $this->faker->boolean,
-            'country_id' => $this->faker->word,
+            'country_id' => Country::first()?->id ?? Country::factory(),
             'city' => $this->faker->city,
-            'job_id' => Job::factory(),
+            'job_id' => Job::first()?->id ?? Job::factory(),
             'points' => $this->faker->numberBetween(-1000, 1000),
         ];
     }

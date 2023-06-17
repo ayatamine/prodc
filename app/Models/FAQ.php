@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class FAQ extends Model
 {
     use HasFactory;
-
+    protected $table='faqs';
     /**
      * The attributes that are mass assignable.
      *

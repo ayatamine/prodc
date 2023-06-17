@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use App\Models\Client;
 use App\Models\Project;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProjectFactory extends Factory
 {
@@ -24,13 +25,13 @@ class ProjectFactory extends Factory
             'title' => $this->faker->sentence(4),
             'description' => $this->faker->text,
             'is_open' => $this->faker->boolean,
-            'duration' => $this->faker->numberBetween(-100000, 100000),
+            'duration' => $this->faker->numberBetween(0, 100),
             'timeline_point' => $this->faker->randomElement(["pending","published","processing","finished"]),
-            'min_budget' => $this->faker->randomFloat(0, 0, 9999999999.),
-            'max_budget' => $this->faker->randomFloat(0, 0, 9999999999.),
-            'real_amount' => $this->faker->randomFloat(0, 0, 9999999999.),
-            'professional_id' => $this->faker->randomNumber(),
-            'client_id' => $this->faker->randomNumber(),
+            'min_budget' => $this->faker->randomFloat(0, 0, 999999.),
+            'max_budget' => $this->faker->randomFloat(0, 0, 999999.),
+            'real_amount' => $this->faker->randomFloat(0, 0, 999999.),
+            'professional_id' => null,
+            'client_id' => Client::first()?->id ?? Client::factory(),
         ];
     }
 }

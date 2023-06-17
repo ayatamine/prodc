@@ -2,16 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Professional;
+use App\Models\Client;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class ProfessionalSeeder extends Seeder
+class ClientSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Professional::factory()->count(3)->create();
+        Client::factory(3)->create();
     }
 }

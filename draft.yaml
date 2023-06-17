@@ -60,7 +60,7 @@ models:
         is_account_verified: boolean default:false
         phone_verified_at: dateTime nullable
         gender: enum:male,female default:"male" comment:"male or female"
-        oauth_taken: string
+        oauth_taken: string nullable
         is_closed_tomporary: boolean  default:false
         city: string
         job_id: bigInteger foreign:jobs.id nullable
@@ -75,7 +75,16 @@ models:
         is_giving_promotions: boolean default:false 
         has_service_after_sale: boolean default:false
         accept_installment_sale : boolean default:false
-
+    SubscriptionPlan:
+        id: id
+        name: string
+        type: enum:free,paid default:"free"
+        commission: integer
+        features: mediumText nullable
+        duration_in_months: integer default:12
+        # trial_until: dateTime
+        status: boolean default:true
+        price: float
     ProfessionalSubscription:
         id: id
         professional_id: bigInteger  foreign:professionals.id
@@ -94,20 +103,10 @@ models:
         presenter_phone_number: string nullable
         presenter_email: string nullable unique
         presenter_job: string nullable
-    SubscriptionPlan:
-        id: id
-        name: string
-        type: enum:free,paid default:"free"
-        commission: integer
-        features: mediumText nullable
-        duration_in_months: integer default:12
-        # trial_until: dateTime
-        status: boolean default:true
-        price: float
     Client:
         id: id
         first_name: string
-        last_name: bigInteger
+        last_name: string
         email: string unique
         password: string
         nationality: string
@@ -235,6 +234,6 @@ controllers:
       render: work.index with:skills
     show:
       render: work.show with:job
-seeders: Language, Speciality,Job, Skill, Professional, Project, FAQ, Work, Badge
+seeders: Language, Speciality,Job, Skill, Professional, Project, FAQ, Work, Badge,Country, Client, Professional,ProfessionalSkill
 
 

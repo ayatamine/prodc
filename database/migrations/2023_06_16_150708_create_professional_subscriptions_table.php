@@ -15,10 +15,8 @@ return new class extends Migration
 
         Schema::create('professional_subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('professional_id');
-            $table->foreign('professional_id')->references('id')->on('professionals');
-            $table->bigInteger('subscription_plan_id');
-            $table->foreign('subscription_plan_id')->references('id')->on('subscription_plans');
+            $table->foreignId('professional_id')->nullable()->constrained();
+            $table->foreignId('subscription_plan_id')->nullable()->constrained();
             $table->dateTime('start_date');
             $table->unique(["professional_id", "subscription_plan_id"], 'professional_plan_unique');
             $table->timestamps();

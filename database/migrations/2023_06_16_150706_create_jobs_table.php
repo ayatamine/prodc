@@ -17,10 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->boolean('status')->default(true);
-            $table->bigInteger('speciality_id');
-            $table->foreign('speciality_id')->references('id')->on('speciality');
-            $table->bigInteger('language_id');
-            $table->foreign('language_id')->references('id')->on('language');
+            $table->foreignId('speciality_id')->nullable()->constrained();
+            $table->foreignId('language_id')->nullable()->constrained();
             $table->timestamps();
         });
 

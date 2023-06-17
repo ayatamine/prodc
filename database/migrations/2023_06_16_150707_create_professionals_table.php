@@ -32,9 +32,9 @@ return new class extends Migration
             $table->boolean('is_account_verified')->default(false);
             $table->dateTime('phone_verified_at')->nullable();
             $table->enum('gender',['male','female'])->default('male')->comment('male or female');
-            $table->string('oauth_taken');
+            $table->string('oauth_taken')->nullable();
             $table->boolean('is_closed_tomporary')->default(false);
-            $table->string('city');
+            $table->string('city')->nullable();
             $table->foreignId('job_id')->nullable()->constrained();
             $table->unsignedMediumInteger('employment rate');
             $table->json('work_days')->nullable();

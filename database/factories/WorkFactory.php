@@ -26,12 +26,12 @@ class WorkFactory extends Factory
             'title' => $this->faker->sentence(4),
             'slug' => $this->faker->slug,
             'image' => $this->faker->text,
-            'views_count' => $this->faker->numberBetween(-10000, 10000),
+            'views_count' => $this->faker->numberBetween(0, 100),
             'link' => $this->faker->word,
             'status' => $this->faker->boolean,
             'professional_id' => Professional::first()?->id ?? Professional::factory(),
             'job_id' => Job::first()?->id ?? Job::factory(),
-            'price' => $this->faker->randomFloat(0, 0, 9999999999.),
+            'price' => $this->faker->randomFloat(0, 0, 999999.),
         ];
     }
 }
