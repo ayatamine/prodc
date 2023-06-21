@@ -19,6 +19,7 @@ use App\Notifications\ClientVerifyEmailNotification;
 
 class Register extends Component
 {
+    public $is_client_form =false;
     /** @var string */
     public $name = '';
 
@@ -32,6 +33,18 @@ class Register extends Component
     public $passwordConfirmation = '';
     public $first_name, $last_name, $username, $phone_number, $nationality, $conditions;
 
+    public function fullName(){
+        return $this->first_name.' '.$this->last_name;
+    }
+    public function updatingNationality($value){
+        $this->is_client_form=true;
+    }
+    public function updated($phone_number)
+    {
+        $this->validateOnly($phone_number, [
+            'phone_number'=> ['string', 'required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10','unique:clients'],
+        ]);
+    }
     public function ProfessionalRegister()
     {
         $validated_data = $this->validate([
@@ -52,7 +65,8 @@ class Register extends Component
                     'username' => $this->username,
                     'email' => $this->email,
                     'password' =>  Hash::make($this->password),
-                    'verification_token'=> Str::random(40)
+                    'verification_token'=> Str::random(40),
+                    'profile_photo_path'=>generate_avatar($this->fullName())
                 ]);
                 $professional->notify(new ProVerifyEmailNotification());
 
@@ -75,7 +89,7 @@ class Register extends Component
             'conditions' => ['required'],
             'first_name' => ['string', 'required', 'max:250'],
             'last_name' => ['string', 'required', 'max:250'],
-            'phone_number' => ['string', 'required','regex:/^(\+\d{1,2}\d{10})$/','unique:clients'],
+            'phone_number' => ['string', 'required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10','unique:clients'],
             'username' => ['string', 'required', 'unique:clients'],
             'nationality' => ['string', 'required'],
             'email' => ['string', 'required', 'email', 'unique:clients'],
@@ -92,10 +106,11 @@ class Register extends Component
                     'last_name' => $this->first_name,
                     'username' => $this->username,
                     'nationality' => $this->nationality,
-                    'phon_number' => $this->phon_number,
+                    'phone_number' => $this->phone_number,
                     'email' => $this->email,
                     'password' =>  Hash::make($this->password),
-                    'verification_token'=> Str::random(40)
+                    'verification_token'=> Str::random(40),
+                    'profile_photo_path'=>generate_avatar($this->fullName())
                 ]);
                 $client->notify(new ClientVerifyEmailNotification());
             });

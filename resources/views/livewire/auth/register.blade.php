@@ -79,7 +79,7 @@
         <span class="text-sm text-center text-gray-500 uppercase">أو قم بتسجيل حساب بالبريد</span>
         <span class="border-b w-1/5 lg:w-1/4"></span>
       </div>
-      <div class="forms" x-data="{is_client_form:false}">
+      <div class="forms" x-data="{is_client_form:@entangle('is_client_form')}">
         <div class="flex justify-start items-center border border-b-0 ">
           <div @click="is_client_form=false"
             class="leading-8 md:leading-9 w-1/2 md:w-1/3 p-3  text-gray-600 font-semibold text-sm md:text-base cursor-pointer text-center flex justify-center flex-col md:flex-row items-center gap-2"
@@ -146,7 +146,7 @@
               <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
               @enderror
             </div>
-            <div class="family_name  mt-4">
+            <div class="  mt-4">
               <label for="family_name" class=" my-2 flex text-sm md:text-base">
                 <span>اسم العائلة</span>
                 <span class="text-red-600 text-xl font-bold mr-2">*</span>
@@ -274,10 +274,11 @@
             </div>
             <div class="  mt-4">
               <label for="phone_number" class=" my-2 flex  text-sm md:text-base">
-                <span>رقم الجوال(+الرقم الدولي)</span>
+                <span>رقم الجوال(الرقم الدولي)</span>
                 <span class="text-red-600 text-xl font-bold mr-2">*</span>
               </label>
-              <input wire:model="phone_number" type="phone_number" class="white-input-theme" required placeholder="000XXXXXXXXX+" />
+              <input wire:model.debounce.500ms="phone_number" type="text"  class="white-input-theme" required
+                />
               @error('phone_number')
               <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
               @enderror
@@ -295,12 +296,12 @@
               <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
               @enderror
             </div>
-            <div class="  mt-4">
+            <div class="  mt-4" wire:ignore>
               <label for="nationality" class=" my-2 flex  text-sm md:text-base">
                 <span>البلد</span>
                 <span class="text-red-600 text-xl font-bold mr-2">*</span>
               </label>
-              <select  wire:model="nationality"  type="text" class="white-input-select" id="countries" name="nationality" value="" >
+              <select wire:model="nationality" class="white-input-select" id="countries" name="nationality">
 
               </select>
               @error('nationality')
@@ -334,9 +335,9 @@
             <div class="g-recaptcha" data-sitekey="6LcQCGgmAAAAAPHKsHGGKQAEYjIon_sc519AIfVW"></div>
           </div>
           <div class="flex items-center gap-2 text-sm md:text-md  mt-5">
-            <input wire:model="conditions" type="checkbox" name="conditions" id=""
+            <input wire:model="conditions" type="checkbox" name="conditions" id="conditions2"
               class="border-gray-300 rounded h-5 md:h-4 w-5 md:w-4" />
-            <label for="conditions">قرأت وأوافق على
+            <label for="conditions2">قرأت وأوافق على
               <a href="conditions.html" class="text-primaryTextColorDarken underline underline-offset-4">شروط
                 الاستخدام</a>
               و
@@ -350,7 +351,7 @@
           <div class="mt-8">
             <button type="submit"
               class="block text-center bg-primaryTextColor text-sm md:text-md text-white font-bold py-2 px-4 w-full rounded hover:bg-primaryTextColorDarken">
-              <svg wire:loading wire:target="ProfessionalRegister" class="
+              <svg wire:loading wire:target="ClientRegister" class="
                   w-5
                   h-5
                   mr-3
@@ -393,17 +394,24 @@
   window.addEventListener("DOMContentLoaded", (event) => {
   
   (async () => {
-      const response = await fetch('https://restcountries.eu/rest/v2/all?fields=alpha2Code;name');
+      const response = await fetch('https://restcountries.com/v3.1/region/eu?fields=idd,name,translations');
       const countries = await response.json();
       const select = document.getElementById('countries');
+      let first = 0;
       for (const country of countries) {
+          if(first == 0){
+            const option = document.createElement('option');
+            option.innerText ='اختر'
+            option.setAttribute('disabled','disabled') 
+            select.appendChild(option);
+          }
+          first++;
           const option = document.createElement('option');
-          option.value = country.alpha2Code;
-          option.innerText = country.name;
+          option.value = country.idd.root+"-"+country.name.common;
+          option.innerText = country.translations.ara.common;
           select.appendChild(option);
       }
   })();
 });
 </script>
 @endpush
-    
