@@ -1,5 +1,334 @@
 @import '../../vendor/filament/forms/dist/module.esm.css';
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@200;300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@300;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.sticky {
+  @apply fixed z-[9999] bg-white  transition;
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.sticky .navbar-logo {
+  @apply py-2;
+}
+
+.sticky #navbarToggler span {
+  @apply bg-dark;
+}
+.submenu.top-dropdown{
+  @apply relative top-full left-0 hidden w-[180px] rounded-sm bg-white p-4 px-0 transition-[top] duration-300 group-hover:opacity-100 lg:invisible lg:absolute lg:top-[110%] lg:block lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full shadow-md
+}
+.sticky #navbarCollapse li a {
+  @apply text-gray-600;
+}
+#navbarCollapse li .topnav-link{
+ @apply  mx-1 flex px-2 py-2 text-[13px] text-gray-600  lg:inline-flex  hover:bg-body   transition-all duration-200 ease-in-out
+}
+.blog-p{
+  @apply block font-Noto-Naskh text-[1rem] font-medium text-gray-500 leading-8
+}
+.blog-t{
+  @apply block h-[50px] leading-7 text-base md:text-lg font-semibold text-primaryTextColor mt-5 mb-3
+}
+.blog-category{
+  @apply bg-body p-1 py-0.5
+}
+.blog-img{
+  @apply max-h-[270px] w-full object-cover
+}
+.blog li .topnav-link{
+ @apply  mx-2 flex px-4 py-2 !text-[15px] text-gray-600  lg:inline-flex  hover:bg-body   transition-all duration-200 ease-in-out
+}
+.blog li .topnav-link.active{@apply bg-body}
+.submenu.top-dropdown{
+  right:4px;left:auto
+}
+.submenu .topnav-link {
+  @apply !py-2 !px-4 !mx-0
+}
+.blog .submenu .topnav-link {
+  @apply py-3 px-4 !mx-0
+}
+.ud-header.sticky .search-box{
+  @apply !top-[3.4rem]
+}
+.sidenav-link{
+  @apply  flex items-center gap-x-2 px-5 py-2 text-sm  hover:bg-body   transition-all duration-200 ease-in-out
+}
+.sidenav-link.active{@apply text-primaryTextColor font-semibold}
+#navbarCollapse li .ud-menu-scroll.active {
+  @apply bg-body text-gray-600;
+}
+.sticky #navbarCollapse li .ud-menu-scroll.active {
+  @apply text-gray-600 bg-body;
+}
+.sticky .loginBtn {
+  @apply text-dark hover:text-primary2 hover:opacity-100;
+}
+
+.sticky .signUpBtn {
+  @apply bg-primary2 text-white hover:bg-dark hover:text-white;
+}
+
+.navbarTogglerActive > span:nth-child(1) {
+  @apply top-[7px] rotate-45 transform;
+}
+.navbarTogglerActive > span:nth-child(2) {
+  @apply opacity-0;
+}
+.navbarTogglerActive > span:nth-child(3) {
+  @apply top-[-8px] rotate-[135deg];
+}
+
+.carousel-open:checked + .carousel-item {
+  position: static;
+  opacity: 100;
+}
+.carousel-item {
+  -webkit-transition: opacity 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
+}
+#carousel-1:checked ~ .control-1,
+#carousel-2:checked ~ .control-2,
+#carousel-3:checked ~ .control-3 {
+  display: block;
+}
+#carousel-11:checked ~ .control-11,
+#carousel-22:checked ~ .control-22,
+#carousel-33:checked ~ .control-33 {
+  display: table;
+}
+.carousel-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+#carousel-1:checked
+  ~ .control-1
+  ~ .carousel-indicators
+  li:nth-child(1)
+  .carousel-bullet,
+#carousel-2:checked
+  ~ .control-2
+  ~ .carousel-indicators
+  li:nth-child(2)
+  .carousel-bullet,
+#carousel-3:checked
+  ~ .control-3
+  ~ .carousel-indicators
+  li:nth-child(3)
+  .carousel-bullet {
+ @apply text-primaryTextColor font-bold  /*Set to match the Tailwind colour you want the active one to be */
+}
+#carousel-11:checked
+  ~ .control-11
+  ~ .carousel-indicators
+  li:nth-child(1)
+  .carousel-bullet,
+#carousel-22:checked
+  ~ .control-22
+  ~ .carousel-indicators
+  li:nth-child(2)
+  .carousel-bullet,
+#carousel-33:checked
+  ~ .control-33
+  ~ .carousel-indicators
+  li:nth-child(3)
+  .carousel-bullet {
+ @apply text-primaryTextColor font-bold  /*Set to match the Tailwind colour you want the active one to be */
+}
+.intro-section{
+          min-height: 33rem;
+         /* padding-top: 7rem; */
+       
+}
+.intro-cards{
+  @apply  border-2  border-yellow-200 text-justify  text-[13px] text-primaryTextColorDarken leading-6 p-3 min-h-full
+}
+.intro-card-divider:before {
+  @apply bg-yellow-500;
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    left: 0;
+    top: 50%;
+    position: absolute;
+  }
+  
+.intro-card-divider:after {
+  @apply bg-yellow-500;
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    right: 0;
+    top: 50%;
+    position: absolute;
+}
+.highlighted-offer{
+  @apply text-primaryTextColorDarken dark:text-primaryTextColor
+}
+.unhighlighted-offer{
+  @apply text-gray-500 dark:text-gray-200
+}
+
+@media screen {
+  #testimonial .swiper-slide{
+    height: 21rem;
+  }
+  #testimonial .swiper-slide-next{
+   /* height: 25rem; */
+   transform: scaleY(1.1) !important;
+  }
+  #testimonial .swiper-slide-next img{@apply scale-x-[1.1]}
+}
+
+.footer-link{
+  @apply text-gray-700 text-sm dark:text-gray-400
+}
+
+.filter-input{
+  @apply  bg-zinc-100 px-2  border border-gray-300 text-sm text-gray-600 focus:outline-none focus:bg-white;
+}
+/* Toggle B */
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #2196f3;
+}
+input[type="radio"] + label span {
+  transition: background .2s,
+    transform .2s;
+}
+
+input[type="radio"] + label span:hover,
+input[type="radio"] + label:hover span{
+transform: scale(1.2);
+} 
+
+input[type="radio"]:checked + label span {
+background-color: #2196f3; 
+box-shadow: 0px 0px 0px 2px white inset;
+}
+
+input[type="radio"]:checked + label{
+ color: #2196f3; 
+}
+/* tab styme */ 
+.tab-active{
+  @apply  text-primaryTextColor border-b-4 border-primaryTextColor  !important;
+}
+.tab-link{
+  @apply  flex justify-between items-center gap-1  py-1 md:py-3 pl-1 ltr:pr-1 align-middle text-lg text-gray-500 no-underline hover:text-gray-900 border-b-4 border-white  hover:border-primaryTextColorDarken;
+} 
+.tab-active{
+ @apply text-primaryTextColor;
+}
+
+/* buttons */
+.primaryBtn{
+  @apply bg-primaryTextColor py-2 px-4 text-white hover:bg-primaryTextColorDarken
+}
+
+.white-input-theme{
+  @apply border w-full border-gray-400 p-2 py-1.5 focus:outline-none focus:border-primary2 focus:shadow-[0_1px_2px_#2196f3]
+}
+.white-input-select{ 
+  @apply border w-full border-gray-400 p-2 py-0.5 min-h-[2.4rem] focus:outline-none focus:border-primary2 focus:shadow-[0_1px_2px_#2196f3]
+}
+.outline-btn{
+  @apply bg-white border text-primaryTextColor border-primaryTextColor w-fit py-1 px-2  rounded hover:bg-primaryTextColor hover:text-white transition-colors duration-300 ease-in-out
+}
+.success-outline-btn{
+  @apply bg-white border text-sm text-green-600 border-green-600 w-fit py-1 px-2  rounded hover:bg-green-600 hover:text-white transition-colors duration-300 ease-in-out
+}
+/* dashboard */
+.dashboard-tab{
+  @apply  bg-white rounded p-2 flex flex-col justify-center items-center
+}
+.dashboard-tab.active{ @apply bg-primary2 text-white transition-colors duration-300 ease-in-out delay-75}
+.md-button{ @apply px-3 py-2 rounded text-white text-sm}
+.smd-button{ @apply px-5 py-2.5 rounded text-white text-sm}
+.sm-button{ @apply px-4 py-1.5 rounded text-white text-sm}
+.primary-btn{
+  @apply bg-primaryTextColor  hover:bg-primaryTextColorDarken 
+}
+.success-btn{
+  @apply bg-green-500  hover:bg-green-600 
+}
+.work_details p{
+  @apply leading-8 ;
+  font-size: 0.9rem
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply bg-sectionTitleColor rounded-full;
+
+  padding:4px;
+  padding: 4px;
+  /* border: 2px solid black; */
+  height: 35px;
+  width: 35px;
+  /* background: #0e99fb;; */
+}
+@media(min-width:680px){
+#testimonial .swiper-button-prev{left:-2rem}
+#testimonial .swiper-button-next{right:-2rem}
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "";
+}
+#ethiks .bg-white p{
+  @apply mb-4 text-[1rem] text-black leading-9 text-justify
+}
+#ethiks .what_gets_from_ethiks{
+  @apply leading-10  text-black flex justify-start gap-2 items-center 
+}
+.blog-content p{
+  @apply leading-8 text-justify text-base font-Noto-Naskh text-gray-900
+}
+.blog-content ul{
+  @apply list-disc my-3 px-4
+}
+.blog-title{
+  @apply text-lg md:text-2xl font-bold my-3  text-gray-700
+}
+.related-articles-title{
+  @apply text-[10px] leading-3 font-extrabold
+}
+.article-meta{
+  @apply text-[9px] mt-2
+}
+
+#buy_offer_form .header-tab-item{
+  @apply flex justify-center items-center gap-2 p-3 px-5 cursor-pointer;
+}
+#buy_offer_form .header-tab-item.active{@apply bg-white}
+.changed-font-p p,.changed-font-p ul li,changed-font-div{
+  @apply !font-Noto-Naskh text-[1.2rem] leading-8
+}
+#professions_percentages{
+  @apply px-3 text-primaryTextColorDarken text-[1rem] lg:text-lg
+}
+#professions_percentages li {
+  @apply mb-4
+}

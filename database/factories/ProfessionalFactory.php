@@ -26,6 +26,7 @@ class ProfessionalFactory extends Factory
         return [
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
+            'username' => $this->faker->name,
             'email' => $this->faker->safeEmail,
             'password' => bcrypt('password'),
             'email_verified_at' => $this->faker->dateTime(),
@@ -45,7 +46,7 @@ class ProfessionalFactory extends Factory
             'is_closed_tomporary' => $this->faker->boolean,
             'city' => $this->faker->city,
             'job_id' => Job::factory(),
-            'employment rate' => $this->faker->randomNumber(),
+            'employment_rate' => $this->faker->randomNumber(3),
             'work_days' => '{}',
             'last_seen' => $this->faker->dateTime(),
             'location' => '{}',
