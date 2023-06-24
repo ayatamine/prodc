@@ -1,0 +1,27 @@
+<?php
+
+return [
+   'internal_error' => 'حدث خطأ في الخادم الداخلي',
+   'registered_successfully' => 'تم إنشاء حسابك بنجاح، يرجى التحقق من البريد الإلكتروني',
+   'loggedin_successfully' => 'تم تسجيل الدخول بنجاح',
+   'updated_successfully' => 'تم التحديث بنجاح',
+   'email_verified_successfully' => 'تم التحقق من البريد الإلكتروني بنجاح',
+   'not_verified' => 'لم يتم التحقق من البريد الإلكتروني الخاص بك، يرجى التحقق من البريد الإلكتروني للتحقق',
+   'google_recaptcha_error' => 'يعتقد جوجل أنك بوت، يرجى التحديث والمحاولة مرة أخرى',
+   'register'=>'حساب جديد',
+   'register_account'=>'إنشاء حساب',
+   'login'=>'تسجيل الدخول',
+   'have_account'=>' لديك حساب',
+   'have_no_account'=>' ليس لديك حساب',
+   'or_login_using_email'=>'أو قم  بتسجيل الدخول بالبريد',
+   'sware_to_be_ethiks'=>'ألتزم أن أكون أمينا و محسنا  ',
+   'ballance'=>'الرصيد ',
+   'my_account'=>'حسابي الشخصي ',
+   'favorites'=>'المفضلة',
+   'my_projects'=>'طلبات الخدمة',
+   'dashboard'=>'لوحة التحكم',
+   'my_projects'=>'طلبات الخدمة',
+   'professional'=>'محترف',
+   'client'=>'عميل',
+   'choose_account_type'=>'اختيار نوع الحساب',
+];

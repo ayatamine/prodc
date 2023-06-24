@@ -17,8 +17,9 @@ class AuthenticateClient extends Middleware
      */
     protected function authenticate($request, array $guards)
     {
-        if ($this->auth->guard('client')->check()) {
-            return $this->auth->shouldUse('client');
+        if ($this->auth->check() && $this->auth->user()->client()) {
+            // return $this->auth->shouldUse('client');
+            return true;
         }
     }
 

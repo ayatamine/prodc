@@ -5,19 +5,19 @@
       <div class="swiper-container !overflow-hidden ">
         <div class="swiper-wrapper md:flex gap-x-2">
           <a href="" class="swiper-slide w-1/7">
-            <img src="/assets/images/brands/graygrids.svg" class="h-12 w-52" alt="">
+            <img data-placeholder-background="#81929c" data-src="/assets/images/brands/graygrids.svg" class="lozad h-12 w-52" alt="">
           </a>
           <a href="" class="swiper-slide w-1/7">
-            <img src="/assets/images/brands/ecommerce-html.svg" class="h-12 w-52" alt="">
+            <img data-placeholder-background="#81929c" data-src="/assets/images/brands/ecommerce-html.svg" class="lozad h-12 w-52" alt="">
           </a>
           <a href="" class="swiper-slide w-1/7">
-            <img src="/assets/images/brands/lineicons.svg" class="h-12 w-52" alt="">
+            <img data-placeholder-background="#81929c" data-src="/assets/images/brands/lineicons.svg" class="lozad h-12 w-52" alt="">
           </a>
           <a href="" class="swiper-slide w-1/7">
-            <img src="/assets/images/brands/ayroui.svg" class="h-12 w-52" alt="">
+            <img data-placeholder-background="#81929c" data-src="/assets/images/brands/ayroui.svg" class="lozad h-12 w-52" alt="">
           </a>
           <a href="" class="swiper-slide w-1/7">
-            <img src="/assets/images/brands/tailwindtemplates.svg" class="h-12 w-52" alt="">
+            <img data-placeholder-background="#81929c" data-src="/assets/images/brands/tailwindtemplates.svg" class="lozad h-12 w-52" alt="">
           </a>
 
         </div>

@@ -343,7 +343,12 @@
                   
                 </ul>
               </div>
-
+              @guest
+                <div class="flex justify-start itmes-center gap-2">
+                  <a href="{{route('login')}}" class="sm-button primary-btn">{{trans('frontend.login')}}</a>
+                  <a href="{{route('register')}}" class="outline-btn !w-28">{{trans('frontend.register')}}</a>
+                </div>
+              @else
                <!-- messag component -->
               <div class="relative " x-data="{showMessages:false,toggle(){hideOthers(),this.showMessages = !this.showMessages}}">
                 <div @click.prevent="toggle()" class="topNotMessCallable flex flex-row cursor-pointer truncate p-2   rounded" :class="showMessages && ' bg-body'" >
@@ -495,35 +500,36 @@
                 <div x-show="showUserDropDown" class="topNotMess w-max absolute  left-0 mt-1 drop-shadow-md rounded-b border-t-0 z-10 bg-white">
                     <!-- notifications inside  -->
                   <div class="py-3 text-gray-700">
-                      <a    href="dashboard.html"   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
+                      <a    href="{{route('dashboard')}}"   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
                         <svg class="h-5 w-5 text-gray-600 "  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="13" r="2" />  <line x1="13.45" y1="11.55" x2="15.5" y2="9.5" />  <path d="M6.4 20a9 9 0 1 1 11.2 0Z" /></svg>
-                         <span> لوحة التحكم  </span>
+                         <span> {{trans('frontend.dashboard')}} </span>
                       </a>
-                      <a    href="my_project.html"   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
+                      <a    href="{{route('my_projects')}}"   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
                         <svg class="h-5 w-5 text-gray-600"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                         </svg>
-                         <span> مشاريعي  </span>
+                         <span> {{trans('frontend.my_projects')}}  </span>
                       </a>
-                      <a    href="my_account_settings.html"   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
+                      <a    href="{{route('personal_data')}}"   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
                         <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="4" y="4" width="6" height="5" rx="2" />  <rect x="4" y="13" width="6" height="7" rx="2" />  <rect x="14" y="4" width="6" height="7" rx="2" />  <rect x="14" y="15" width="6" height="5" rx="2" /></svg>
-                         <span> حسابي الشخصي  </span>
+                         <span> {{trans('frontend.my_account')}} </span>
                       </a>
                       <a    href="my_favorites.html"   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
                         <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" /></svg>
-                        <span> المفضلة  </span>
+                        <span> {{trans('frontend.favorites')}}  </span>
                       </a>
-                      <a    href="my_ballance.html"   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
+                      <a    href="{{route('my_ballance')}}"   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
                         <svg class="h-5 w-5 text-gray-600"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                         </svg>
                         
-                         <span> الرصيد  </span>
+                         <span> {{trans('frontend.ballance')}}  </span>
                       </a>
-                      <a    href=""   class="flex  items-center gap-2 p-2 px-4 text-sm"           >
-                        <svg class="h-5 w-5 text-gray-600"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />  <polyline points="16 17 21 12 16 7" />  <line x1="21" y1="12" x2="9" y2="12" /></svg>
-                         <span> تسجيل الخروج  </span>
-                      </a>
+                      <form class="flex  items-center gap-2 p-2 px-4 text-sm" action="{{ route('logout') }}" method="POST">
+                          @csrf
+                          <svg class="h-5 w-5 text-gray-600"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />  <polyline points="16 17 21 12 16 7" />  <line x1="21" y1="12" x2="9" y2="12" /></svg>
+                          <button type="submit">{{trans('auth.sign_out')}}</button>
+                      </form>
                   </div>
                 </div>
               </div>
@@ -545,7 +551,7 @@
                   </a>
                 </div>
               </div> 
-
+              @endguest
               <!--  button -->
               <button @click="open = !open" class=" p-3 pt-2">
                 <svg x-show="!open" class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>

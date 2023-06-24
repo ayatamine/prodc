@@ -3,7 +3,7 @@
 <div class=" bg-body p-6 py-16 md:py-16 px-8">
 
   <div class="lg:flex my-3 bg-white rounded shadow-lg overflow-hidden mx-auto max-w-5xl lg:max-w-7xl">
-    <div class="w-full border-l  lg:w-1/3 bg-cover text-center md:flex md:flex-col justify-center p-16 lg:p-0">
+    <div  wire:ignore class="w-full border-l  lg:w-1/3 bg-cover text-center md:flex md:flex-col justify-center p-16 lg:p-0">
       <img data-src="{{asset('assets/images/logo/logonew.jpg')}}" class="lozad h-64 w-64 drop-shadow-md mx-auto"
         alt="شعار المحترف القوي الأمين">
       <p class="text-lg my-6">نتعامل بالإحسان : صدق، أمانة وإتقان</p>

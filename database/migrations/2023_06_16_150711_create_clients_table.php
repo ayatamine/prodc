@@ -15,21 +15,7 @@ return new class extends Migration
 
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('username')->nullable();
-            $table->string('email')->unique();
-            $table->string('verification_token')->nullable();
-            $table->string('password')->nullable();
-            $table->string('nationality')->nullable();
-            $table->dateTime('email_verified_at')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->string('profile_photo_path')->default('client.png');
-            $table->boolean('account_stattus')->default(true);
-            $table->boolean('is_reported')->default(false);
-            $table->foreignId('country_id')->nullable()->constrained();
-            $table->string('city')->nullable();
-            $table->foreignId('job_id')->nullable()->constrained();
+            $table->foreignId('user_id')->unique()->constrained();
             $table->smallInteger('points')->default(0);
             $table->timestamps();
         });

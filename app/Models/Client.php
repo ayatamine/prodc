@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Client extends Authenticatable  implements MustVerifyEmail
+class Client extends User
 {
     use HasFactory,Notifiable;
 
@@ -19,19 +20,7 @@ class Client extends Authenticatable  implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'email',
-        'verification_token',
-        'password',
-        'nationality',
-        'email_verified_at',
-        'profile_photo_path',
-        'account_stattus',
-        'is_reported',
-        'country_id',
-        'city',
-        'job_id',
+        'user_id',
         'points',
     ];
 
@@ -58,9 +47,9 @@ class Client extends Authenticatable  implements MustVerifyEmail
         'job_id' => 'integer',
         'points' => 'integer',
     ];
-
-    public function job(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Job::class);
+        return $this->belongsTo(User::class);
     }
+
 }

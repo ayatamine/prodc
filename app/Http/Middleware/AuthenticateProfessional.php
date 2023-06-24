@@ -17,8 +17,9 @@ class AuthenticateProfessional extends Middleware
      */
     protected function authenticate($request, array $guards)
     {
-        if ($this->auth->guard('professional')->check()) {
-            return $this->auth->shouldUse('professional');
+        if ($this->auth->check() && $this->auth->user()->professional()) {
+            // return $this->auth->shouldUse('professional');
+            return true;
         }
     }
 

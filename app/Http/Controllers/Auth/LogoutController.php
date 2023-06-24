@@ -9,9 +9,9 @@ use Illuminate\Http\RedirectResponse;
 
 class LogoutController extends Controller
 {
-    public function __invoke($guard='user'): RedirectResponse
+    public function __invoke(): RedirectResponse
     {
-        Auth::guard($guard)->logout();
+        Auth::logout();
 
         return redirect(route('home'));
     }

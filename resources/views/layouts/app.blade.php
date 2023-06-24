@@ -65,5 +65,9 @@
         ></span>
         </a>
         <!-- ====== Back To Top End -->
+        <script>
+              // ===== wow js
+            new WOW().init();
+        </script>
     </body>
 </html>

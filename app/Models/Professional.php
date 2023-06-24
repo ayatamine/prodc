@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Professional extends Authenticatable implements MustVerifyEmail
+class Professional extends User
 {
     use HasFactory,Notifiable;
 
@@ -19,33 +20,13 @@ class Professional extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'username',
-        'email',
-        'verification_token',
-        'password',
-        'email_verified_at',
-        'phone_number',
-        'profile_photo_path',
-        'bio',
+        'user_id',
         'account_type',
         'company_id',
         'country_id',
-        'birth_date',
-        'account_status',
-        'is_reported',
-        'is_account_verified',
-        'phone_verified_at',
-        'gender',
-        'oauth_taken',
         'is_closed_tomporary',
-        'city',
-        'job_id',
         'employment rate',
         'work_days',
-        'last_seen',
-        'location',
         'website_url',
         'commercial_register_no',
         'is_subscribed_to_newsletter',
@@ -92,6 +73,11 @@ class Professional extends Authenticatable implements MustVerifyEmail
         'accept_installment_sale' => 'boolean',
     ];
 
+
+    public function job(): BelongsTo
+    {
+        return $this->belongsTo(Job::class);
+    }
     public function company(): BelongsTo
     {
         return $this->belongsTo(ProfessionalCompany::class);
@@ -102,8 +88,8 @@ class Professional extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Country::class);
     }
 
-    public function job(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Job::class);
+        return $this->belongsTo(User::class);
     }
 }

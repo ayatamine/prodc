@@ -42,7 +42,7 @@ class Register extends Component
     public function updated($phone_number)
     {
         $this->validateOnly($phone_number, [
-            'phone_number'=> ['string', 'required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10','unique:clients'],
+            'phone_number'=> ['string', 'required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10','unique:users'],
         ]);
     }
     public function ProfessionalRegister()
@@ -51,15 +51,15 @@ class Register extends Component
             'conditions' => ['required'],
             'first_name' => ['string', 'required', 'max:250'],
             'last_name' => ['string', 'required', 'max:250'],
-            'username' => ['string', 'required', 'unique:professionals'],
-            'email' => ['string', 'required', 'email', 'unique:professionals'],
+            'username' => ['string', 'required', 'unique:users'],
+            'email' => ['string', 'required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation'],
         ]);
         try {
             DB::transaction(function () {
                 //
 
-                $professional = Professional::create([
+                $user = User::create([
                     'first_name' => $this->first_name,
                     'last_name' => $this->first_name,
                     'username' => $this->username,
@@ -68,7 +68,9 @@ class Register extends Component
                     'verification_token'=> Str::random(40),
                     'profile_photo_path'=>generate_avatar($this->fullName())
                 ]);
-                $professional->notify(new ProVerifyEmailNotification());
+                $professional= new Professional();
+                $user->professional()->save($professional);
+                $user->notify(new ProVerifyEmailNotification());
 
             });
 
@@ -89,10 +91,10 @@ class Register extends Component
             'conditions' => ['required'],
             'first_name' => ['string', 'required', 'max:250'],
             'last_name' => ['string', 'required', 'max:250'],
-            'phone_number' => ['string', 'required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10','unique:clients'],
-            'username' => ['string', 'required', 'unique:clients'],
+            'phone_number' => ['string', 'required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10','unique:users'],
+            'username' => ['string', 'required', 'unique:users'],
             'nationality' => ['string', 'required'],
-            'email' => ['string', 'required', 'email', 'unique:clients'],
+            'email' => ['string', 'required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation'],
             'nationality' => ['required', 'string', 'min:3','max:100'],
         ]);
@@ -101,7 +103,7 @@ class Register extends Component
                 //
 
                 
-                $client = Client::create([
+                $user = Client::create([
                     'first_name' => $this->first_name,
                     'last_name' => $this->first_name,
                     'username' => $this->username,
@@ -112,7 +114,9 @@ class Register extends Component
                     'verification_token'=> Str::random(40),
                     'profile_photo_path'=>generate_avatar($this->fullName())
                 ]);
-                $client->notify(new ClientVerifyEmailNotification());
+                $client= new Client();
+                $user->client()->save($client);
+                $user->notify(new ClientVerifyEmailNotification());
             });
             toast(trans('frontend.registered_successfully'),'success');
 
