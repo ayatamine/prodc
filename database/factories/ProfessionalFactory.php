@@ -27,7 +27,6 @@ class ProfessionalFactory extends Factory
         return [
             'user_id'=>User::factory(),
             'account_type' => $this->faker->randomElement(["freelancer","company_single_person","company_multiple_person"]),
-            'company_id' => ProfessionalCompany::first()?->id ?? ProfessionalCompany::factory(),
             'is_closed_tomporary' => $this->faker->boolean,
             'employment_rate' => $this->faker->randomNumber(3),
             'work_days' => '{}',

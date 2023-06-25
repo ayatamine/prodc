@@ -1,5 +1,4 @@
 <!-- ====== All Scripts -->
-{{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> --}}
 <script src="{{asset('assets/js/main.js')}}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {

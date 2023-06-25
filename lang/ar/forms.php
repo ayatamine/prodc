@@ -11,4 +11,7 @@ return [
     'save_changes'=>'حفظ التغييرات',
     'remember'=>'تذكرني',
     'account_type'=>'نوع الحساب',
+    'confirm'=>'تأكيد',
+    'confirm_and_finish'=>'تأكيد و إنهاء',
+    'continue'=>'استمرار',
 ];

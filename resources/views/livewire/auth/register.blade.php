@@ -1,4 +1,4 @@
-@section('title','حساب جديد')
+@section('title',trans('frontend.register'))
 
 <div class=" bg-body p-6 py-16 md:py-16 px-8">
 

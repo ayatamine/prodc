@@ -34,6 +34,17 @@ class Professional extends User
         'is_giving_promotions',
         'has_service_after_sale',
         'accept_installment_sale',
+        'company_name',
+        'company_address',
+        'company_country',
+        'company_phone_number',
+        'company_email',
+        'company_field',
+        'company_website_url',
+        'company_presenter_name',
+        'company_presenter_phone_number',
+        'company_presenter_email',
+        'company_presenter_job',
     ];
 
     /**
@@ -53,7 +64,7 @@ class Professional extends User
     protected $casts = [
         'id' => 'integer',
         'email_verified_at' => 'datetime',
-        'company_id' => 'integer',
+        // 'company_id' => 'integer',
         'country_id' => 'integer',
         'birth_date' => 'date',
         'account_status' => 'boolean',
@@ -78,10 +89,10 @@ class Professional extends User
     {
         return $this->belongsTo(Job::class);
     }
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(ProfessionalCompany::class);
-    }
+    // public function company(): BelongsTo
+    // {
+    //     return $this->belongsTo(ProfessionalCompany::class);
+    // }
 
     public function country(): BelongsTo
     {

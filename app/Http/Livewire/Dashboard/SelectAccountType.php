@@ -36,7 +36,7 @@ class SelectAccountType extends Component implements HasForms
                 ),
         ];
     }
-    public function save(): void
+    public function save()
     {
         try {
             if ($this->account_type == 'client') {
@@ -50,7 +50,7 @@ class SelectAccountType extends Component implements HasForms
                 ->title(trans('frontend.updated_successfully'))
                 ->success()
                 ->send();
-            return redirect()->route('dashboard');
+              if ($this->account_type !== 'client') return redirect()->route('complete_account_details');
         } catch (Exception $ex) {
             Notification::make()
                 ->title(trans('frontend.inernal_error'))

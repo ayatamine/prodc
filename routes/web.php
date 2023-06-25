@@ -13,7 +13,7 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Livewire\Dashboard\{
-    Dashboard, PersonalData,WebsitePersonalData,MyPortfolios,MyProjects,MyTickets,MyVerifications,MyBallance,SelectAccountType
+    Dashboard, PersonalData,WebsitePersonalData,MyPortfolios,MyProjects,MyTickets,MyVerifications,MyBallance,SelectAccountType,CompleteAccountdetails
 };
 
 
@@ -56,22 +56,26 @@ Route::middleware('auth')->group(function () {
         //------------------------------------------//---------------------------------------//
     Route::post('logout', LogoutController::class)
         ->name('logout');
-    Route::get('select_account_type', SelectAccountType::class)
+    //seletct account type (professional / client)
+    Route::get('select-account-type', SelectAccountType::class)
         ->name('select_account_type');
+    //complete account for professional
+    Route::get('complete-account-details', CompleteAccountDetails::class)
+        ->name('complete_account_details');
     
 });
 //google auth
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
-Route::middleware('auth','verified','auth.account_type_selected')->group(function () {
+Route::middleware('auth','verified','auth.account_type_selected','auth.professional_account_completed')->group(function () {
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
     Route::get('/profile/personal-data',PersonalData::class)->name('personal_data');
     Route::get('/profile/website-setting',WebsitePersonalData::class)->name('profile_website_data');
     Route::get('/my/ballance',MyBallance::class)->name('my_ballance');
     Route::get('/my/projects',MyProjects::class)->name('my_projects');
     Route::get('/my/portfolios',MyPortfolios::class)->name('my_portfolios');
-    Route::get('/my/tickets',MyTickets::class)->name('my_tickets');
+    Route::get('/my/tickets',MyTickets::class)->name('my_tickets'); 
     Route::get('/my/verifications',MyVerifications::class)->name('my_verifications');
 
     //------------------------------------------//---------------------------------------//

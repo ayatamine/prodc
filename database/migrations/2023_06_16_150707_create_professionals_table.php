@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('professionals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unique()->constrained();
-            $table->enum('account_type', ["freelancer","company_single_person","company_multiple_person"])->default('freelancer')->comment('{freelancer, company_single_person,company_multiple_person)');
+            $table->enum('account_type', ["freelancer","company_single_person","company_multiple_person"])->nullable()->comment('{freelancer, company_single_person,company_multiple_person)');
             $table->boolean('is_closed_tomporary')->default(false);
             $table->unsignedMediumInteger('employment_rate')->default(0);
             $table->json('work_days')->nullable();
@@ -26,7 +26,18 @@ return new class extends Migration
             $table->boolean('is_giving_promotions')->default(false);
             $table->boolean('has_service_after_sale')->default(false);
             $table->boolean('accept_installment_sale')->default(false);
-            $table->foreignId('company_id')->nullable()->references('id')->on('professional_companies')->constrained();
+            // $table->foreignId('company_id')->nullable()->references('id')->on('professional_companies')->constrained();
+            $table->string('company_name')->nullable();
+            $table->string('company_address')->nullable();
+            $table->string('company_country')->nullable();
+            $table->string('company_phone_number')->nullable();
+            $table->string('company_email')->nullable()->unique();
+            $table->string('company_field')->nullable();
+            $table->string('company_website_url')->nullable();
+            $table->string('company_presenter_name')->nullable();
+            $table->string('company_presenter_phone_number')->nullable()->unique();
+            $table->string('company_presenter_email')->nullable()->unique();
+            $table->string('company_presenter_job')->nullable()->unique();
             $table->timestamps();
         });
 

@@ -1,6 +1,6 @@
 <button type="submit" 
 class="block mt-6 text-center bg-primaryTextColor text-sm md:text-md text-white font-bold py-2 px-4 w-full rounded hover:bg-primaryTextColorDarken"
-:class="extraClasses"
+:class="$extraClasses"
 >
     <svg wire:loading wire:target="{{$target}}" class="
                   w-5
