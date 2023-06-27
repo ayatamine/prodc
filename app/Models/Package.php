@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ProfessionalSkill extends Model
+class Package extends Model
 {
     use HasFactory;
 
@@ -16,8 +15,13 @@ class ProfessionalSkill extends Model
      * @var array
      */
     protected $fillable = [
-        'professional_id',
-        'skill_id',
+        'name',
+        'type',
+        'commission',
+        'features',
+        'duration_in_months',//1year
+        'status',
+        'price',
     ];
 
     /**
@@ -27,17 +31,7 @@ class ProfessionalSkill extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'professional_id' => 'integer',
-        'skill_id' => 'integer',
+        'status' => 'boolean',
+        'price' => 'float',
     ];
-
-    public function professional(): BelongsTo
-    {
-        return $this->belongsTo(Professional::class);
-    }
-
-    public function skill(): BelongsTo
-    {
-        return $this->belongsTo(Skill::class);
-    }
 }

@@ -2,20 +2,21 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\Skill;
+use App\Models\UserSkill;
 use Illuminate\Support\Str;
 use App\Models\Professional;
-use App\Models\ProfessionalSkill;
-use App\Models\Skill;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProfessionalSkillFactory extends Factory
+class UserSkillFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = ProfessionalSkill::class;
+    protected $model = UserSkill::class;
 
     /**
      * Define the model's default state.
@@ -23,7 +24,7 @@ class ProfessionalSkillFactory extends Factory
     public function definition(): array
     {
         return [
-            'professional_id' => Professional::first()?->id ?? Professional::factory(),
+            'user_id' => User::first()?->id ?? User::factory(),
             'skill_id' => $this->faker->randomElement(Skill::pluck('id')),
         ];
     }

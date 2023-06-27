@@ -2,14 +2,33 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model
 {
     use HasFactory;
 
-    /**
+    public static function boot()
+    {
+        parent::boot();
+        self::saving(function ($project) {
+            try {
+                $project->client_id = auth()->user()->client()->first()?->id;
+                $project->save();
+            }
+            catch(Exception $ex){
+                Notification::make() 
+                ->title('when creating  a service '.$ex->getMessage())
+                ->error()
+                ->duration(7000) 
+                ->send(); 
+            }
+        });
+    }   
+ /**
      * The attributes that are mass assignable.
      *
      * @var array

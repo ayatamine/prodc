@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class SubscriptionPlan extends Model
+class UserSkill extends Model
 {
     use HasFactory;
+    protected $table='user_skill';
 
     /**
      * The attributes that are mass assignable.
@@ -15,13 +17,8 @@ class SubscriptionPlan extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'type',
-        'commission',
-        'features',
-        'duration_in_months',
-        'status',
-        'price',
+        'user_id',
+        'skill_id',
     ];
 
     /**
@@ -31,7 +28,17 @@ class SubscriptionPlan extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'status' => 'boolean',
-        'price' => 'float',
+        'user_id' => 'integer',
+        'skill_id' => 'integer',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function skill(): BelongsTo
+    {
+        return $this->belongsTo(Skill::class);
+    }
 }

@@ -3,13 +3,17 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Skill;
+use App\Models\UserSkill;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -48,7 +52,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_subscribed_to_newsletter',
         'remember_token',
         'social_id',
-        'social_type'
+        'social_type',
+        'package_id',
+        'job_position_title'
     ];
 
     /**
@@ -76,7 +82,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function client(): HasOne
     {
-        return $this->hasOne(Professional::class);
+        return $this->hasOne(Client::class);
     }
     public function company(): BelongsTo
     {
@@ -91,5 +97,21 @@ class User extends Authenticatable implements MustVerifyEmail
     public function job(): BelongsTo
     {
         return $this->belongsTo(Job::class);
+    }
+    public function isInFreePackage(): bool
+    {
+        return $this->professional()->first() &&  $this->package_id == 1;
+    }
+    public function skills():BelongsToMany
+    {
+        
+        return $this->belongsToMany(
+            Skill::class,
+            UserSkill::class,
+            'user_id',
+            'skill_id',
+            'id',
+            'id'
+        );
     }
 }

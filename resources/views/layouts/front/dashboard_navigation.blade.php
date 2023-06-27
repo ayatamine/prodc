@@ -32,17 +32,19 @@
                 <span class="pb-1 md:pb-0 text-sm">حسابي</span>
               </a>
         </li>
+        @professional
         <li class="" role="presentation">
-              <a href="{{route('my_ballance')}}" class="dashboard-tab @if(Request::segment(2) =='ballance') active @endif hover:bg-primary hover:text-white" >
+              <a href="{{route('pay_commission')}}" class="dashboard-tab @if(Request::segment(2) =='ballance') active @endif hover:bg-primary hover:text-white" >
                 <svg class="h-6 w-6 mb-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                 </svg>
                 
-                <span class="pb-1 md:pb-0 text-sm">الرصيد</span>
+                <span class="pb-1 md:pb-0 text-sm">{{trans('frontend.pay_commission')}}</span>
               </a>
         </li>
+        @endprofessional
         <li class="" role="presentation">
-              <a href="{{route('my_projects')}}" class="dashboard-tab  @if(Request::segment(2) =='projects') active @endif hover:bg-primary hover:text-white" >
+              <a href="{{route('my_services')}}" class="dashboard-tab  @if(Request::segment(2) =='projects') active @endif hover:bg-primary hover:text-white" >
                 <svg class="h-6 w-6 mb-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
@@ -68,7 +70,7 @@
         </li>
         <li class="" role="presentation">
               <a href="{{route('my_verifications')}}" class="dashboard-tab  @if(Request::segment(2) =='verifications') active @endif hover:bg-primary hover:text-white" >
-                <svg class="h-6 w-6" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.007 8.27C22.194 9.125 23 10.45 23 12c0 1.55-.806 2.876-1.993 3.73.24 1.442-.134 2.958-1.227 4.05-1.095 1.095-2.61 1.459-4.046 1.225C14.883 22.196 13.546 23 12 23c-1.55 0-2.878-.807-3.731-1.996-1.438.235-2.954-.128-4.05-1.224-1.095-1.095-1.459-2.611-1.217-4.05C1.816 14.877 1 13.551 1 12s.816-2.878 2.002-3.73c-.242-1.439.122-2.955 1.218-4.05 1.093-1.094 2.61-1.467 4.057-1.227C9.125 1.804 10.453 1 12 1c1.545 0 2.88.803 3.732 1.993 1.442-.24 2.956.135 4.048 1.227 1.093 1.092 1.468 2.608 1.227 4.05Zm-4.426-.084a1 1 0 0 1 .233 1.395l-5 7a1 1 0 0 1-1.521.126l-3-3a1 1 0 0 1 1.414-1.414l2.165 2.165 4.314-6.04a1 1 0 0 1 1.395-.232Z" fill="#3eb142"></path></g></svg>
+                <svg class="h-6 w-6 mb-2" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.007 8.27C22.194 9.125 23 10.45 23 12c0 1.55-.806 2.876-1.993 3.73.24 1.442-.134 2.958-1.227 4.05-1.095 1.095-2.61 1.459-4.046 1.225C14.883 22.196 13.546 23 12 23c-1.55 0-2.878-.807-3.731-1.996-1.438.235-2.954-.128-4.05-1.224-1.095-1.095-1.459-2.611-1.217-4.05C1.816 14.877 1 13.551 1 12s.816-2.878 2.002-3.73c-.242-1.439.122-2.955 1.218-4.05 1.093-1.094 2.61-1.467 4.057-1.227C9.125 1.804 10.453 1 12 1c1.545 0 2.88.803 3.732 1.993 1.442-.24 2.956.135 4.048 1.227 1.093 1.092 1.468 2.608 1.227 4.05Zm-4.426-.084a1 1 0 0 1 .233 1.395l-5 7a1 1 0 0 1-1.521.126l-3-3a1 1 0 0 1 1.414-1.414l2.165 2.165 4.314-6.04a1 1 0 0 1 1.395-.232Z" fill="#3eb142"></path></g></svg>
 
                 
                 <span class="pb-1 md:pb-0 text-sm">توثيقات</span>
@@ -98,17 +100,19 @@
                 <span class="pb-1 md:pb-0 text-sm">حسابي</span>
               </a>
         </li>
+        @professional
         <li class="" role="presentation">
-              <a href="{{route('my_ballance')}}" class="dashboard-tab  @if(Request::segment(2) =='ballance') active @endif hover:bg-primary hover:text-white" >
+              <a href="{{route('pay_commission')}}" class="dashboard-tab  @if(Request::segment(2) =='ballance') active @endif hover:bg-primary hover:text-white" >
                 <svg class="h-6 w-6 mb-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                 </svg>
                 
-                <span class="pb-1 md:pb-0 text-sm">الرصيد</span>
+                <span class="pb-1 md:pb-0 text-sm">{{trans('frontend.pay_commission')}}</span>
               </a>
         </li>
+        @endprofessional
         <li class="" role="presentation">
-              <a href="{{route('my_projects')}}" class="dashboard-tab  @if(Request::segment(2) =='projects') active @endif hover:bg-primary hover:text-white" >
+              <a href="{{route('my_services')}}" class="dashboard-tab  @if(Request::segment(2) =='projects') active @endif hover:bg-primary hover:text-white" >
                 <svg class="h-6 w-6 mb-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
@@ -134,7 +138,7 @@
         </li>
         <li class="" role="presentation">
               <a href="{{route('my_verifications')}}" class="dashboard-tab  @if(Request::segment(2) =='verifications') active @endif hover:bg-primary hover:text-white" >
-                <svg class="h-6 w-6" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.007 8.27C22.194 9.125 23 10.45 23 12c0 1.55-.806 2.876-1.993 3.73.24 1.442-.134 2.958-1.227 4.05-1.095 1.095-2.61 1.459-4.046 1.225C14.883 22.196 13.546 23 12 23c-1.55 0-2.878-.807-3.731-1.996-1.438.235-2.954-.128-4.05-1.224-1.095-1.095-1.459-2.611-1.217-4.05C1.816 14.877 1 13.551 1 12s.816-2.878 2.002-3.73c-.242-1.439.122-2.955 1.218-4.05 1.093-1.094 2.61-1.467 4.057-1.227C9.125 1.804 10.453 1 12 1c1.545 0 2.88.803 3.732 1.993 1.442-.24 2.956.135 4.048 1.227 1.093 1.092 1.468 2.608 1.227 4.05Zm-4.426-.084a1 1 0 0 1 .233 1.395l-5 7a1 1 0 0 1-1.521.126l-3-3a1 1 0 0 1 1.414-1.414l2.165 2.165 4.314-6.04a1 1 0 0 1 1.395-.232Z" fill="#3eb142"></path></g></svg>
+                <svg class="h-6 w-6 mb-2" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.007 8.27C22.194 9.125 23 10.45 23 12c0 1.55-.806 2.876-1.993 3.73.24 1.442-.134 2.958-1.227 4.05-1.095 1.095-2.61 1.459-4.046 1.225C14.883 22.196 13.546 23 12 23c-1.55 0-2.878-.807-3.731-1.996-1.438.235-2.954-.128-4.05-1.224-1.095-1.095-1.459-2.611-1.217-4.05C1.816 14.877 1 13.551 1 12s.816-2.878 2.002-3.73c-.242-1.439.122-2.955 1.218-4.05 1.093-1.094 2.61-1.467 4.057-1.227C9.125 1.804 10.453 1 12 1c1.545 0 2.88.803 3.732 1.993 1.442-.24 2.956.135 4.048 1.227 1.093 1.092 1.468 2.608 1.227 4.05Zm-4.426-.084a1 1 0 0 1 .233 1.395l-5 7a1 1 0 0 1-1.521.126l-3-3a1 1 0 0 1 1.414-1.414l2.165 2.165 4.314-6.04a1 1 0 0 1 1.395-.232Z" fill="#3eb142"></path></g></svg>
 
                 <span class="pb-1 md:pb-0 text-sm">توثيقات</span>
               </a>

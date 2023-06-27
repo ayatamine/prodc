@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\ProfessionalSkill;
+use App\Models\UserSkill;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProfessionalSkillSeeder extends Seeder
+class UserSkillSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        ProfessionalSkill::factory(3)->create();
+        UserSkill::factory(3)->create();
     }
 }

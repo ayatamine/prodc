@@ -335,3 +335,8 @@ html[dir="rtl"] select{
 #professions_percentages li {
   @apply mb-4
 }
+.filament-forms-input,.filament-forms-textarea-component{
+  @apply border w-full border-gray-400 p-2 py-1.5 focus:outline-none focus:border-primary2 focus:shadow-[0_1px_2px_#2196f3] rounded-none
+}
+.filepond--drop-label,.filepond--browser{@apply min-h-[6rem]}
+.filepond--root.filepond--hopper,.filament-forms-section-header-wrapper,.filament-forms-section-component{@apply rounded-none bg-white}

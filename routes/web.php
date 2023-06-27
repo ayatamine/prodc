@@ -11,9 +11,9 @@ use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Livewire\Dashboard\{
-    Dashboard, PersonalData,WebsitePersonalData,MyPortfolios,MyProjects,MyTickets,MyVerifications,MyBallance,SelectAccountType,CompleteAccountdetails
+    Dashboard, PersonalData,WebsitePersonalData,MyPortfolios,MyServices,MyTickets,MyVerifications,PayCommission,SelectAccountType,CompleteAccountdetails
 };
 
 
@@ -29,6 +29,8 @@ use App\Http\Livewire\Dashboard\{
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/packages', [HomeController::class, 'packages'])->name('packages');
+Route::get('/subscribe-to-package/{id}', [HomeController::class, 'subscribeToPackage'])->name('subscribe_to_package');
 //register and login
 Route::middleware(['guest'])->group(function () {
     Route::get('login', Login::class)
@@ -72,14 +74,15 @@ Route::middleware('auth','verified','auth.account_type_selected','auth.professio
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
     Route::get('/profile/personal-data',PersonalData::class)->name('personal_data');
     Route::get('/profile/website-setting',WebsitePersonalData::class)->name('profile_website_data');
-    Route::get('/my/ballance',MyBallance::class)->name('my_ballance');
-    Route::get('/my/projects',MyProjects::class)->name('my_projects');
+    Route::get('/pay-commission',PayCommission::class)->name('pay_commission');
+    Route::get('/my/services',MyServices::class)->name('my_services');
     Route::get('/my/portfolios',MyPortfolios::class)->name('my_portfolios');
     Route::get('/my/tickets',MyTickets::class)->name('my_tickets'); 
     Route::get('/my/verifications',MyVerifications::class)->name('my_verifications');
 
     //------------------------------------------//---------------------------------------//
-    Route::get('/projects/create',[ProjectController::class,'create'])->name('add_project');
+    Route::get('/services/create',[ServiceController::class,'create'])->name('add_service');
+    Route::get('/services',[ServiceController::class,'index'])->name('services');
 
 
 });

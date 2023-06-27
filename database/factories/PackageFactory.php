@@ -4,16 +4,16 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\SubscriptionPlan;
+use App\Models\Package;
 
-class SubscriptionPlanFactory extends Factory
+class PackageFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = SubscriptionPlan::class;
+    protected $model = Package::class;
 
     /**
      * Define the model's default state.

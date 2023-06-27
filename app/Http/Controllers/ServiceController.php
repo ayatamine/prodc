@@ -9,24 +9,22 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
-class ProjectController extends Controller
+class ServiceController extends Controller
 {
     public function index(Request $request)
     {
-        $projects = Project::all();
-
-        return view('project.index', compact('skills'));
+        return view('service.index');
     }
     public function create()
     {
         $skills = Cache::remember('skills',3500,function(){
                 return Skill::get(); 
         }) ;
-        return view('project.create', compact('skills'));
+        return view('service.create', compact('skills'));
     }
 
     public function show(Request $request, Project $project)
     {
-        return view('project.show');
+        return view('service.show');
     }
 }

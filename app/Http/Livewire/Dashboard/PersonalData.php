@@ -3,8 +3,9 @@
 namespace App\Http\Livewire\Dashboard;
 
 use Filament\Forms;
+use App\Models\User;
 use Livewire\Component;
-use App\Models\Professional;
+use Filament\Forms\Components\Grid;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
@@ -15,25 +16,28 @@ class PersonalData extends Component  implements HasForms
 {
     use InteractsWithForms; 
 
-    public Professional $professional;
+    public User $user;
 
  
     public function mount(): void
     {
-        $this->professional= Auth::guard('professional')->user();
+        $this->user= Auth::user();
         $this->form->fill([
-            'first_name' => $this->professional->first_name,
-            'last_name' => $this->professional->last_name,
-            'phone_number' => $this->professional->phone_number,
-            'gender' => $this->professional->gender,
-            'birth_date' => $this->professional->birth_date
+            'first_name' => $this->user->first_name,
+            'last_name' => $this->user->last_name,
+            'phone_number' => $this->user->phone_number,
+            'gender' => $this->user->gender,
+            'birth_date' => $this->user->birth_date
         ]);
     }
     protected function getFormSchema(): array 
     {
         return [
+            Grid::make(2)
+            ->schema([
             Forms\Components\TextInput::make('first_name')->label(trans('forms.first_name'))->required(),
             Forms\Components\TextInput::make('last_name')->label(trans('forms.last_name'))->required(),
+            ]),
             Forms\Components\TextInput::make('phone_number')->label(trans('forms.phone_number')),
             Forms\Components\Select::make('gender')->label(trans('forms.gender'))
             ->options(
@@ -47,7 +51,7 @@ class PersonalData extends Component  implements HasForms
     }
     public function save(): void
     {
-        $this->professional->update($this->form->getState());
+        $this->user->update($this->form->getState());
         Notification::make() 
         ->title(trans('frontend.updated_successfully'))
         ->success()

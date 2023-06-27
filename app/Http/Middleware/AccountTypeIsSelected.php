@@ -16,7 +16,7 @@ class AccountTypeIsSelected
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::user()->professional()->first() || !Auth::user()->client()->first()){
+        if(!Auth::user()->client()->first() && !Auth::user()->professional()->first() ){
             return redirect()->route('select_account_type');
         }
         return $next($request);

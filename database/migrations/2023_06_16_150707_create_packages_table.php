@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('subscription_plans', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->enum('type', ["free","paid"])->default('free');
-            $table->integer('commission');
-            $table->mediumText('features')->nullable();
+            $table->float('commission');
+            $table->text('features')->nullable();
             $table->integer('duration_in_months')->default(12);
             $table->boolean('status')->default(true);
             $table->float('price');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subscription_plans');
+        Schema::dropIfExists('packages');
     }
 };

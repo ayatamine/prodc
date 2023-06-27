@@ -51,9 +51,10 @@ class SelectAccountType extends Component implements HasForms
                 ->success()
                 ->send();
               if ($this->account_type !== 'client') return redirect()->route('complete_account_details');
+              return redirect()->route('dashboard');
         } catch (Exception $ex) {
             Notification::make()
-                ->title(trans('frontend.inernal_error'))
+                ->title($ex->getMessage())
                 ->danger()
                 ->send();
         }

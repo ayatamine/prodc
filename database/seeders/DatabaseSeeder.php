@@ -13,6 +13,7 @@ use App\Models\Client;
 use App\Models\Country;
 use App\Models\Project;
 use App\Models\Language;
+use App\Models\Package;
 use App\Models\Speciality;
 use App\Models\Professional;
 use Illuminate\Database\Seeder;
@@ -43,5 +44,6 @@ class DatabaseSeeder extends Seeder
         if(!ProfessionalSkill::count()) $this->call(ProfessionalSkillSeeder::class);
         if(!Project::count()) $this->call(ProjectSeeder::class);
         if(!Work::count()) $this->call(WorkSeeder::class);
+        if(!Package::count()) $this->call(PackageSeeder::class);
     }
 }
