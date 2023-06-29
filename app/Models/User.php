@@ -54,7 +54,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'social_id',
         'social_type',
         'package_id',
-        'job_position_title'
+        'job_position_title',
+        //
+        'id_card_front',
+        'id_card_back',
+        'id_card_both',
     ];
 
     /**

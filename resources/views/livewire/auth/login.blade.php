@@ -109,7 +109,7 @@
           <div class="flex items-center gap-2 text-sm md:text-md  mt-5">
             <input wire:model="remember" type="checkbox" name="remember" id="remember"
               class="border-gray-300 rounded h-5 md:h-4 w-5 md:w-4" />
-              <label for="remember">{{trans('frontend.remember')}}        </label>
+              <label for="remember">{{trans('forms.remember')}}        </label>
             @error('remember')
             <p class="mt-2 text-sm text-red-600 flex-none">{{ $message }}</p>
             @enderror

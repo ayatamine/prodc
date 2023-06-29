@@ -13,7 +13,7 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Livewire\Dashboard\{
-    Dashboard, PersonalData,WebsitePersonalData,MyPortfolios,MyServices,MyTickets,MyVerifications,PayCommission,SelectAccountType,CompleteAccountdetails
+    Dashboard, PersonalData,WebsitePersonalData,MyPortfolios,MyServices,MyTickets,MyVerifications,PayCommission,SelectAccountType,CompleteAccountdetails,SavedWorks
 };
 
 
@@ -77,6 +77,7 @@ Route::middleware('auth','verified','auth.account_type_selected','auth.professio
     Route::get('/pay-commission',PayCommission::class)->name('pay_commission');
     Route::get('/my/services',MyServices::class)->name('my_services');
     Route::get('/my/portfolios',MyPortfolios::class)->name('my_portfolios');
+    Route::get('/my/saved_works',SavedWorks::class)->name('saved_works');
     Route::get('/my/tickets',MyTickets::class)->name('my_tickets'); 
     Route::get('/my/verifications',MyVerifications::class)->name('my_verifications');
 
