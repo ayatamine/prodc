@@ -33,8 +33,11 @@ class AuthenticateClient extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        $this->authenticate($request, $guards);
-
+        // $this->authenticate($request, $guards);
+        if ($this->auth->check() && !$this->auth->user()->client()->first()) {
+            toast('frontend.unauthorized','error');
+            return redirect()->route('home');
+        }
         return $next($request);
     }
 }

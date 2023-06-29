@@ -4,6 +4,7 @@ return [
    'internal_error' => 'حدث خطأ في الخادم الداخلي',
    'registered_successfully' => 'تم إنشاء حسابك بنجاح، يرجى التحقق من البريد الإلكتروني',
    'loggedin_successfully' => 'تم تسجيل الدخول بنجاح',
+   'created_successfully' => 'تم الإنشاء بنجاح',
    'updated_successfully' => 'تم التحديث بنجاح',
    'email_verified_successfully' => 'تم التحقق من البريد الإلكتروني بنجاح',
    'not_verified' => 'لم يتم التحقق من البريد الإلكتروني الخاص بك، يرجى التحقق من البريد الإلكتروني للتحقق',
@@ -47,7 +48,9 @@ return [
    'free_plan_alert'=>'أنت مشترك الان في الباقة المجانية ولترقية اشتراكك  انقر على ',
    'upgrade_now'=>'الترقية الان',
    'new_service'=>'خدمة جديدة',
+   'service'=>'خدمة',
    'my_services'=>'خدماتي',
+   'services_bag'=>'حقيبة الخدمات',
    'projects'=>[
       'open'=> 'المفتوحة',
       'rejected'=> 'المرفوضة',
@@ -59,6 +62,7 @@ return [
       'total'=> 'الاجمالي',
    ],
    'offers'=>'العروض',
+   'offer'=>'{0} لايوجد عرض|{1} 1 عرض|[2, Inf] :count عروض',
    'featured'=>'المميزة',
    'accepted'=>'المقبولة',
    'my_works'=>'أعمالي',
@@ -66,5 +70,7 @@ return [
    'most_purshased'=>'الأكثر طلبا',
    'rated_more_4'=>'تقييم أكثر من 4',
    'browse_services'=>'تصفح الخدمات',
+   'unauthorized'=>'ليس لديك الصلاحيات للقيام بهذا الإجراء',
+   'no_item_added_yet'=>'لم يتم إضافة أي :title بعد',
 
 ];

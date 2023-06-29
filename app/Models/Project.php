@@ -11,23 +11,23 @@ class Project extends Model
 {
     use HasFactory;
 
-    public static function boot()
-    {
-        parent::boot();
-        self::saving(function ($project) {
-            try {
-                $project->client_id = auth()->user()->client()->first()?->id;
-                $project->save();
-            }
-            catch(Exception $ex){
-                Notification::make() 
-                ->title('when creating  a service '.$ex->getMessage())
-                ->error()
-                ->duration(7000) 
-                ->send(); 
-            }
-        });
-    }   
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     self::saving(function ($project) {
+    //         try {
+    //             $project->client_id = auth()->user()->client()->first()?->id;
+    //             $project->save();
+    //         }
+    //         catch(Exception $ex){
+    //             Notification::make() 
+    //             ->title('when creating  a service '.$ex->getMessage())
+    //             ->error()
+    //             ->duration(7000) 
+    //             ->send(); 
+    //         }
+    //     });
+    // }   
  /**
      * The attributes that are mass assignable.
      *
@@ -44,6 +44,8 @@ class Project extends Model
         'real_amount',
         'professional_id',
         'client_id',
+        'images',
+        'questions'
     ];
 
     /**
@@ -60,5 +62,8 @@ class Project extends Model
         'real_amount' => 'float',
         'professional_id' => 'integer',
         'client_id' => 'integer',
+        'images'=>'array',
+        'questions'=>'array'
     ];
+    
 }

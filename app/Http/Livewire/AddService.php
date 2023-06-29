@@ -16,15 +16,17 @@ class AddService extends Component implements HasForms
     use InteractsWithForms;
 
     public Project $project;
+    public $title;
+    public $description;
     public $images;
-    public $questios;
+    public $questions;
 
     public function mount(): void
     {
-        $this->project = new Project();
+        $this->project = new Project;
         $this->form->fill([
             'title'=>$this->project->title,
-            'desctiption'=>$this->project->desctiption,
+            'description'=>$this->project->description,
         ]);
     }
     protected function getFormSchema(): array
@@ -43,6 +45,7 @@ class AddService extends Component implements HasForms
             Forms\Components\TextInput::make('title')->required()->label(trans('forms.services.title'))->rules(['required', 'max:255']),
             Forms\Components\Textarea::make('description')->label(trans('forms.services.description'))->rules(['required', 'max:16777215'])->hint(trans('forms.services.description_hint')),
             Forms\Components\FileUpload::make('images')->imagePreviewHeight('100')->label(trans('forms.services.images'))
+                ->directory('services')
                 ->multiple()
                 ->minFiles(1)
                 ->maxFiles(5),
@@ -70,18 +73,35 @@ class AddService extends Component implements HasForms
     {
         return $this->project;
     }
-    public function save(): void
+    public function save()
     {
-        dd($this->form->getState());
-        $this->user->update($this->form->getState());
-        // $skills = $this->form->getState()['skills'];
-        // if(count($skills)) $this->user->skills()->sync($skills);
-        Notification::make()
-            ->title(trans('frontend.updated_successfully'))
-            ->success()
+        // dd($this->form->getState());
+try {
+    // dd($this->form->getState());
+    // $this->project->save($this->form->getState());
+    Project::create([
+            'title'=>$this->form->getState()['title'],
+            'description'=>$this->form->getState()['description'],
+            'duration'=>0,
+            'client_id' =>auth()->user()->client()->first()->id,
+            'images'=>$this->form->getState()['images'],
+            'questions'=>$this->form->getState()['questions'],
+    ]);
+    Notification::make()
+        ->title(trans('frontend.created_successfully'))
+        ->success()
+        ->duration(7000)
+        ->send();
+    //TODO: send admin notification
+    return redirect()->route('my_services');
+}
+        catch(\Exception $ex){
+            Notification::make()
+            ->title($ex->getMessage())
+            ->danger()
             ->duration(7000)
             ->send();
-        //TODO: send admin notification
+        }
     }
     public function render()
     {

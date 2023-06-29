@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Cache;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        //
+    }
     public function index(Request $request)
     {
         return view('service.index');

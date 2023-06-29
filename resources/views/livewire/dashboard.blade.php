@@ -48,6 +48,16 @@
                             <span class="absolute text-5xl" x-text="`25%`"></span>
                         </div>
                         <!--add new project  -->
+                        @professional
+                        <a href="{{route('services')}}" class="outline-btn flex justify-start gap-x-2 mt-2 mx-auto">
+                            <svg class="h-5 w-5 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            <span>{{trans('frontend.browse_services')}}</span>
+                        </a>
+                        @else
                         <a href="{{route('add_service')}}" class="outline-btn flex justify-start gap-x-2 mt-2 mx-auto">
                             <svg class="h-5 w-5 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -56,6 +66,7 @@
                             </svg>
                             <span>{{trans('frontend.new_service')}}</span>
                         </a>
+                        @endprofessional
                     </div>
                     <!-- progress bars -->
                     <div class="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-3">

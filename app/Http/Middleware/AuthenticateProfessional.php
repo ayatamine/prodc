@@ -17,7 +17,7 @@ class AuthenticateProfessional extends Middleware
      */
     protected function authenticate($request, array $guards)
     {
-        if ($this->auth->check() && $this->auth->user()->professional()) {
+        if ($this->auth->check() && $this->auth->user()->professional()->first()) {
             // return $this->auth->shouldUse('professional');
             return true;
         }
@@ -33,8 +33,10 @@ class AuthenticateProfessional extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        $this->authenticate($request, $guards);
-
+        // $this->authenticate($request, $guards);
+        if ($this->auth->check() && !$this->auth->user()->professional()->first()) {
+            return redirect()->back();
+        }
         return $next($request);
     }
 }

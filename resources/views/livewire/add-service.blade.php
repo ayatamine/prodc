@@ -1,7 +1,7 @@
 <form class="w-full md:w-2/3 !font-Noto-Naskh" wire:submit.prevent="save">
     <!-- main form -->
     {{$this->form}}
-    <x-submit-button target="save" :title="trans('forms.services.create')" extraClasses="!w-fit bg-success-500"  />
+    <x-submit-button target="save" :title="trans('forms.services.create')" extraClasses="!w-fit bg-success-500 hover:!bg-success-600"  />
     <!-- advanced form -->
     {{-- <div class="bg-white p-6 mt-8" x-data="addRemove()">
         <h2 class="text-lg flex items-center gap-2 cursor-pointer font-semibold"
