@@ -15,3 +15,9 @@ if(!function_exists('client_auth')){
         return  auth()->user()->client()->first();
     }
 }
+if(!function_exists('fullName')){
+    function fullName(): string
+    {
+        return  auth()->user()->full_name;
+    }
+}

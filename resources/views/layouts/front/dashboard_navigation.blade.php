@@ -1,19 +1,6 @@
 <div class="w-full md:w-3/12    mt-2 pt-2 lg:mt-0 z-20" id="nav-content">
     <!-- user avatar -->
-    <div>
-      <div class="w-fit mx-auto relative">
-        <a href="" class="">
-          <img src="assets/images/hero/hero-image.jpg" class="mx-auto h-28 w-28 rounded-full shadow-lg border" alt="">
-      
-        </a>
-        <a href=""><span class="absolute bottom-[1rem] left-[-1rem] h-10 w-10 rounded-full border border-dotted bg-white flex items-center justify-center hover:bg-primaryTextColor">
-          <svg class="h-5 w-5 text-gray-700 hover:text-white"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />  <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />  <line x1="16" y1="5" x2="19" y2="8" /></svg>
-        </span></a>
-      
-      </div>
-      <h3 class="text-lg md:text-xl my-3 text-center text-gray-800">عياط احمد امين  </h3>
-      
-    </div>
+   <livewire:dashboard.profile-picture/>
     <!-- user links -->
     <div class="mt-6" x-data="{show:false}">
       <h3 class="text-smd md:text-md my-3  text-gray-800 hidden md:block">{{trans('frontend.dashboard')}} </h3>

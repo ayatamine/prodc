@@ -1,4 +1,4 @@
-@section('title','لوحة التحكم')
+@section('title',trans('frontend.dashboard'))
 
 <div id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab" class="">
     <!-- the tabulation section -->

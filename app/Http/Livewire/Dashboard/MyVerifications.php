@@ -46,18 +46,18 @@ class MyVerifications extends Component implements HasForms
     public function apply(){
         try {
 
-            $id_card_front = 'id_card_front-'.auth()->user()->first_name.'-'.auth()->user()->id.'-'.random_int(200,2580).'.png';
-            $id_card_back = 'id_card_back-'.auth()->user()->first_name.'-'.auth()->user()->id.'-'.random_int(200,2580).'.png';
-            $id_card_holded = 'id_card_holded-'.auth()->user()->first_name.'-'.auth()->user()->id.'-'.random_int(200,2580).'.png';
+            $id_card_front = 'id_card_front-'.fullName().'-'.auth()->user()->id.'-'.random_int(200,2580).'.'.$this->profile_photo_path->getClientOriginalExtension();;
+            $id_card_back = 'id_card_back-'.fullName().'-'.auth()->user()->id.'-'.random_int(200,2580).'.'.$this->profile_photo_path->getClientOriginalExtension();;
+            $id_card_holded = 'id_card_holded-'.fullName().'-'.auth()->user()->id.'-'.random_int(200,2580).'.'.$this->profile_photo_path->getClientOriginalExtension();;
             
             $this->identity_card_front->storeAs('/account_verifications/', $id_card_front, $disk = 'public');
             $this->identity_card_back->storeAs('/account_verifications/', $id_card_front, $disk = 'public');
             $this->identity_card_holded->storeAs('/account_verifications/', $id_card_holded, $disk = 'public');
             
             auth()->user()->update([
-                'id_card_front'=>$id_card_front,
-                'id_card_back'=>$id_card_back,
-                'id_card_holded'=>$id_card_holded,
+                'id_card_front'=>'account_verifications/'.$id_card_front,
+                'id_card_back'=>'account_verifications/'.$id_card_back,
+                'id_card_holded'=>'account_verifications/'.$id_card_holded,
             ]);
 
             Notification::make()

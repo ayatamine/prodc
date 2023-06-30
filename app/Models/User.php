@@ -5,14 +5,16 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Skill;
 use App\Models\UserSkill;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -80,6 +82,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    /**
+     * The attributes that should be append.
+     *
+     * @var array<string, string>
+     */
+    protected $appends = [
+        'full_name'
+    ];
     public function professional(): HasOne
     {
         return $this->hasOne(Professional::class);
@@ -116,6 +126,21 @@ class User extends Authenticatable implements MustVerifyEmail
             'skill_id',
             'id',
             'id'
+        );
+    }
+    public function profilePhotoPath(): Attribute
+    {
+        return Attribute::make(
+            get: function (string $value){
+                if(Str::startsWith($value,'profile_pictures')) return url('storage/'.$value);
+                return $value;
+            }
+        );
+    }
+    public function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->first_name.' '.$this->last_name
         );
     }
 }
