@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Dashboard;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\Cache;
 
 class MyServices extends Component 
 {
@@ -18,7 +17,7 @@ class MyServices extends Component
     {
         // $services = $this->services;
         return view('livewire.my-services',[
-            'services'=> client_auth()?->projects()->paginate(1)
+            'services'=> client_auth()?->projects()->paginate(10)
         ])->extends('layouts.dashboard');
     }
 }

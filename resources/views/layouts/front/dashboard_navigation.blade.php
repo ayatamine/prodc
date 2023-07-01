@@ -31,12 +31,14 @@
         </li>
         @endprofessional
         <li class="" role="presentation">
-              <a href="{{route('my_services')}}" class="dashboard-tab  @if(Request::segment(2) =='projects') active @endif hover:bg-primary hover:text-white" >
+              <a href="{{route('my_services')}}" class="dashboard-tab  @if(Request::segment(2) =='services') active @endif hover:bg-primary hover:text-white" >
                 <svg class="h-6 w-6 mb-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
 
-                <span class="pb-1 md:pb-0 text-sm">{{trans('frontend.my_services')}}</span>
+                <span class="pb-1 md:pb-0 text-sm">
+                   @professional {{trans('frontend.services')}} @else {{trans('frontend.my_services')}} @endprofessional
+                </span>
               </a>
         </li>
         @professional
@@ -51,7 +53,7 @@
         @else
         <li class="" role="presentation">
           
-              <a href="{{route('saved_works')}}" class="dashboard-tab  @if(Request::segment(2) =='portfolios') active @endif hover:bg-primary hover:text-white" >
+              <a href="{{route('saved_works')}}" class="dashboard-tab  @if(Request::segment(2) =='saved-works') active @endif hover:bg-primary hover:text-white" >
                 <svg class="h-6 w-6 mb-2"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="15" y1="6" x2="15.01" y2="6" />  <rect x="3" y="3" width="18" height="14" rx="3" />  <path d="M3 13l4 -4a3 5 0 0 1 3 0l 4 4" />  <path d="M13 12l2 -2a3 5 0 0 1 3 0l 3 3" />  <line x1="8" y1="21" x2="8.01" y2="21" />  <line x1="12" y1="21" x2="12.01" y2="21" />  <line x1="16" y1="21" x2="16.01" y2="21" /></svg>
                 
                 <span class="pb-1 md:pb-0 text-sm">{{trans('frontend.works')}}</span>
@@ -112,14 +114,17 @@
         </li>
         @endprofessional
         <li class="" role="presentation">
-              <a href="{{route('my_services')}}" class="dashboard-tab  @if(Request::segment(2) =='projects') active @endif hover:bg-primary hover:text-white" >
+              <a href="{{route('my_services')}}" class="dashboard-tab  @if(Request::segment(2) =='services') active @endif hover:bg-primary hover:text-white" >
                 <svg class="h-6 w-6 mb-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
 
-                <span class="pb-1 md:pb-0 text-sm">{{trans('frontend.my_services')}}</span>
+                <span class="pb-1 md:pb-0 text-sm">
+                 @professional {{trans('frontend.services')}} @else {{trans('frontend.my_services')}} @endprofessional
+                </span>
               </a>
         </li>
+        @professional
         <li class="" role="presentation">
               <a href="{{route('my_portfolios')}}" class="dashboard-tab @if(Request::segment(2) =='portfolios') active @endif  hover:bg-primary hover:text-white" >
                 <svg class="h-6 w-6 mb-2"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="15" y1="6" x2="15.01" y2="6" />  <rect x="3" y="3" width="18" height="14" rx="3" />  <path d="M3 13l4 -4a3 5 0 0 1 3 0l 4 4" />  <path d="M13 12l2 -2a3 5 0 0 1 3 0l 3 3" />  <line x1="8" y1="21" x2="8.01" y2="21" />  <line x1="12" y1="21" x2="12.01" y2="21" />  <line x1="16" y1="21" x2="16.01" y2="21" /></svg>
@@ -127,6 +132,15 @@
                 <span class="pb-1 md:pb-0 text-sm">{{trans('frontend.my_works')}}</span>
               </a>
         </li>
+        @else
+        <li class="" role="presentation">
+              <a href="{{route('saved_works')}}" class="dashboard-tab @if(Request::segment(2) =='saved-works') active @endif  hover:bg-primary hover:text-white" >
+                <svg class="h-6 w-6 mb-2"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="15" y1="6" x2="15.01" y2="6" />  <rect x="3" y="3" width="18" height="14" rx="3" />  <path d="M3 13l4 -4a3 5 0 0 1 3 0l 4 4" />  <path d="M13 12l2 -2a3 5 0 0 1 3 0l 3 3" />  <line x1="8" y1="21" x2="8.01" y2="21" />  <line x1="12" y1="21" x2="12.01" y2="21" />  <line x1="16" y1="21" x2="16.01" y2="21" /></svg>
+                
+                <span class="pb-1 md:pb-0 text-sm">{{trans('frontend.works')}}</span>
+              </a>
+        </li>
+        @endprofessional
         <li class="" role="presentation">
               <a href="{{route('my_tickets')}}" class="dashboard-tab @if(Request::segment(2) =='tickets') active @endif  hover:bg-primary hover:text-white" >
                 <svg class="h-6 w-6 mb-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">

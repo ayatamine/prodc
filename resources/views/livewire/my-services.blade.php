@@ -2,7 +2,7 @@
 <div id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab" class="">
     <div class="bg-white p-2 rounded flex justify-between items-center  ">
         <h2 class=" px-6 text-md">{{trans('frontend.services_bag')}}</h2>
-        <a href="{{route('add_service')}}" class="md-button primary-btn">{{trans('frontend.new_service')}}</a>
+        <a href="{{route('services.create')}}" class="md-button primary-btn">{{trans('frontend.new_service')}}</a>
     </div>
     <div class="w-full">
        

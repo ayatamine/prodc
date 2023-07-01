@@ -1,17 +1,18 @@
 <?php
 
+use App\Http\Livewire\Services;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Verify;
 use App\Http\Livewire\Auth\Register;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Livewire\Dashboard\{
     Dashboard, PersonalData,WebsitePersonalData,MyPortfolios,MyServices,MyTickets,MyVerifications,PayCommission,SelectAccountType,CompleteAccountdetails,SavedWorks
 };
@@ -77,14 +78,13 @@ Route::middleware('auth','verified','auth.account_type_selected','auth.professio
     Route::get('/pay-commission',PayCommission::class)->name('pay_commission');
     Route::get('/my/services',MyServices::class)->name('my_services');
     Route::get('/my/portfolios',MyPortfolios::class)->name('my_portfolios');
-    Route::get('/my/saved_works',SavedWorks::class)->name('saved_works');
+    Route::get('/my/saved-works',SavedWorks::class)->name('saved_works');
     Route::get('/my/tickets',MyTickets::class)->name('my_tickets'); 
     Route::get('/my/verifications',MyVerifications::class)->name('my_verifications');
 
     //------------------------------------------//---------------------------------------//
     Route::get('/services/create',[ServiceController::class,'create'])->name('add_service');//->middleware('auth.client');
-    Route::get('/services',[ServiceController::class,'index'])->name('services');
 
 
 });
-
+Route::resource('services',ServiceController::class);

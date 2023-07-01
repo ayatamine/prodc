@@ -68,6 +68,7 @@ return [
    'accepted'=>'المقبولة',
    'dashboard'=>'لوحة التحكم',
    'main'=>'الرئيسية',
+   'home'=>'الرئيسية',
    'my_account'=>'حسابي',
    'my_works'=>'أعمالي',
    'works'=>'أعمال',
@@ -75,6 +76,9 @@ return [
    'most_purshased'=>'الأكثر طلبا',
    'rated_more_4'=>'تقييم أكثر من 4',
    'browse_services'=>'تصفح الخدمات',
+   'browse_works'=>'تصفح الاعمال',
+   'saved_works'=>'الأعمال المحفوظة',
+   'work'=>'عمل',
    'unauthorized'=>'ليس لديك الصلاحيات للقيام بهذا الإجراء',
    'no_item_added_yet'=>'لم يتم إضافة أي :title بعد',
    'account_verification'=>'توثيق الهوية',
@@ -96,5 +100,6 @@ return [
       'attach_file'=>'إرفاق ملف',
    ],
    'loading'=>'جاري التحميل',
+   'published_services'=>'الخدمات المنشورة',
 
 ];

@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Work extends Model
 {
@@ -49,5 +50,8 @@ class Work extends Model
     {
         return $this->belongsTo(Job::class);
     }
-    
+    public function clients():BelongsToMany 
+    {
+        return $this->belongsToMany(Client::class,'clien_saved_works');
+    }
 }
