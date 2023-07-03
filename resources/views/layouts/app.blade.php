@@ -44,6 +44,7 @@
         @livewireStyles
         @livewireScripts
         @stack('scripts')
+        @yield('styles')
     </head>
 
     <body class="antialiased font-Noto bg-body">

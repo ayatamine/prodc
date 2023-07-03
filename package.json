@@ -19,6 +19,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "fslightbox": "^3.4.1",
         "lozad": "^1.16.0",
         "sweetalert2": "^11.7.12"
     }

@@ -8,6 +8,8 @@ class ServiceDetails extends Component
 {
     public $service;
     public $first_step,$second_step,$third_step,$fourth_step =false;
+    public $amount,$professional_id,$project_id,$delivery_duration,$content;
+    public $your_credit=0;
 
     public function mount($service)
     {
@@ -29,6 +31,9 @@ class ServiceDetails extends Component
                 $this->fourth_step =false;
                 break;
         }
+    }
+    public function addOffer(){
+        
     }
     public function render()
     {

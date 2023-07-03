@@ -1,6 +1,6 @@
 <section class="px-4 md:px-8 bg-body text-gray-800 relative overflow-hidden  pb-16" >
     <!-- filter in popup -->
-
+   
     <div class="md:flex justify-between gap-8 space-x-2">
       <!-- right side -->
       <div class="w-full md:w-2/3 grid grid-cols-1 gap-8">
@@ -55,35 +55,47 @@
           </div>
         </div>
         <!-- project description -->
-        <div class="bg-white rounded ">
-          <h2 class="border-b p-2 px-6 text-md md:text-base">وصف المشروع</h2>
+        <div class="bg-white rounded  py-6">
+          <h2 class="border-b p-2 px-6 text-md md:text-base">{{trans('frontend.service_description')}}</h2>
           <p class="p-6 text-sm leading-8">
-            تصميم متجري علي شوبيفاي وتهيئة الموقع للبدء في البيع ووضع خمس منتجات متخصص في بيع النظارات الشمسيه ومنتجات الأعمال الفنية اليدوية خرز
+             {{$service->description}}
           </p>
+          @if($service->images)
+            <label for="" class="text-gray-800 my-2 mx-6 text-base">{{trans('frontend.attached_files')}}</label>
+
+            <div class="grid grid-cols-3 md:grid-cols-5 gap-2 mx-6 my-3">
+            @foreach ($service->images as $key=>$img)
+                 <a data-fslightbox="{{$key}}-lightbox" href="{{asset('storage/'.$img)}}" class="border border-gray-600 rounded ">
+                    <img src="{{asset('storage/'.$img)}}"  alt="{{\Illuminate\Support\Str::limit($service->title,80)}}">
+                 </a>
+            @endforeach
+            </div>
+          @endif
+          
         </div>
         <!-- project skills -->
-        <div class="bg-white rounded ">
-          <h2 class="border-b p-2 px-6 text-md md:text-base">المهارات المطلوبة</h2>
+        {{-- <div class="bg-white rounded ">
+          <h2 class="border-b p-2 px-6 text-md md:text-base">{{trans('frontend.demanded_skills')}}</h2>
           <div class="mt-4 mb-6 p-2 px-6 flex flex-wrap justify-start items-center gap-2">
             <a href="portfolios.html" class="bg-primaryTextColor text-white text-[14px] rounded p-1 px-2">هندسة برمحيات   </a>
             <a href="portfolios.html" class="bg-primaryTextColor text-white text-[14px] rounded p-1 px-2">تصميم   </a>
             <a href="portfolios.html" class="bg-primaryTextColor text-white text-[14px] rounded p-1 px-2">جديد   </a>
           </div>
-        </div>
+        </div> --}}
         <!-- add offer form-->
         <div class="bg-white rounded">
-          <h2 class="border-b p-2 px-6 text-md md:text-base">تقديم عرض جديد</h2>
+          <h2 class="border-b p-2 px-6 text-md md:text-base">{{trans('frontend.add_new_offer')}}</h2>
           <form class="mt-4 mb-6 p-2 px-6 ">
             <!-- price + duration -->
             <div class="project-budget mb-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 items-center"> 
               <!-- price -->
               <div class="">
                 <label for="project-budget" class=" my-2 flex">
-                  <span>قيمة العرض</span>
+                  <span>{{trans('frontend.offer_value')}}</span>
                   <span class="text-red-600 text-xl font-bold mr-2">*</span>
                 </label>
                 <div class="flex itmes-center">
-                  <input type="number" class="white-input-theme w-10/12" style="p-2" id="offer-price""  value="">
+                  <input type="number" wire:model.lazy="amount" class="white-input-theme w-10/12" style="p-2" id="offer-price""  value="">
                   <span class="bg-body w-2/12 text-center leading-[2rem] border-l border-y border-gray-400">€</span>
   
                 </div>
@@ -91,21 +103,21 @@
               <!-- duration  -->
               <div class="">
                 <label for="project-budget" class=" my-2 flex">
-                  <span>مدة التسليم</span>
+                  <span>{{trans('frontend.deadline_duration')}}</span>
                   <span class="text-red-600 text-xl font-bold mr-2">*</span>
                 </label>
                 <div class="flex itmes-center">
-                  <input type="number" class="white-input-theme w-10/12" id="project-duration" value="">
-                  <span class="bg-body w-2/12 text-center leading-[2rem] border-l border-y border-gray-400">أيام</span>
+                  <input type="number"  wire:model.lazy="delivery_duration" class="white-input-theme w-10/12" id="project-duration" value="">
+                  <span class="bg-body w-2/12 text-center leading-[2rem] border-l border-y border-gray-400">{{trans('frontend.days')}}</span>
   
                 </div>
               </div>
               <div class="">
                 <label for="project-budget" class=" my-2 mt-3 block ">
-                  <span>مستحقاتك</span>
+                  <span>{{trans('frontend.your_credit')}}</span>
                 </label>
                 <div class="flex itmes-center">
-                  <input type="number" disabled class="white-input-theme w-10/12"  value="205 ">
+                  <input type="number"  wire:model.lazy="your_credit" disabled class="white-input-theme w-10/12"  value="205 ">
                   <span class="bg-body w-2/12 text-center leading-[2rem] border-l border-y border-gray-400">€</span>
   
                 </div>
@@ -113,10 +125,10 @@
             </div>
             <div class="description mt-8 mb-5">
               <label for="description" class=" my-2 flex">
-                <span>وصف المشروع</span>
+                <span>{{trans('frontend.offer_details')}}</span>
                 <span class="text-red-600 text-xl font-bold mr-2">*</span>
               </label>
-              <textarea class="white-input-theme w-full" name="description" id="description" rows="10"></textarea>
+              <textarea class="white-input-theme w-full" wire:model.lazy="content" name="description" id="description" rows="10"></textarea>
             </div>
             <!-- file uploader -->
             <div x-data="dataFileDnD()" class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
@@ -200,13 +212,15 @@
             </div>
             <!-- offer help -->
             <ul class="list-disc mt-8 px-5 text-sm leading-7">
-              <li>تجنب وضع وسائل تواصل خارجية</li>
-              <li>لاتضع روابط خارجية ، قم بالاهتمام <a href="" class="underline underline-offset-2 text-primaryTextColor">بمعرض أعمالك</a> بدلا منها</li>
-              <li><a href="" class="underline underline-offset-2 text-primaryTextColor">اقرأ هنا كيف تضيف عرض مميز على مشروع</a></li>
+              <li>{{trans('frontend.offer.advice1')}}</li>
+              <li>{{trans('frontend.offer.advice2')}} <a href="" class="underline underline-offset-2 text-primaryTextColor">{{trans('frontend.offer.advice3')}}</a>{{trans('frontend.offer.advice4')}} </li>
+              <li><a href="" class="underline underline-offset-2 text-primaryTextColor">{{trans('frontend.offer.advice5')}}</a></li>
             </ul>
               <!-- submit form -->
             <div class="mt-8 inline-block text-center">
-              <button class="bg-primaryTextColor  text-smd md:text-base text-white font-bold py-1 px-4 w-full rounded hover:bg-primaryTextColorDarken">أضف عرضك</button>
+              {{-- <button class="bg-primaryTextColor  text-smd md:text-base text-white font-bold py-1 px-4 w-full rounded hover:bg-primaryTextColorDarken">أضف عرضك</button> --}}
+              <x-submit-button target="addOffer" :title="trans('frontend.offer.create')" extraClasses="!w-fit bg-success-500 hover:!bg-success-600"  />
+
             </div>
           </form>
         </div>
