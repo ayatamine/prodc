@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Job;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Speciality extends Model
 {
@@ -36,5 +38,9 @@ class Speciality extends Model
     public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class);
+    }
+    public function jobs():HasMany
+    {
+        return $this->hasMany(Job::class,'speciality_id','id');
     }
 }

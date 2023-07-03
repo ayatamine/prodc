@@ -23,6 +23,8 @@ class SpecialityFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(4),
+            'title_ar' => 'عنوان فئة'.random_int(2,5333),
+            'title_fr' => $this->faker->sentence(4),
             'image' => $this->faker->word,
             'status' => $this->faker->boolean,
             'language_id' =>Language::first()?->id ?? Language::factory(),

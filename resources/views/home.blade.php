@@ -1,7 +1,5 @@
 @extends('layouts.app')
-@section('title')
-    الرئيسية
-@endsection
+@section('title',trans('frontend.home'))
 @section('content')
     @include('layouts.front.home.hero')
 

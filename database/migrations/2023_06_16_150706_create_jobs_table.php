@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title')->unique();
             $table->boolean('status')->default(true);
             $table->foreignId('speciality_id')->nullable()->constrained();
-            $table->foreignId('language_id')->nullable()->constrained();
+            // $table->foreignId('language_id')->nullable()->constrained();
             $table->timestamps();
         });
 

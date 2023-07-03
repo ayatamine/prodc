@@ -29,4 +29,5 @@ class Attachement extends Model
         'id' => 'integer',
         'attacheable_id' => 'integer',
     ];
+    
 }

@@ -83,7 +83,7 @@ Route::middleware('auth','verified','auth.account_type_selected','auth.professio
     Route::get('/my/verifications',MyVerifications::class)->name('my_verifications');
 
     //------------------------------------------//---------------------------------------//
-    Route::get('/services/create',[ServiceController::class,'create'])->name('add_service');//->middleware('auth.client');
+    // Route::get('/services/create',[ServiceController::class,'create'])->name('add_service');//->middleware('auth.client');
 
 
 });

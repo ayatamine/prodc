@@ -24,6 +24,8 @@ class JobFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(4),
+            'title_ar' => 'مثال عنوان فئة'.random_int(2,26333),
+            'title_fr' => $this->faker->sentence(4),
             'status' => $this->faker->boolean,
             'speciality_id' => Speciality::first()?->id ?? Speciality::factory(),
             'language_id' => Language::first()?->id ?? Language::factory(),

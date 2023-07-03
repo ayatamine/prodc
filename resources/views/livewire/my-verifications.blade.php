@@ -19,11 +19,11 @@ is_file3_present: @entangle('identity_card_holded')}" role="tabpanel" aria-label
         </li>
         <li class="flex justify-start items-center gap-2 mb-1">
           <svg class="h-5 w-5"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>
-          <span> {{trans('frontend.account_verification_steps.feature1')}} </span>
+          <span> {{trans('frontend.account_verification_steps.feature2')}} </span>
         </li>
         <li class="flex justify-start items-center gap-2 mb-1">
           <svg class="h-5 w-5"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>
-          <span>  {{trans('frontend.account_verification_steps.feature1')}} </span>
+          <span>  {{trans('frontend.account_verification_steps.feature3')}} </span>
         </li>
       </ul>
     </div>
