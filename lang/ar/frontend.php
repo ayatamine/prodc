@@ -50,6 +50,7 @@ return [
    'upgrade_now'=>'الترقية الان',
    'new_service'=>'خدمة جديدة',
    'service'=>'خدمة',
+   'services'=>'الخدمات',
    'theservice'=>'الخدمة',
    'my_services'=>'خدماتي',
    'services_bag'=>'حقيبة الخدمات',
@@ -119,4 +120,8 @@ return [
    'enter_search_word'=>' ادخل كلمة البحث',
    'category'=>'  الفئة',
    'show_all_categories'=>'عرض كل الأقسام',
+   'publish_project_step'=>'نشر المشروع ',
+   'receiving_offers_step'=>'تلقي العروض ',
+   'processing_project'=>'تنفيذ المشروع ',
+   'finished_project'=>'استلام المشروع ',
 ];

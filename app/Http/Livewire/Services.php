@@ -81,7 +81,7 @@ class Services extends Component
     }
     public function paginationView()
     {
-        return 'livewire.custom-pagination';
+        return 'livewire.custom-pagination2';
     }
     public function render()
     {
@@ -97,7 +97,7 @@ class Services extends Component
         ->when($this->sort,function($query,$sort){
             return $sort=='newest' ? $query->latest() : $query->oldest();
         })
-        ->paginate(10);
+        ->paginate(2);
        //first jobs to fetch
         $jobs_to_list = Job::select('id','title','title_ar','title_fr')->latest()->skip(0)->take(6)->get()->toArray();
         //rest of jobs
@@ -107,7 +107,7 @@ class Services extends Component
             //     return Speciality::with('jobs:id,title,title_ar','title_fr')->get();
             // });
             $specialities=   Speciality::with('jobs')->get()->toArray();
-             }
+        }
         return view('livewire.services', [
             'services' => $services,
             'jobs_to_list'=>$jobs_to_list,

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use index;
 use App\Models\Skill;
-use App\Models\Project;
+use App\Models\Project as Service;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -27,8 +27,8 @@ class ServiceController extends Controller
         return view('service.create', compact('skills'));
     }
 
-    public function show(Request $request, Project $project)
+    public function show(Service $service)
     {
-        return view('service.show');
+        return view('service.show',compact('service'));
     }
 }

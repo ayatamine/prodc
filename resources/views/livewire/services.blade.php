@@ -50,7 +50,7 @@
                                   @foreach ($sp['jobs']  as $job)
                                       
                                   <li  class="border-b py-2 px-4 hover:bg-body hover:text-primaryTextColor">
-                                    <a wire:click.prevent="$set(jobs_categories[{{$job['id']}}],{{$job['id']}})" href="" >
+                                    <a wire:click.prevent="$set(jobs_categories[{{$job['id']}}],{{$job['id']}})" @click="showCatModel = !showCatModel"  href="" >
                                     {{app()->getLocale() != 'en' ? $job['title_'.app()->getLocale()] : $job['title']}}
                                     </a>
                                   </li>
@@ -395,7 +395,7 @@
             <div class="flex items-center mb-2 p-4 border rounded bg-white shadow-lg">
               <div class="flex-1">
                 <div class="flex items-center justify-between"  x-data="{ showReportModel : false ,toggle() { this.showReportModel = ! this.showReportModel } }" class=" overflow-y-scroll">
-                  <a href="project_details.html" class="text-smd md:text-base  text-primaryTextColor">
+                  <a href="{{route('services.show',['service'=>$service->id])}}" class="text-smd md:text-base  text-primaryTextColor">
                     {{\Illuminate\Support\Str::limit($service->title,80)}}
                   </a>
                  
@@ -483,82 +483,7 @@
             <x-alert type="info" message="{{trans('frontend.no_item_added_yet',['title'=>trans('frontend.service')])}}" />
             @endforelse
             <!-- pagination -->
-            <ol class="flex justify-center my-6 gap-1 text-xs font-medium">
-              <li>
-                <a
-                  href="#"
-                  class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white"
-                >
-                  <span class="sr-only">Prev Page</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-3 w-3 rtl:rotate-180"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </a>
-              </li>
-            
-              <li>
-                <a
-                  href="#"
-                  class="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8"
-                >
-                  1
-                </a>
-              </li>
-            
-              <li
-                class="block h-8 w-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white"
-              >
-                2
-              </li>
-            
-              <li>
-                <a
-                  href="#"
-                  class="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8"
-                >
-                  3
-                </a>
-              </li>
-            
-              <li>
-                <a
-                  href="#"
-                  class="block h-8 w-8 rounded border border-gray-100 bg-white text-center leading-8"
-                >
-                  4
-                </a>
-              </li>
-            
-              <li>
-                <a
-                  href="#"
-                  class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white"
-                >
-                  <span class="sr-only">Next Page</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-3 w-3 rtl:rotate-180"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </a>
-              </li>
-            </ol>
+            {{$services->links()}}
             
           </section>
         </div>

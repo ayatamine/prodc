@@ -1,4 +1,4 @@
-<div class="flex items-center  overflow-x-auto whitespace-nowrap mt-[65px] py-6 px-5 md:px-16 bg-body">
+<div class="flex items-center  overflow-x-hidden whitespace-nowrap mt-[65px] py-6 px-5 md:px-16 bg-body">
     <a href="{{route('home')}}" class="text-gray-600 dark:text-gray-200">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
             <path
