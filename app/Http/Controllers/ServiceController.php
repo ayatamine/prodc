@@ -27,8 +27,9 @@ class ServiceController extends Controller
         return view('service.create', compact('skills'));
     }
 
-    public function show(Service $service)
+    public function show( $service)
     {
+        $service =Service::withSum('offers','amount')->with('offers')->with('client.user')->whereSlug($service)->firstOrFail();
         return view('service.show',compact('service'));
     }
 }

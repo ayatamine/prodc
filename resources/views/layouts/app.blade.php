@@ -55,7 +55,7 @@
         @extends('layouts.front.footer')
         @extends('layouts.front.scripts')
         @include('sweetalert::alert')
-
+        @yield('scripts')
         <!-- ====== Back To Top Start -->
         <a
         href="javascript:void(0)"

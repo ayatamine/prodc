@@ -140,5 +140,17 @@ return [
       'advice4'=>' بدلا منها',
       'advice5'=>'اقرأ هنا كيف تضيف عرض مميز على مشروع',
       'create'=>'أضف عرضك الآن'
-   ]
+   ],
+   'service_offers'=>'العروض المقدمة',
+   'service_card'=>'بطاقة الخدمة',
+   'service_status'=>'حالة الخدمة',
+   'publish_date'=>'تاريخ النشر',
+   'budget'=>'الميزانية',
+   'not_set'=>'لم يتم التحديد',
+   'processing_duration'=>'مدة التنفيذ',
+   'offers_count'=>'عدد العروض',
+   'offers_middle_cost'=>'متوسط العروض',
+   'project_owner'=>'صاحب المشروع',
+   'share_service'=>'شارك الخدمة',
+
 ];

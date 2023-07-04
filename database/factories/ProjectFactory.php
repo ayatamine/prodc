@@ -22,7 +22,8 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(4),
+            'title' => $this->faker->title(),
+            'slug' =>Str::slug($this->faker->title),
             'description' => $this->faker->text,
             'is_open' => $this->faker->boolean,
             'duration' => $this->faker->numberBetween(0, 100),

@@ -395,7 +395,7 @@
             <div class="flex items-center mb-2 p-4 border rounded bg-white shadow-lg">
               <div class="flex-1">
                 <div class="flex items-center justify-between"  x-data="{ showReportModel : false ,toggle() { this.showReportModel = ! this.showReportModel } }" class=" overflow-y-scroll">
-                  <a href="{{route('services.show',['service'=>$service->id])}}" class="text-smd md:text-base  text-primaryTextColor">
+                  <a href="{{route('services.show',['service'=>$service->slug])}}" class="text-smd md:text-base  text-primaryTextColor">
                     {{\Illuminate\Support\Str::limit($service->title,80)}}
                   </a>
                  
@@ -465,7 +465,7 @@
                             <svg class="h-4 w-4 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
                             </svg>
-                            <span>{{trans_choice('frontend.offer',0,['count' => 0])}}</span>
+                            <span>{{trans('frontend.offers')}}</span>
                           </div>
                         </div>
                     </div>

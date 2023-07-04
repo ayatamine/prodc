@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Exception;
+use App\Models\Offer;
 use App\Models\Client;
 use App\Models\AgainstReport;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -51,8 +53,7 @@ class Project extends Model
         'images',
         'questions',
         'job_id',
-        'title_ar',
-        'title_fr'
+        'slug'
     ];
 
     /**
@@ -72,6 +73,10 @@ class Project extends Model
         'images'=>'array',
         'questions'=>'array',
     ];
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
     public function client():BelongsTo
     {
         return $this->belongsTo(Client::class);
@@ -91,5 +96,9 @@ class Project extends Model
     public function against_reports():MorphMany
     {
         return $this->morphMany(AgainstReport::class,'reportable');
+    }
+    public function offers():HasMany 
+    {
+        return $this->hasMany(Offer::class);
     }
 }

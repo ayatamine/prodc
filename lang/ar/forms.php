@@ -33,4 +33,5 @@ return [
     'question'=>'سؤال',
     'thequestion'=>'السؤال',
     'required'=>'اجباري',
+    'attached_files'=>'ملفات مرفقة',
 ];
