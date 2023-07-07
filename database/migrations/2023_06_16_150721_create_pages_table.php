@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('meta_title');
             $table->string('meta_description');
-            $table->foreignId('laguage_id')->constrained();
+            $table->foreignId('language_id')->constrained();
             $table->timestamps();
         });
 

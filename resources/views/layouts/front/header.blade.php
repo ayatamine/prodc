@@ -1,6 +1,6 @@
     <!-- ====== Navbar Section Start -->
     <div
-      class="ud-header absolute top-0 left-0 z-40 flex w-full items-center bg-white"
+      class="ud-header absolute top-0 left-0 z-38 flex w-full items-center bg-white"
     >
       <div class="container">
         <div class="relative -mx-4 flex items-center justify-between">
@@ -36,7 +36,7 @@
                 <ul class="block lg:flex items-center">
                   <li class="group relative">
                     <a
-                      href="#home"
+                      href="{{route('home')}}"
                       class="ud-menu-scroll topnav-link"
                     >
                      v-0
@@ -47,7 +47,7 @@
                       href="index.html"
                       class="relative topnav-link"
                     >
-                      الرئيسية
+                      {{trans('frontend.home')}}
                     </a>
                     <div
                       class="submenu top-dropdown px-0 py-1 shadow-black drop-shadow-md"
@@ -78,10 +78,10 @@
                   </li>
                   <li class="group relative">
                     <a
-                      href="ethiks.html"
+                      href="{{route('charter')}}"
                       class="topnav-link "
                     >
-                      ميثاق الأخلاق المهنية
+                      {{trans('frontend.charter')}}
                     </a>
                   </li>
                   <li class="group relative">
@@ -349,7 +349,7 @@
                   العربية  
                   </div>
                 </button>
-                <div @click.outside="dropOpen = false" class="absolute  bg-white border  dropdown-content min-w-[4rem] text-right ltr:text-left z-40 flex flex-col" x-show="dropOpen">
+                <div @click.outside="dropOpen = false" class="absolute  bg-white border  dropdown-content min-w-[4rem] text-right ltr:text-left z-36 flex flex-col" x-show="dropOpen">
                   <a  @click="dropOpen = !dropOpen" href="#" class="text-sm text-gray-900 flex justify-start items-center gap-2 p-2 border-b hover:bg-body">
                     <svg class="h-5 w-5 text-gray-700" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 192.756 192.756"><path fill-rule="evenodd" clip-rule="evenodd" fill="#fff" d="M0 0h192.756v192.756H0V0z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#fff" d="M184.252 149.619V43.135H8.504v106.484h175.748z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#33348e" d="M184.252 149.619V43.135H8.504v106.484h175.748z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#fff" d="M116.75 149.619v-37.152h67.502v-32.18H116.75V43.135H75.058v37.152H8.504v32.18h66.554v37.152h41.692z"/><path fill="#fff" d="M29.907 43.135l154.345 93.521v12.965H163.23L8.504 55.869V43.135h21.403z"/><path fill="#fff" d="M162.85 43.135L8.504 136.656v12.965h21.023l154.725-93.752V43.135H162.85z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#cc2229" d="M184.252 86.106H109.09V43.135H83.738v42.971H8.504v20.542h75.234v42.971h25.352v-42.971h75.162V86.106z"/><path fill="#cc2229" d="M8.584 43.135l61.055 37.152H55.936L8.504 51.424v-8.289h.08zM8.504 149.434v.187h13.394l53.16-32.348v-4.806h-5.805L8.504 149.434zM184.252 149.621v-7.762l-48.303-29.392h-13.703l61.059 37.154h.947zM169.764 43.135l-53.014 32.26v4.892h5.662l61.055-37.152h-13.703z"/></svg>
                     English

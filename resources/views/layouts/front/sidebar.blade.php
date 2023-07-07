@@ -37,25 +37,25 @@ x-transition:leave-end="-translate-x-full opacity-0"
 </div> 
 <ul class="mt-4 border-t py-4">
 <li class="group relative my-2">
- <a    href="projects.html"   class="sidenav-link"           >
+ <a    href="{{route('services.index')}}"   class="sidenav-link"           >
  <svg class="h-5 w-5 "  fill="none" viewBox="0 0 24 24" stroke="currentColor">
    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
  </svg>
- <span> تصفح الخدمات المطلوبة  </span>
+ <span> {{trans('frontend.browse_demanded_services')}}  </span>
  </a>
 </li>
 <li class="group relative my-2"> 
- <a    href="professionals.html"   class="sidenav-link"           >
+ <a    href="{{route('professionals.index')}}"   class="sidenav-link"           >
    <svg class="h5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
    </svg>
- <span> تصفح شبكة المحترفين  </span>
+ <span>  {{trans('frontend.browse_professionals')}} </span>
  </a>
 </li>
 <li class="group relative my-2"> 
  <a    href="portfolios.html"   class="sidenav-link"           >
    <svg class="h-5 w-5 "  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />  <circle cx="8.5" cy="8.5" r="1.5" />  <polyline points="21 15 16 10 5 21" /></svg>
-    <span> تصفح معرض الأعمال  </span>
+    <span> {{trans('frontend.browse_portfolios')}}   </span>
  </a>
 </li>
 <li class="group relative my-2">
@@ -81,29 +81,48 @@ x-transition:leave-end="-translate-x-full opacity-0"
        <svg class="h-5 w-5 "  fill="none" viewBox="0 0 24 24" stroke="currentColor">
          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
        </svg>
-       <span> اعرف أكثر</span>
+       <span> {{trans('frontend.know_more')}}</span>
      </div>
      <svg x-show="!dropOpen" class="h-5 w-5 text-gray-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="15 6 9 12 15 18" /></svg>
      <svg  x-show="dropOpen" class="h-5 w-5 text-gray-700"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <polyline points="6 9 12 15 18 9" /></svg>                      </a>
    </a>
    <div class="  dropdown-content min-w-[14rem] text-right ltr:text-left z-40 flex flex-col" x-show="dropOpen">
      <ul class=" border-t p-4">
+      {{-- @php 
+             $main_pages =$value = Cache::remember('main_pages', 600, function () {
+                  return \App\Models\Page::whereHas('language',function ($query){
+                    $query->whereLabel(app()->getLocale());
+                  })
+                  ->whereLike('slug','%'.'vision about value%')
+                  ->get();
+              });
+      @endphp
+      
+       @foreach ($main_pages as $page)
+
        <li class="group relative my-2">
-         <a   href="about.html"   class="sidenav-link flex items-center"           >
+         <a   href="{{route('front_pages',['slug'=>$page->slug])}}"   class="sidenav-link flex items-center"           >
            <svg class="h-4 w-4 text-gray-700"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="10" />  <line x1="2" y1="12" x2="22" y2="12" />  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
-           <span>من نحن</span>
+           <span>{{$page->title}}</span>
+         </a>
+       </li>
+       @endforeach --}}
+       <li class="group relative my-2">
+         <a   href="{{route('front_pages',['slug'=>'about'])}}"   class="sidenav-link flex items-center"           >
+           <svg class="h-4 w-4 text-gray-700"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="10" />  <line x1="2" y1="12" x2="22" y2="12" />  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+           <span>{{trans('frontend.pages.about')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
-         <a   href="values.html"   class="sidenav-link flex items-center"           >
+         <a   href="{{route('front_pages',['slug'=>'values'])}}"   class="sidenav-link flex items-center"           >
            <svg class="h-5 w-5 text-gray-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />  <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />  <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />  <line x1="11" y1="6" x2="20" y2="6" />  <line x1="11" y1="12" x2="20" y2="12" />  <line x1="11" y1="18" x2="20" y2="18" /></svg>
-           <span>قيمنا</span>
+           <span>{{trans('frontend.pages.values')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
-         <a   href="vision.html"   class="sidenav-link flex items-center"           >
+         <a   href="{{route('front_pages',['slug'=>'values'])}}"   class="sidenav-link flex items-center"           >
            <svg class="h-4 w-4 text-gray-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="3" y="12" width="6" height="8" rx="1" />  <rect x="9" y="8" width="6" height="12" rx="1" />  <rect x="15" y="4" width="6" height="16" rx="1" />  <line x1="4" y1="20" x2="18" y2="20" /></svg>                            
-           <span>أهدافنا</span>
+           <span>{{trans('frontend.pages.vision')}}</span>
          </a>
        </li>
        

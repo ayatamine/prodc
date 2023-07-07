@@ -192,7 +192,7 @@ models:
         image: string
         meta_title: string
         meta_description: string
-        laguage_id: id foreign
+        language_id: id foreign
 controllers:
   Language:
     index:

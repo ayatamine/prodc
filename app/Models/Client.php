@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Review;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -10,8 +11,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Client extends User
 {
@@ -61,6 +62,10 @@ class Client extends User
     public function savedWorks():BelongsToMany 
     {
         return $this->belongsToMany(Work::class,'clien_saved_works');
+    }
+    public function reviews():HasMany
+    {
+        return $this->hasMany(Review::class);
     }
 
 }

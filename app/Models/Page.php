@@ -22,7 +22,7 @@ class Page extends Model
         'image',
         'meta_title',
         'meta_description',
-        'laguage_id',
+        'language_id',
     ];
 
     /**
@@ -32,11 +32,11 @@ class Page extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'laguage_id' => 'integer',
+        // 'language_id' => 'integer',
     ];
 
-    public function laguage(): BelongsTo
+    public function language(): BelongsTo
     {
-        return $this->belongsTo(Laguage::class);
+        return $this->belongsTo(Language::class);
     }
 }

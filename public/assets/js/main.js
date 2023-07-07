@@ -1,6 +1,15 @@
 (function () {
   "use strict";
 
+//   function handlePreloader() {
+//     let preloader = document.querySelector('#preloader');
+//     window.addEventListener('load', (event) => {
+//         setTimeout(() => {
+//             preloader.style.display = 'none';
+//         }, 5000);
+//     });
+// }
+// handlePreloader();
   
   // ======= Sticky
   window.onscroll = function () {

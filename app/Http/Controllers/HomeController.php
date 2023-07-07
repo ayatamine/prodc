@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,5 +21,12 @@ class HomeController extends Controller
     public function subscribeToPackage($id)
     {
         return view('package.buy_package');
+    }
+    public function charter(){
+        return view('charter');
+    }
+    public function pages($slug){
+        $page =Page::whereSlug($slug)->firstOrFail();
+        return view('page',compact('page'));
     }
 }

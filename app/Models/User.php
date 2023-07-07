@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Skill;
 use App\Models\UserSkill;
+use Filament\Models\Contracts\HasName;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -17,7 +18,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail,HasName
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -90,6 +91,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'full_name'
     ];
+    public function getFilamentName(): string
+    {
+        return $this->full_name;
+    }
     public function professional(): HasOne
     {
         return $this->hasOne(Professional::class);
@@ -131,9 +136,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function profilePhotoPath(): Attribute
     {
         return Attribute::make(
-            get: function (string $value){
+            get: function ($value){
                 if(Str::startsWith($value,'profile_pictures')) return url('storage/'.$value);
-                return $value;
+                return generate_avatar($this->full_name);
             }
         );
     }
@@ -142,5 +147,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return Attribute::make(
             get: fn () => $this->first_name.' '.$this->last_name
         );
+    }
+    public function scopeActive($query){
+        return $query->where('account_status',true);
     }
 }

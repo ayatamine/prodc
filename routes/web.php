@@ -7,6 +7,7 @@ use App\Http\Livewire\Auth\Register;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Professionalcontroller;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Passwords\Confirm;
@@ -88,3 +89,6 @@ Route::middleware('auth','verified','auth.account_type_selected','auth.professio
 
 });
 Route::resource('services',ServiceController::class);
+Route::resource('professionals',ProfessionalController::class);
+Route::get('charter',[HomeController::class,'charter'])->name('charter');
+Route::get('pages/{slug}',[HomeController::class,'pages'])->name('front_pages');

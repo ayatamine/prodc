@@ -8,15 +8,9 @@ use Illuminate\View\View;
 
 class ProfessionalController extends Controller
 {
-    public function index(Request $request): Response
-    {
-        $professionals = Professional::all();
-
-        return view('professional.index', compact('professionals'));
-    }
-
-    public function show(Request $request, Professional $professional): Response
-    {
-        return view('professional.show');
-    }
+     /** @return the professionals page */
+     public function index()
+     {
+         return view('professional.index');
+     }
 }
