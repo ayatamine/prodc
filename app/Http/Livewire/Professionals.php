@@ -22,11 +22,13 @@ class Professionals extends Component implements HasForms
     public $sort = 'newest';
     public $render_all_jobs=false;
     public $jobs_categories=[];
+    public $other_properties=[];
     public $stars_count=0;
     public $countries;
     public $country;
 
     public function mount(){
+      
         $countries_list = Cache::rememberForever('countries_list', function () {
             return World::countries()->data;
         });
@@ -61,8 +63,12 @@ class Professionals extends Component implements HasForms
             return $job !=false;
         });
     }
+    public function updatingCountry($value){
+        dd($value);
+    }
     public function render()
     {
+
         $professionals = Professional::with('user')
         ->withSum('reviews','rating')
         ->withCount('reviews')
@@ -83,10 +89,19 @@ class Professionals extends Component implements HasForms
             ->groupBy('professionals.id')
             ->havingRaw('AVG(reviews.rating) >= ?', [$this->stars_count]);
         })
+        ->when( $this->form->getState()['country'],function($query){
+            dd(World::countries([
+                'filters' => [
+                    'id' => $this->form->getState()['country'],
+                ]
+            ]));
+            // return $sort=='newest' ? $query->latest() : $query->oldest();
+        })
         ->when($this->sort,function($query,$sort){
             return $sort=='newest' ? $query->latest() : $query->oldest();
         })
         ->paginate(3);
+
         $jobs_to_list = Job::select('id','title','title_ar','title_fr')->latest()->skip(0)->take(6)->get()->toArray();
         $specialities =null;
         if($this->render_all_jobs){

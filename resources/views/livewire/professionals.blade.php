@@ -208,9 +208,9 @@
                         <option value="for-sale">بلجيكا</option>
                         <option value="fsdf">الدنمارك</option>
                     </select> --}}
-                    <form action="">
+                    {{-- <form action=""> --}}
                         {{$this->form}}
-                    </form>
+                    {{-- </form> --}}
                 </div>
                 <div class=" py-3 border-b">
                     <label class="ml-2  text-gray-600 font-semibold text-md">التقييم</label>
@@ -264,9 +264,10 @@
 
                 <!-- other properties -->
                 <div class=" py-3 ">
-                    <label class="ml-2 text-gray-600 font-semibold text-md">خصائص أخرى</label>
+                    <label class="ml-2 text-gray-600 font-semibold text-md">{{trans('frontend.other_properties')}}</label>
                     <!-- categories list -->
                     <ul class="mt-4">
+                        
                         <li class="flex justify-start items-center">
                             <label class="inline-flex items-center text-sm mt-3 gap-x-4 cursor-pointer">
                                 <input type="checkbox"
@@ -795,7 +796,7 @@
                     </div>
                     <div class="flex-1">
                         <div class="flex items-center justify-between">
-                            <a href="professional_details.html"
+                            <a href="{{route('users.show_by_username',['username'=>$pro->user->username])}}"
                                 class="flex justify-start items-center gap-x-2 text-smd md:text-base text-primaryTextColor">
                                 {{$pro->user->full_name}}
                                 <span class="h-3 w-3 rounded-full bg-green-500 mr-2 ltr!ml-2"></span>
@@ -883,7 +884,7 @@
                 <!-- professionals card example-->
                 @foreach ($professionals as $pro)
                 <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-                    <a href="professional_details.html" class="px-2 py-4 hover:bg-blue-50 block">
+                    <a href="{{route('users.show_by_username',['username'=>$pro->user->username])}}" class="px-2 py-4 hover:bg-blue-50 block">
                         <img class="h-20 w-20  mt-4 rounded-full mx-auto " src="{{$pro->user->profile_photo_path}}"
                             alt="{{$pro->user->full_name}}">
 
@@ -972,7 +973,7 @@
 
                         </div>
                     </a>
-                    <a href="professional_details.html" class="smd-button primary-btn text-center m-4 mt-2 block">
+                    <a href="{{route('users.show_by_username',['username'=>$pro->user->username])}}" class="smd-button primary-btn text-center m-4 mt-2 block">
                     {{trans('frontend.show_personal_profile')}}
                     </a>
                 </div>

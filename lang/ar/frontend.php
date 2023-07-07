@@ -167,4 +167,14 @@ return [
    'professional_list'=>'قائمة المحترفين',
    'hire_me'=>'وظفني',
    'show_personal_profile'=>'عرض الملف الشخصي',
+   'other_properties'=>'خصائص أخرى',
+   'pro_properties'=>[
+      'swear_on_ethiks'=>'أقسم بالله على الالتزام بالميثاق',
+      'add_offer'=>'أضاف عرضا على الخدمات التي اخترتها',
+      'verified'=>'هوية موثقة',
+      'is_giving_promotions'=>'يقدم خصومات خاصة لأعضاء المنصة',
+      'has_service_after_sale'=>'لديه خدمة مابعد البيع',
+      'is_online'=>'متصل الان',
+      'accept_installment_sale'=>'يقبل البيع بالتقسيط ',
+   ]
 ];

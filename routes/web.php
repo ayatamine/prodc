@@ -90,5 +90,6 @@ Route::middleware('auth','verified','auth.account_type_selected','auth.professio
 });
 Route::resource('services',ServiceController::class);
 Route::resource('professionals',ProfessionalController::class);
+Route::get('u/{username}',[HomeController::class,'userShow'])->name('users.show_by_username');
 Route::get('charter',[HomeController::class,'charter'])->name('charter');
 Route::get('pages/{slug}',[HomeController::class,'pages'])->name('front_pages');

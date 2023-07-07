@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,5 +29,10 @@ class HomeController extends Controller
     public function pages($slug){
         $page =Page::whereSlug($slug)->firstOrFail();
         return view('page',compact('page'));
+    }
+    public function userShow($username){
+        $user = User::with('professional')->with('client')->whereUsername($username)->firstOrFail();
+        return view('professional.show',compact('user'));
+        
     }
 }
