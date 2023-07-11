@@ -7,11 +7,13 @@ use Exception;
 use App\Models\User;
 use App\Models\Client;
 use Livewire\Component;
+use Nnjeim\World\World;
 use Illuminate\Support\Str;
 use App\Models\Professional;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use App\Notifications\ProVerifyEmailNotification;
@@ -31,13 +33,24 @@ class Register extends Component
 
     /** @var string */
     public $passwordConfirmation = '';
-    public $first_name, $last_name, $username, $phone_number, $nationality, $conditions;
-
+    public $first_name, $last_name, $username, $phone_number, $nationality, $conditions,$country_id;
+    public $countries;
+    public function mount(){
+        $countries_list = Cache::rememberForever('countries_list', function () {
+            return World::countries()->data;
+        });
+        foreach ($countries_list as $country) {
+            $this->countries[$country['id']] =  $country['name'];
+        }
+    }
     public function fullName(){
         return $this->first_name.' '.$this->last_name;
     }
     public function updatingNationality($value){
         $this->is_client_form=true;
+    }
+    public function updatedCountryId($value){
+        $this->nationality=$this->countries[$value];
     }
     public function updated($phone_number)
     {
@@ -54,6 +67,7 @@ class Register extends Component
             'username' => ['string', 'required', 'unique:users'],
             'email' => ['string', 'required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation'],
+            'country_id'=>'sometimes|nullable|integer'
         ]);
         try {
             DB::transaction(function () {
@@ -64,6 +78,7 @@ class Register extends Component
                     'last_name' => $this->first_name,
                     'username' => $this->username,
                     'email' => $this->email,
+                    'country_id' => $this->country_id,
                     'password' =>  Hash::make($this->password),
                     'verification_token'=> Str::random(40),
                     'profile_photo_path'=>generate_avatar($this->fullName())
@@ -96,18 +111,20 @@ class Register extends Component
             'nationality' => ['string', 'required'],
             'email' => ['string', 'required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation'],
-            'nationality' => ['required', 'string', 'min:3','max:100'],
+            'country_id'=>'sometimes|nullable|integer'
+            // 'nationality' => ['required', 'string', 'min:3','max:100'],
         ]);
         try {
             DB::transaction(function () {
                 //
 
                 
-                $user = Client::create([
+                $user = User::create([
                     'first_name' => $this->first_name,
                     'last_name' => $this->first_name,
                     'username' => $this->username,
                     'nationality' => $this->nationality,
+                    'country_id' => $this->country_id,
                     'phone_number' => $this->phone_number,
                     'email' => $this->email,
                     'password' =>  Hash::make($this->password),

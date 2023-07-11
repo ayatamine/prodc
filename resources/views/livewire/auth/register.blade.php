@@ -23,7 +23,7 @@
 
       <p class="text-xl text-primaryTextColor font-semibold text-center leading-tight">يمكنك استعمال</p>
       <div class="flex justify-center gap-x-3   lg:grid-cols-3 gap-3 my-4">
-        <a href="#"
+        <a href="{{ url('auth/google') }}"
           class="flex items-center justify-center my-2 text-white  h-12 w-12 md:h-auto md:w-auto rounded-full border shadow-md hover:bg-gray-100">
           <div class="md:p-1 ">
             <svg class="h-11 w-11 " viewBox="0 0 40 40">
@@ -43,7 +43,7 @@
           </div>
           <h1 class="hidden px-3 py-2 w-5/6 text-start text-gray-600 font-bold text-sm md:text-smd"> قوقل</h1>
         </a>
-        <a href="#"
+        <a href="{{ url('auth/facebook') }}"
           class="flex items-center justify-center my-2 text-white   h-12 w-12 md:h-auto md:w-auto rounded-full  border shadow-md hover:bg-gray-100">
           <div class="md:p-1 ">
             <svg class="h-11 w-11  " xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
@@ -56,7 +56,7 @@
           </div>
           <h1 class="hidden px-3 py-2 w-5/6 text-start text-gray-600 font-bold text-sm md:text-smd"> فيسبوك</h1>
         </a>
-        <a href="#"
+        <a href="{{ url('auth/twitter') }}"
           class="flex items-center justify-center my-2 text-white   h-12 w-12 md:h-auto md:w-auto rounded-full  border shadow-md hover:bg-gray-100">
           <div class="md:p-1 ">
             <svg class="h-11 w-11  " width="64px" height="64px" viewBox="0 0 48 48" fill="none"
@@ -301,8 +301,13 @@
                 <span>البلد</span>
                 <span class="text-red-600 text-xl font-bold mr-2">*</span>
               </label>
-              <select wire:model="nationality" class="white-input-select" id="countries" name="nationality">
-
+              <select wire:model.lazy="country_id" class="white-input-select" id="countries" name="nationality">
+                <option disabled value="" selected>{{trans('frontend.company.country')}}</option>
+                @if($countries)
+                @foreach ($countries as $key=>$country)
+                    <option value="{{$key}}">{{$country}}</option>
+                @endforeach
+                @endif
               </select>
               @error('nationality')
               <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -390,7 +395,7 @@
 </div>
 @push('scripts')
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
+{{-- <script>
   window.addEventListener("DOMContentLoaded", (event) => {
   
   (async () => {
@@ -413,5 +418,5 @@
       }
   })();
 });
-</script>
+</script> --}}
 @endpush
