@@ -3,11 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
 use App\Models\Skill;
 use App\Models\UserSkill;
-use Filament\Models\Contracts\HasName;
 use Illuminate\Support\Str;
+use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
+use Filament\Models\Contracts\HasName;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -20,7 +22,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class User extends Authenticatable implements MustVerifyEmail,HasName
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -150,5 +152,11 @@ class User extends Authenticatable implements MustVerifyEmail,HasName
     }
     public function scopeActive($query){
         return $query->where('account_status',true);
+    }
+    public function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value)=>   Carbon::parse($value)->locale(app()->getLocale())->isoFormat('D MMM YYYY')
+        );
     }
 }

@@ -15,16 +15,16 @@
                 <form class="mb-3 flex items-center justify-center" x-data="{ circumference: 2 * 22 / 7 * 120 }">
                     <div class="w-fit mx-auto relative">
                         <a href="" class="">
-                            <img src="assets/images/hero/hero-image.jpg"
-                                class="mx-auto h-28 w-28 rounded-full shadow-lg border" alt="">
+                            <img  data-src="{{auth()->user()->profile_photo_path}}" data-placeholder-background="#6b7280ff"
+                                class="mx-auto h-28 w-28 rounded-full shadow-lg border lozad" alt="{{auth()->user()->full_name}}">
 
                         </a>
-                        <label for="profile-picture">
+                        {{-- <label for="profile-picture">
                             <span
                                 class="cursor-pointer absolute bottom-[1rem] left-[-1rem]  rounded text-white text-[14px] p-1 border bg-primaryTextColor hover:bg-primaryTextColorDarken">
                                 تغيير الصورة
                             </span></label>
-                        <input type="file" name="profile_picture" id="profile-picture" accept="image/*" class="hidden">
+                        <input type="file" name="profile_picture" id="profile-picture" accept="image/*" class="hidden"> --}}
                     </div>
                 </form>
             </div>

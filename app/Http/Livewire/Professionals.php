@@ -29,6 +29,7 @@ class Professionals extends Component implements HasForms
 
     public function mount(){
       
+        
         $countries_list = Cache::rememberForever('countries_list', function () {
             return World::countries()->data;
         });
@@ -41,10 +42,11 @@ class Professionals extends Component implements HasForms
     protected function getFormSchema(): array
     {
         return [
-            Forms\Components\Select::make('country')->label(trans('frontend.company.country'))
+            Forms\Components\Select::make('country')
+                        ->label(trans('frontend.company.country'))
                         ->options(
                             $this->countries
-                        )->searchable(),
+                        )
         ];
     }
     public function updatingSearch()
@@ -56,18 +58,24 @@ class Professionals extends Component implements HasForms
     {
         return 'livewire.custom-pagination2';
     }
-    public function updatejobscategories()
+    public function updatingjobscategories($value)
     {
+        // request()->query()['c'] = null;
+        // if($value == false && !count($this->jobs_categories)) $this->jobs_categories =null ;
         if(!is_array($this->jobs_categories)) return;
         $this->jobs_categories = array_filter($this->jobs_categories,function($job){
             return $job !=false;
         });
     }
-    public function updatingCountry($value){
+    public function updatecountry($value){
         dd($value);
     }
     public function render()
     {
+        //filter jobcategories
+        $this->jobs_categories = array_filter($this->jobs_categories,function($job){
+            return $job !=false;
+        });
 
         $professionals = Professional::with('user')
         ->withSum('reviews','rating')
@@ -82,6 +90,12 @@ class Professionals extends Component implements HasForms
         ->when($this->jobs_categories,function($query,$jobs_categories){
             $query->whereHas('user', function ($query) use ($jobs_categories) {
                 $query->whereIn('job_id', $jobs_categories);
+            });
+        })
+        ->when(request()->has('c'), function ($query) {
+            $ids = array(request()->query('c'));
+            $query->whereHas('user', function ($query) use ($ids) {
+                $query->whereIn('job_id', $ids);
             });
         })
         ->when($this->stars_count > 0,function($query){
@@ -109,7 +123,8 @@ class Professionals extends Component implements HasForms
             //     return Speciality::with('jobs:id,title,title_ar','title_fr')->get();
             // });
             $specialities = Cache::remember('jobs', 540, function () {
-                return Speciality::with('jobs')->get()->toArray();
+                return Speciality::with('jobs')->withCount('jobs')
+                ->orderBy('jobs_count', 'desc')->get()->toArray();
             });
         }
         return view('livewire.professionals', [

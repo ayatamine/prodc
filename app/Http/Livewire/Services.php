@@ -85,6 +85,9 @@ class Services extends Component
     }
     public function render()
     {
+        $this->jobs_categories = array_filter($this->jobs_categories,function($job){
+            return $job !=false;
+        });
         $services = Service::published()->open()
         ->with('client.user:id,first_name,last_name,profile_photo_path')
         ->when($this->search, function ($query) {
@@ -106,7 +109,10 @@ class Services extends Component
             // $specialities = Cache::remember('jobs', 540, function () {
             //     return Speciality::with('jobs:id,title,title_ar','title_fr')->get();
             // });
-            $specialities=   Speciality::with('jobs')->get()->toArray();
+            $specialities = Cache::remember('jobs', 540, function () {
+                return Speciality::with('jobs')->withCount('jobs')
+                ->orderBy('jobs_count', 'desc')->get()->toArray();
+            });
         }
         return view('livewire.services', [
             'services' => $services,

@@ -1,4 +1,4 @@
-<div class="w-full md:w-3/12    mt-2 pt-2 lg:mt-0 z-20" id="nav-content">
+<div class="w-full md:w-3/12    mt-2 pt-2 lg:mt-0 " id="nav-content">
     <!-- user avatar -->
    <livewire:dashboard.profile-picture/>
     <!-- user links -->

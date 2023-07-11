@@ -5,7 +5,7 @@
       <div class=" p-12 w-full md:w-2/3">
         <img src="assets/images/team/profil_picture_3.png" class="mx-auto h-40 w-40 rounded-full shadow-lg border" alt="">
         <h3 class="text-md md:text-xl  my-2 flex justify-center items-center gap-x-3">
-          <span>عياط احمد امين</span>
+          <span>{{$user->full_name}}</span>
           <span class="h-4 w-4 rounded-full mt-1 bg-green-500"></span>
         </h3>
         <div class="flex items-center justify-center gap-6 my-3 mb-5">
@@ -13,15 +13,17 @@
             <svg class="h-4 w-4 text-gray-600"  fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
             </svg>
-            <span>مطور ويب</span>
+            <span>{{$user?->job?->title.' '. $user->job_position_title}}</span>
           </div>
+          @if($user->nationality || $user->city)
           <div class="flex justify-between items-center gap-x-1  text-sm md:text-md text-gray-700 leading-6">
             <svg class="h-4 w-4 text-gray-600" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#6b6666"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3856 23.789L11.3831 23.7871L11.3769 23.7822L11.355 23.765C11.3362 23.7501 11.3091 23.7287 11.2742 23.7008C11.2046 23.6451 11.1039 23.5637 10.9767 23.4587C10.7224 23.2488 10.3615 22.944 9.92939 22.5599C9.06662 21.793 7.91329 20.7041 6.75671 19.419C5.60303 18.1371 4.42693 16.639 3.53467 15.0528C2.64762 13.4758 2 11.7393 2 10C2 7.34784 3.05357 4.8043 4.92893 2.92893C6.8043 1.05357 9.34784 0 12 0C14.6522 0 17.1957 1.05357 19.0711 2.92893C20.9464 4.8043 22 7.34784 22 10C22 11.7393 21.3524 13.4758 20.4653 15.0528C19.5731 16.639 18.397 18.1371 17.2433 19.419C16.0867 20.7041 14.9334 21.793 14.0706 22.5599C13.6385 22.944 13.2776 23.2488 13.0233 23.4587C12.8961 23.5637 12.7954 23.6451 12.7258 23.7008C12.6909 23.7287 12.6638 23.7501 12.645 23.765L12.6231 23.7822L12.6169 23.7871L12.615 23.7885C12.615 23.7885 12.6139 23.7894 12 23L12.6139 23.7894C12.2528 24.0702 11.7467 24.0699 11.3856 23.789ZM12 23L11.3856 23.789C11.3856 23.789 11.3861 23.7894 12 23ZM15 10C15 11.6569 13.6569 13 12 13C10.3431 13 9 11.6569 9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10Z" fill="currentColor"></path> </g></svg>
-            <span>فرنسا </span>
+            <span>{{$user->nationality ?? $user->city}} </span>
           </div>
+          @endif
       
         </div>
-        <div class=" flex flex-wrap justify-center items-center gap-3  text-md md:text-lg text-gray-700 leading-6">
+        {{-- <div class=" flex flex-wrap justify-center items-center gap-3  text-md md:text-lg text-gray-700 leading-6">
           <div class="group relative bg-neutral-100  p-1 rounded shadow-md">
             <svg class="h-8 w-8" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.007 8.27C22.194 9.125 23 10.45 23 12c0 1.55-.806 2.876-1.993 3.73.24 1.442-.134 2.958-1.227 4.05-1.095 1.095-2.61 1.459-4.046 1.225C14.883 22.196 13.546 23 12 23c-1.55 0-2.878-.807-3.731-1.996-1.438.235-2.954-.128-4.05-1.224-1.095-1.095-1.459-2.611-1.217-4.05C1.816 14.877 1 13.551 1 12s.816-2.878 2.002-3.73c-.242-1.439.122-2.955 1.218-4.05 1.093-1.094 2.61-1.467 4.057-1.227C9.125 1.804 10.453 1 12 1c1.545 0 2.88.803 3.732 1.993 1.442-.24 2.956.135 4.048 1.227 1.093 1.092 1.468 2.608 1.227 4.05Zm-4.426-.084a1 1 0 0 1 .233 1.395l-5 7a1 1 0 0 1-1.521.126l-3-3a1 1 0 0 1 1.414-1.414l2.165 2.165 4.314-6.04a1 1 0 0 1 1.395-.232Z" fill="#3eb142"></path></g></svg>
             <span class="group-hover:opacity-100 transition-opacity bg-gray-800 px-3 py-1 text-sm text-gray-100 rounded-md absolute left-1/2
@@ -62,7 +64,7 @@
             </span>
           </div>
       
-        </div>
+        </div> --}}
       </div>
       <!-- additional question / book -->
       <div class="w-full md:w-1/3 flex flex-col justify-end gap-12 items-center text-sm pb-12 mt-10 md:mt-0">
@@ -87,7 +89,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                   </svg>
                   
-                  <span class="pb-1 md:pb-0 text-[12px] text-sm ">الملف الشخصي</span>
+                  <span class="pb-1 md:pb-0 text-[12px] text-sm ">{{trans('frontend.user_personal_data')}}</span>
                 </a>
             </li>
             <!-- <li class="mr-4 my-2 md:my-0" role="presentation">
@@ -104,7 +106,7 @@
                   <svg class="h7 w-7 sm:h-5 sm:w-5 "  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
                   </svg>
-                  <span class="pb-1 md:pb-0 text-[12px]  text-sm ">التقييمات</span>
+                  <span class="pb-1 md:pb-0 text-[12px]  text-sm ">{{trans('frontend.ratings')}}</span>
                 </a>
             </li>
             <li class="mr-4 my-2 md:my-0" role="presentation">
@@ -112,7 +114,7 @@
                   <svg class="h7 w-7 sm:h-5 sm:w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                   </svg>
-                  <span class="pb-1 md:pb-0 text-[12px]  text-sm "> الأعمال</span>
+                  <span class="pb-1 md:pb-0 text-[12px]  text-sm "> {{trans('frontend.works')}}</span>
                 </a>
             </li>
             <li class="mr-4 my-2 md:my-0" role="presentation">
@@ -120,7 +122,7 @@
                   <svg class="h7 w-7 sm:h-5 sm:w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>                    
-                  <span class="pb-1 md:pb-0 text-[12px]  text-sm ">أوقات العمل</span>
+                  <span class="pb-1 md:pb-0 text-[12px]  text-sm ">{{trans('frontend.work_times')}}</span>
                 </a>
             </li>
         </ul>
@@ -133,13 +135,13 @@
           <!-- bio -->
           <div class="w-full md:w-2/3">
             <div class="bg-white rounded ">
-              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">نبدة عني</h2>
+              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">{{trans('frontend.user_bio')}}</h2>
               <p class="p-6 text-smd leading-9 font-Noto-Naskh">
-                مهندس برمجيات - مطور مواقع انترنت | بكالوريوس في الحاسبات و الذكاء الاصطناعي
-                قدمت العديد من الحلول التقنية إلى العديد من الشركات و أصحاب الأعمال
-                ساهمت في نجاح وتعزيز العديد من الشركات .
-                يمكنني مساعدتك وتقديم الاستشارات التقنية لك ، فما دمت استطيع المساعدة سأفعل .
-                انتهى بكل حب
+               @if($user->bio)
+                {{$user->bio}} 
+               @else
+               <x-alert type="info" message="{{trans('frontend.no_item_added_yet',['title'=>trans('frontend.missing_bio')])}}" />
+               @endif
               </p>
             </div>
             <!-- ethiks button -->
@@ -153,9 +155,17 @@
               <span class="text-green-600 text-sm md:text-smd">المحترف أدى القسم على الإلتزام بهذا الميثاق</span>
             </div>
             <div class="bg-white rounded mt-3">
-              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">مهاراتي</h2>
+              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">{{trans('frontend.my_skills')}}</h2>
               <div class="p-6 flex justify-start flex-wrap gap-2">
-                <a href="#" class="bg-primaryTextColor w-fit text-sm text-white flex justify-center items-center  gap-x-1  p-1 px-3 ">
+                @forelse ($user->skills as $skill)
+                  <span class="bg-primaryTextColor w-fit text-sm text-white flex justify-center items-center  gap-x-1  p-1 px-3 ">
+                    <svg class="h-3 w-3" width="64px" height="64px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>tag_fill_round [#ffffff1176]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-180.000000, -2959.000000)" fill="#ffffff"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M129.020148,2805.2265 C128.444271,2805.2265 127.976892,2804.76459 127.976892,2804.19545 C127.976892,2803.62631 128.444271,2803.1644 129.020148,2803.1644 C129.596025,2803.1644 130.063404,2803.62631 130.063404,2804.19545 C130.063404,2804.76459 129.596025,2805.2265 129.020148,2805.2265 M143.388913,2809.64763 L139.933649,2806.2328 L139.933649,2806.2328 C134.061161,2800.42903 135.435129,2801.81888 133.157701,2799.41861 C132.961569,2799.22477 132.696582,2799 132.420119,2799 L126.085469,2799 C124.933714,2799 124,2800.15684 124,2801.29511 L124,2807.5546 C124,2807.82886 124.109542,2808.09075 124.304631,2808.28458 C128.396281,2812.32732 125.450126,2809.41564 134.536886,2818.39606 C135.351669,2819.20131 136.672431,2819.20131 137.487214,2818.39606 L137.487214,2818.39606 C142.018074,2813.91926 141.012376,2814.91215 143.388913,2812.56343 C144.203696,2811.75818 144.203696,2810.45287 143.388913,2809.64763" id="tag_fill_round-[#ffffff1176]"> </path> </g> </g> </g> </g></svg>
+                    <span>{{$skill->name}}</span>
+                  </span>
+                @empty
+                <x-alert type="info" message="{{trans('frontend.no_item_added_yet',['title'=>trans('frontend.missing_skills')])}}" />
+                @endforelse
+                {{-- <a href="#" class="bg-primaryTextColor w-fit text-sm text-white flex justify-center items-center  gap-x-1  p-1 px-3 ">
                   <svg class="h-3 w-3" width="64px" height="64px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>tag_fill_round [#ffffff1176]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-180.000000, -2959.000000)" fill="#ffffff"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M129.020148,2805.2265 C128.444271,2805.2265 127.976892,2804.76459 127.976892,2804.19545 C127.976892,2803.62631 128.444271,2803.1644 129.020148,2803.1644 C129.596025,2803.1644 130.063404,2803.62631 130.063404,2804.19545 C130.063404,2804.76459 129.596025,2805.2265 129.020148,2805.2265 M143.388913,2809.64763 L139.933649,2806.2328 L139.933649,2806.2328 C134.061161,2800.42903 135.435129,2801.81888 133.157701,2799.41861 C132.961569,2799.22477 132.696582,2799 132.420119,2799 L126.085469,2799 C124.933714,2799 124,2800.15684 124,2801.29511 L124,2807.5546 C124,2807.82886 124.109542,2808.09075 124.304631,2808.28458 C128.396281,2812.32732 125.450126,2809.41564 134.536886,2818.39606 C135.351669,2819.20131 136.672431,2819.20131 137.487214,2818.39606 L137.487214,2818.39606 C142.018074,2813.91926 141.012376,2814.91215 143.388913,2812.56343 C144.203696,2811.75818 144.203696,2810.45287 143.388913,2809.64763" id="tag_fill_round-[#ffffff1176]"> </path> </g> </g> </g> </g></svg>
                   <span>فوتشوب</span>
                 </a>
@@ -166,17 +176,17 @@
                 <a href="#" class="bg-primaryTextColor w-fit text-sm text-white flex justify-center items-center  gap-x-1  p-1 px-3 ">
                   <svg class="h-3 w-3" width="64px" height="64px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>tag_fill_round [#ffffff1176]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-180.000000, -2959.000000)" fill="#ffffff"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M129.020148,2805.2265 C128.444271,2805.2265 127.976892,2804.76459 127.976892,2804.19545 C127.976892,2803.62631 128.444271,2803.1644 129.020148,2803.1644 C129.596025,2803.1644 130.063404,2803.62631 130.063404,2804.19545 C130.063404,2804.76459 129.596025,2805.2265 129.020148,2805.2265 M143.388913,2809.64763 L139.933649,2806.2328 L139.933649,2806.2328 C134.061161,2800.42903 135.435129,2801.81888 133.157701,2799.41861 C132.961569,2799.22477 132.696582,2799 132.420119,2799 L126.085469,2799 C124.933714,2799 124,2800.15684 124,2801.29511 L124,2807.5546 C124,2807.82886 124.109542,2808.09075 124.304631,2808.28458 C128.396281,2812.32732 125.450126,2809.41564 134.536886,2818.39606 C135.351669,2819.20131 136.672431,2819.20131 137.487214,2818.39606 L137.487214,2818.39606 C142.018074,2813.91926 141.012376,2814.91215 143.388913,2812.56343 C144.203696,2811.75818 144.203696,2810.45287 143.388913,2809.64763" id="tag_fill_round-[#ffffff1176]"> </path> </g> </g> </g> </g></svg>
                   <span>لارافيل</span>
-                </a>
+                </a> --}}
               </div>
             </div>
           </div>
           <!-- statistic and verfications -->
           <div class="w-full md:w-1/3">
             <!-- statistics -->
-            <div class="bg-white rounded  pb-4">
-              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">الاحصائيات</h2>
+            <div class="w-full mt-3 md:mt-0 bg-white rounded  pb-4">
+              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">{{trans('frontend.statistics')}}</h2>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/2 ">التقييمات</span>
+                <span class="w-1/2 ">{{trans('frontend.ratings')}}</span>
                 <div class="w-1/2 flex items-center">
                   <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -207,19 +217,19 @@
                   <span class="mx-1"> (25)</span>
                 </div>
               </div>
-              <div class="flex justify-between gap-2 px-6 py-2 text-sm">
+              {{-- <div class="flex justify-between gap-2 px-6 py-2 text-sm">
                 <span class="w-1/2">معدل التوظيف	</span>
                 <div class="w-1/2 shadow  bg-gray-100 h-4 rounded-md">
                   <div class="bg-blue-500 text-xs h-4 leading-4 rounded-md  text-center text-white" style="width: 45%">45%</div>
                 </div>
-              </div>
+              </div> --}}
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
                 <span  class="w-1/2">المعاملات المكتملة		</span>
                 <span class="w-1/2 font-semibold">2</span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
                 <span class="w-1/2">تاريخ الانضمام	</span>
-                <span class="w-1/2 font-semibold">14 مارس 2015   </span>
+                <span class="w-1/2 font-semibold">{{$user->created_at}}</span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
                 <span class="w-1/2">آخر تواجد		</span>
@@ -231,110 +241,100 @@
               <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">معلومات عامة</h2>
 
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span  class="w-1/3">العنوان</span>
-                <span class="w-2/3 font-semibold">92 rue Lebon 78500 Sartrouville France</span>
+                <span  class="w-1/3">{{trans('frontend.address')}}</span>
+                <span class="w-2/3 font-semibold">
+                  @if($user->nationality || $user->city)
+                  {{$user->nationality ?? $user->city}}
+                  @else 
+                  {{trans('frontend.no_item_added_yet',['title'=>trans('frontend.missing_address')])}}
+                  @endif
+                </span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/3">الهاتف	</span>
-                <span class="w-2/3 font-semibold">0033659299938 </span>
+                <span class="w-1/3">{{trans('forms.phone_number')}}	</span>
+                <span class="w-2/3 font-semibold">
+                  @if($user->phone_number)
+                  {{$user->phone_number}}
+                  @else 
+                  {{trans('frontend.no_item_added_yet',['title'=>trans('forms.phone_number')])}}
+                  @endif
+                </span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/3">الايميل		</span>
-                <span class="w-2/3 font-semibold">email@exammple.com </span>
+                <span class="w-1/3">{{trans('forms.email')}}		</span>
+                <span class="w-2/3 font-semibold">
+                  @if($user->email)
+                  {{$user->email}}
+                  @else 
+                  {{trans('frontend.no_item_added_yet',['title'=>trans('forms.email')])}}
+                  @endif
+                </span>
               </div>
+              @professional
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/3">الموقع		</span>
-                <a href="#" class="w-2/3 font-semibold underline">www.example.com</a>
+                <span class="w-1/3">{{trans('forms.website_url')}}		</span>
+                <a href="{{$user->professional->website_url}}" class="w-2/3 font-semibold underline">{{\Illuminate\Support\Str::limit($user->professional->website_url,30)}}</a>
               </div>
+              @endprofessional
             </div>
             <div class="bg-white rounded pb-4 mt-4 p-3 h-60" id="googleMap" >
               <iframe class="h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d-70.56068388481569!3d41.45496659976631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e52963ac45bbcb%3A0xf05e8d125e82af10!2sDos%20Mas!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"  style="border:0;width:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <!-- verfications -->
             <div class="bg-white rounded  pb-4 mt-4" id="uper-work-times">
-              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">التوثيقات</h2>
+              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">{{trans('frontend.account_verifications')}}</h2>
               <div class="grid grid-cols-2 gap-3 pt-3 px-6">
                 <div class="flex justify-start gap-2 py-1 text-sm">
-                  <svg class="h-5 w-5 text-green-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                هوية شخصية 
+                  <svg class="h-5 w-5 @if($user->is_account_verified) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                {{trans('forms.identity')}} 
                 </div>
                 <div class="flex justify-start gap-2 py-1 text-sm">
-                  <svg class="h-5 w-5 text-green-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                  رقم الهاتف
+                  <svg class="h-5 w-5 @if($user->phone_number) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.phone_number')}}
+                </div>
+                @professional
+                <div class="flex justify-start gap-2 py-1 text-sm">
+                  <svg class="h-5 w-5 @if($user->email_verified_at != null) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.email')}}
                 </div>
                 <div class="flex justify-start gap-2 py-1 text-sm">
-                  <svg class="h-5 w-5 text-green-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                  البريد الالكتروني
+                  <svg class="h-5 w-5 @if($user->professional->website_url) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.website_url')}}
                 </div>
                 <div class="flex justify-start gap-2 py-1 text-sm">
-                  <svg class="h-5 w-5 text-green-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                  موقع الكتروني
+                  <svg class="h-5 w-5 text-red-600 "  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.payment_way')}}
                 </div>
                 <div class="flex justify-start gap-2 py-1 text-sm">
-                  <svg class="h-5 w-5 text-green-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                  وسيلة دفع
+                  <svg class="h-5 w-5 @if($user->professional->commercial_register_no) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.commercial_register')}}
                 </div>
-                <div class="flex justify-start gap-2 py-1 text-sm">
-                  <svg class="h-5 w-5 text-green-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                  السجل التجاري
-                </div>
+                @endprofessional
               </div>
 
             </div>
              <!-- working time -->
+             @professional
             <div class="bg-white rounded  pb-4 mt-4" id="work-times">
-              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold flex justify-between items-center">أوقات العمل
-                <span class="text-blue-600 text-[14px]">التوقيت على حسب توقيت مكة المكرمة</span>
+              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold flex justify-between items-center">{{trans('frontend.work_times')}}
+                <span class="text-blue-600 text-[14px]">{{trans('frontend.alert_mekka_time')}}</span>
               </h2>
-
+              @forelse ($user->professional->work_days as $day)
               <div class="flex justify-between gap-2 px-6 py-2 text-sm pt-4">
-                <span class="w-2/5 text-blue-800">الإثنين</span>
+                <span class="w-2/5 text-blue-800">{{trans('forms.week_days.'.$day['day'])}}</span>
                 <p class="w-3/5 text-smd">
-                  <strong>08:00 صباحا</strong>
+                  <strong>{{$day['time_from']}}</strong>
                   <span class="mx-1">--</span>
-                  <strong>08:00 مساءا</strong>
+                  <strong>{{$day['time_to']}}</strong>
                 </p>
               </div>
-              <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-2/5 text-blue-800">الثلاثاء</span>
-                <p class="w-3/5 text-smd">
-                  <strong>08:00 صباحا</strong>
-                  <span class="mx-1">--</span>
-                  <strong>08:00 مساءا</strong>
-                </p>
-              </div>
-              <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-2/5 text-blue-800">الأربعاء</span>
-                <p class="w-3/5 text-smd">
-                  <strong>08:00 صباحا</strong>
-                  <span class="mx-1">--</span>
-                  <strong>08:00 مساءا</strong>
-                </p>
-              </div>
-              <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-2/5 text-blue-800">الخميس</span>
-                <p class="w-3/5 text-smd">
-                  <strong>08:00 صباحا</strong>
-                  <span class="mx-1">--</span>
-                  <strong>08:00 مساءا</strong>
-                </p>
-              </div>
-              <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-2/5 text-blue-800">الجمعة</span>
-                <p class="w-3/5 text-smd text-red-600">
-                  غير متاح طول اليوم
-                </p>
-              </div>
-              <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-2/5 text-blue-800">السبت</span>
-                <p class="w-3/5 text-smd">
-                  <strong>08:00 صباحا</strong>
-                  <span class="mx-1">--</span>
-                  <strong>08:00 مساءا</strong>
-                </p>
-              </div>
+              @empty
+              {{trans('frontend.no_item_added_yet',['title'=>trans('forms.work_days')])}}
+              @endforelse
+           
 
             </div>
+            @endprofessional
           </div>
         </div>
       </div>
@@ -411,10 +411,10 @@
               </div>
             </div>
             <!-- statistics -->
-            <div class="w-full md:w-1/3 bg-white rounded  pb-4">
-              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">الاحصائيات</h2>
+            <div class="w-full  bg-white mt-3 md:mt-0 rounded  pb-4">
+              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">{{trans('frontend.statistics')}}</h2>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/2 ">التقييمات</span>
+                <span class="w-1/2 ">{{trans('frontend.ratings')}}</span>
                 <div class="w-1/2 flex items-center">
                   <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -442,21 +442,22 @@
                       d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
                     </path>
                   </svg>
+                  <span class="mx-1"> (25)</span>
                 </div>
               </div>
-              <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/2">معدل إكمال المشاريع	</span>
+              {{-- <div class="flex justify-between gap-2 px-6 py-2 text-sm">
+                <span class="w-1/2">معدل التوظيف	</span>
                 <div class="w-1/2 shadow  bg-gray-100 h-4 rounded-md">
                   <div class="bg-blue-500 text-xs h-4 leading-4 rounded-md  text-center text-white" style="width: 45%">45%</div>
                 </div>
-              </div>
+              </div> --}}
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span  class="w-1/2">مشاريع يعمل عليها		</span>
+                <span  class="w-1/2">المعاملات المكتملة		</span>
                 <span class="w-1/2 font-semibold">2</span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
                 <span class="w-1/2">تاريخ الانضمام	</span>
-                <span class="w-1/2 font-semibold">14 مارس 2015   </span>
+                <span class="w-1/2 font-semibold">{{$user->created_at}}</span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
                 <span class="w-1/2">آخر تواجد		</span>
@@ -471,7 +472,7 @@
           <!-- ratings -->
           <div class="w-full md:w-2/3">
             <div class="bg-white rounded py-3">
-              <h2 class="border-b p-4 px-6 text-base text-gray-600 font-semibold">التقييمات</h2>
+              <h2 class="border-b p-4 px-6 text-base text-gray-600 font-semibold">{{trans('frontend.ratings')}}</h2>
               <div class="flex justify-between gap-2 px-6  py-2 text-sm">
                 <span class="">الاحترافية بالتعامل</span>
                 <div class=" flex items-center">
@@ -1735,10 +1736,10 @@
           
           <div class="w-full md:w-1/3">
              <!-- statistics -->
-             <div class=" bg-white rounded  pb-4">
-              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">الاحصائيات</h2>
+             <div class="w-full bg-white mt-3 md:mt-0  rounded  pb-4">
+              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">{{trans('frontend.statistics')}}</h2>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/2 ">التقييمات</span>
+                <span class="w-1/2 ">{{trans('frontend.ratings')}}</span>
                 <div class="w-1/2 flex items-center">
                   <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -1766,21 +1767,22 @@
                       d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
                     </path>
                   </svg>
+                  <span class="mx-1"> (25)</span>
                 </div>
               </div>
-              <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/2">معدل إكمال المشاريع	</span>
+              {{-- <div class="flex justify-between gap-2 px-6 py-2 text-sm">
+                <span class="w-1/2">معدل التوظيف	</span>
                 <div class="w-1/2 shadow  bg-gray-100 h-4 rounded-md">
                   <div class="bg-blue-500 text-xs h-4 leading-4 rounded-md  text-center text-white" style="width: 45%">45%</div>
                 </div>
-              </div>
+              </div> --}}
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span  class="w-1/2">مشاريع يعمل عليها		</span>
+                <span  class="w-1/2">المعاملات المكتملة		</span>
                 <span class="w-1/2 font-semibold">2</span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
                 <span class="w-1/2">تاريخ الانضمام	</span>
-                <span class="w-1/2 font-semibold">14 مارس 2015   </span>
+                <span class="w-1/2 font-semibold">{{$user->created_at}}</span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
                 <span class="w-1/2">آخر تواجد		</span>
@@ -1789,9 +1791,11 @@
             </div>
             <!-- badges -->
             <div class="bg-white rounded  pb-4 mt-4">
-              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">الأوسمة</h2>
-
-              <div class=" flex flex-wrap justify-center items-center gap-3 p-4  text-md md:text-lg text-gray-700 leading-6">
+              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">{{trans('frontend.badges')}}</h2>
+              <div class="p-4">
+                {{trans('frontend.no_item_added_yet',['title'=>trans('frontend.badge')])}}
+              </div>
+              {{-- <div class=" flex flex-wrap justify-center items-center gap-3 p-4  text-md md:text-lg text-gray-700 leading-6">
                 <div class="group relative bg-neutral-100  p-1 rounded shadow-md">
                   <svg class="h-8 w-8" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.007 8.27C22.194 9.125 23 10.45 23 12c0 1.55-.806 2.876-1.993 3.73.24 1.442-.134 2.958-1.227 4.05-1.095 1.095-2.61 1.459-4.046 1.225C14.883 22.196 13.546 23 12 23c-1.55 0-2.878-.807-3.731-1.996-1.438.235-2.954-.128-4.05-1.224-1.095-1.095-1.459-2.611-1.217-4.05C1.816 14.877 1 13.551 1 12s.816-2.878 2.002-3.73c-.242-1.439.122-2.955 1.218-4.05 1.093-1.094 2.61-1.467 4.057-1.227C9.125 1.804 10.453 1 12 1c1.545 0 2.88.803 3.732 1.993 1.442-.24 2.956.135 4.048 1.227 1.093 1.092 1.468 2.608 1.227 4.05Zm-4.426-.084a1 1 0 0 1 .233 1.395l-5 7a1 1 0 0 1-1.521.126l-3-3a1 1 0 0 1 1.414-1.414l2.165 2.165 4.314-6.04a1 1 0 0 1 1.395-.232Z" fill="#3eb142"></path></g></svg>
                   <span class="group-hover:opacity-100 transition-opacity bg-gray-800 px-3 py-1 text-sm text-gray-100 rounded-md absolute left-1/2
@@ -1824,7 +1828,7 @@
                   -translate-x-1/2  opacity-0 m-4 z-40 mx-auto w-max">ملفه مكتمل</span>
                 </div>
             
-              </div>
+              </div> --}}
 
             </div>
             <!-- general info -->
@@ -1832,38 +1836,72 @@
               <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">معلومات عامة</h2>
 
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span  class="w-1/3">العنوان</span>
-                <span class="w-2/3 font-semibold">92 rue Lebon 78500 Sartrouville France</span>
+                <span  class="w-1/3">{{trans('frontend.address')}}</span>
+                <span class="w-2/3 font-semibold">
+                  @if($user->nationality || $user->city)
+                  {{$user->nationality ?? $user->city}}
+                  @else 
+                  {{trans('frontend.no_item_added_yet',['title'=>trans('frontend.missing_address')])}}
+                  @endif
+                </span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/3">الهاتف	</span>
-                <span class="w-2/3 font-semibold">0033659299938 </span>
+                <span class="w-1/3">{{trans('forms.phone_number')}}	</span>
+                <span class="w-2/3 font-semibold">
+                  @if($user->phone_number)
+                  {{$user->phone_number}}
+                  @else 
+                  {{trans('frontend.no_item_added_yet',['title'=>trans('forms.phone_number')])}}
+                  @endif
+                </span>
               </div>
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/3">الايميل		</span>
-                <span class="w-2/3 font-semibold">email@exammple.com </span>
+                <span class="w-1/3">{{trans('forms.email')}}		</span>
+                <span class="w-2/3 font-semibold">
+                  @if($user->email)
+                  {{$user->email}}
+                  @else 
+                  {{trans('frontend.no_item_added_yet',['title'=>trans('forms.email')])}}
+                  @endif
+                </span>
               </div>
+              @professional
               <div class="flex justify-between gap-2 px-6 py-2 text-sm">
-                <span class="w-1/3">الموقع		</span>
-                <a href="#" class="w-2/3 font-semibold underline">www.example.com</a>
+                <span class="w-1/3">{{trans('forms.website_url')}}		</span>
+                <a href="{{$user->professional->website_url}}" class="w-2/3 font-semibold underline">{{\Illuminate\Support\Str::limit($user->professional->website_url,30)}}</a>
               </div>
+              @endprofessional
             </div>
             <!-- verfications -->
-            <div class="bg-white rounded  pb-4 mt-4">
-              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">التوثيقات</h2>
+            <div class="bg-white rounded  pb-4 mt-4" id="uper-work-times">
+              <h2 class="border-b p-2 px-6 text-base text-gray-600 font-semibold">{{trans('frontend.account_verifications')}}</h2>
               <div class="grid grid-cols-2 gap-3 pt-3 px-6">
                 <div class="flex justify-start gap-2 py-1 text-sm">
-                  <svg class="h-5 w-5 text-green-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                  البريد الالكتروني
+                  <svg class="h-5 w-5 @if($user->is_account_verified) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                {{trans('forms.identity')}} 
                 </div>
                 <div class="flex justify-start gap-2 py-1 text-sm">
-                  <svg class="h-5 w-5 text-green-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                  رقم الهاتف
+                  <svg class="h-5 w-5 @if($user->phone_number) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.phone_number')}}
+                </div>
+                @professional
+                <div class="flex justify-start gap-2 py-1 text-sm">
+                  <svg class="h-5 w-5 @if($user->email_verified_at != null) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.email')}}
                 </div>
                 <div class="flex justify-start gap-2 py-1 text-sm">
-                  <svg class="h-5 w-5 text-green-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                  أقسم على الميثاق
+                  <svg class="h-5 w-5 @if($user->professional->website_url) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.website_url')}}
                 </div>
+                <div class="flex justify-start gap-2 py-1 text-sm">
+                  <svg class="h-5 w-5 text-red-600 "  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.payment_way')}}
+                </div>
+                <div class="flex justify-start gap-2 py-1 text-sm">
+                  <svg class="h-5 w-5 @if($user->professional->commercial_register_no) text-green-600 @else text-red-600 @endif"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="9 11 12 14 20 6" />  <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                  {{trans('forms.commercial_register')}}
+                </div>
+                @endprofessional
               </div>
 
             </div>
@@ -1913,3 +1951,28 @@
   
     
   </section>
+  @section('scripts')
+  <script>
+      document.querySelectorAll('#myTab li a').forEach(link => 
+      link.addEventListener('click',function(e){
+        e.preventDefault()
+        changeTab(e.currentTarget)
+        if(link.hasAttribute('data-is-time')){
+          document.querySelector('#uper-work-times').scrollIntoView({behavior: 'smooth'}, true);
+        }
+      })
+      )
+      function changeTab(target){
+        document.querySelectorAll('#myTab li a').forEach(child => 
+        child.classList.remove('tab-active'))
+         target.classList.add('tab-active')
+         let data_tabcontent = target.getAttribute('data-tabs-target');
+         document.querySelectorAll('#myTabContent > div:not(.navigation)').forEach(d => {
+          d.classList.add('hidden')
+         }); 
+  
+         document.querySelector(""+data_tabcontent+"").classList.remove('hidden')
+      }
+  
+    </script>
+  @endsection

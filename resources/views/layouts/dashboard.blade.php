@@ -44,7 +44,7 @@
 
             <div class="w-full mx-auto my-6 md:flex gap-3" id="myTabContent" >
               @include('layouts.front.dashboard_navigation')
-              <div class="w-full md:w-9/12 mt-2  lg:mt-0  z-20">
+              <div class="w-full md:w-9/12 mt-2  lg:mt-0 ">
               @yield('content') 
               </div>
             </div>   

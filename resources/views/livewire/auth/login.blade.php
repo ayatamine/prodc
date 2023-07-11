@@ -45,7 +45,7 @@
             </div>
             <h1 class="hidden px-3 py-2 w-5/6 text-start text-gray-600 font-bold text-sm md:text-smd"> قوقل</h1>
           </a>
-          <a href="#"
+          <a href="{{ url('auth/facebook') }}"
             class="flex items-center justify-center my-2 text-white   h-12 w-12 md:h-auto md:w-auto rounded-full  border shadow-md hover:bg-gray-100">
             <div class="md:p-1 ">
               <svg class="h-11 w-11  " xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
@@ -58,7 +58,7 @@
             </div>
             <h1 class="hidden px-3 py-2 w-5/6 text-start text-gray-600 font-bold text-sm md:text-smd"> فيسبوك</h1>
           </a>
-          <a href="#"
+          <a href="{{ url('auth/twitter') }}"
             class="flex items-center justify-center my-2 text-white   h-12 w-12 md:h-auto md:w-auto rounded-full  border shadow-md hover:bg-gray-100">
             <div class="md:p-1 ">
               <svg class="h-11 w-11  " width="64px" height="64px" viewBox="0 0 48 48" fill="none"

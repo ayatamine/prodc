@@ -59,19 +59,28 @@ x-transition:leave-end="-translate-x-full opacity-0"
  </a>
 </li>
 <li class="group relative my-2">
- <a    href="categories.html"   class="sidenav-link"           >
+ <a    href="{{route('categories')}}"   class="sidenav-link"           >
    <svg class="h-5 w-5 "  fill="none" viewBox="0 0 24 24" stroke="currentColor">
      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
    </svg>
-    <span> الفئات  </span>
+    <span> {{trans('frontend.categories')}}  </span>
  </a>
 </li>
+@professional
 <li class="group relative my-2">
- <a    href="add_project.html"   class="sidenav-link"           >
+ <a    href="{{route('home')}}"   class="sidenav-link"           >
    <svg class="h-5 w-5"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="4" y="4" width="6" height="5" rx="2" />  <rect x="4" y="13" width="6" height="7" rx="2" />  <rect x="14" y="4" width="6" height="7" rx="2" />  <rect x="14" y="15" width="6" height="5" rx="2" /></svg>
-    <span> طلب خدمة جديدة </span>
+    <span> {{trans('frontend.add_new_offer')}}  </span>
  </a>
 </li>
+@else
+<li class="group relative my-2">
+ <a    href="{{route('services.create')}}"   class="sidenav-link"           >
+   <svg class="h-5 w-5"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="4" y="4" width="6" height="5" rx="2" />  <rect x="4" y="13" width="6" height="7" rx="2" />  <rect x="14" y="4" width="6" height="7" rx="2" />  <rect x="14" y="15" width="6" height="5" rx="2" /></svg>
+    <span> {{trans('frontend.add_new_service')}}  </span>
+ </a>
+</li>
+@endif 
 <!-- vision and about -->
 <li class="group relative my-2">
  
@@ -120,7 +129,7 @@ x-transition:leave-end="-translate-x-full opacity-0"
          </a>
        </li>
        <li class="group relative my-2">
-         <a   href="{{route('front_pages',['slug'=>'values'])}}"   class="sidenav-link flex items-center"           >
+         <a   href="{{route('front_pages',['slug'=>'vision'])}}"   class="sidenav-link flex items-center"           >
            <svg class="h-4 w-4 text-gray-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="3" y="12" width="6" height="8" rx="1" />  <rect x="9" y="8" width="6" height="12" rx="1" />  <rect x="15" y="4" width="6" height="16" rx="1" />  <line x1="4" y1="20" x2="18" y2="20" /></svg>                            
            <span>{{trans('frontend.pages.vision')}}</span>
          </a>
@@ -138,7 +147,7 @@ x-transition:leave-end="-translate-x-full opacity-0"
    <a    href=""  class="sidenav-link flex items-center justify-between"        @click.prevent="dropOpen = !dropOpen"   >
      <div class="  flex items-center justify-between gap-3">
        <svg class="h-5 w-5"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="4" y="4" width="6" height="5" rx="2" />  <rect x="4" y="13" width="6" height="7" rx="2" />  <rect x="14" y="4" width="6" height="7" rx="2" />  <rect x="14" y="15" width="6" height="5" rx="2" /></svg>
-        <span> المحترف القوي الأمين </span>
+        <span>{{trans('frontend.prodc')}}</span>
      </div>
      <svg x-show="!dropOpen" class="h-5 w-5 text-gray-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="15 6 9 12 15 18" /></svg>
      <svg  x-show="dropOpen" class="h-5 w-5 text-gray-700"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <polyline points="6 9 12 15 18 9" /></svg>                      </a>
@@ -147,49 +156,49 @@ x-transition:leave-end="-translate-x-full opacity-0"
        <li class="group relative my-2">
          <a   href="ethiks.html"   class="sidenav-link flex items-center"           >
            <svg class="h-5 w-5 text-gray-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M14 3v4a1 1 0 0 0 1 1h4" />  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />  <line x1="9" y1="9" x2="10" y2="9" />  <line x1="9" y1="13" x2="15" y2="13" />  <line x1="9" y1="17" x2="15" y2="17" /></svg>
-           <span>ميثاق المحترف القوي الأمين</span>
+           <span>{{trans('frontend.prodc_charter')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
          <a   href="properties.html"   class="sidenav-link flex items-center"           >
            <svg class="h-5 w-5 text-gray-700 "  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="9" x2="19" y2="9" />  <line x1="5" y1="15" x2="19" y2="15" />  <line x1="11" y1="4" x2="7" y2="20" />  <line x1="17" y1="4" x2="13" y2="20" /></svg>
-           <span>  صفات المحترف القوي الأمين</span>
+           <span> {{trans('frontend.prodc_characteristics')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
          <a   href="index.html#prodc-network"   class="sidenav-link flex items-center"           >
            <svg class="h-5 w-5 text-gray-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M17.905 13.057c2.208 1.756 3.436 3.308 3.012 4.035-.67 1.146-5.204-.204-10.129-3.016-4.924-2.812-8.374-6.022-7.705-7.168.418-.716 2.347-.458 4.936.524" />  <circle cx="12" cy="12" r="6" /></svg>
-           <span> شبكة المحترف القوي الأمين</span>
+           <span> {{trans('frontend.prodc_professionals2')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
          <a   href="{{route('packages')}}"   class="sidenav-link flex items-center"           >
            <svg class="h-4 w-4 text-gray-700 "  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />  <circle cx="9" cy="9" r="2" /></svg>
-           <span>  باقات المحترف القوي الأمين</span>
+           <span>  {{trans('frontend.prodc_packages')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
          <a   href="blog.html"   class="sidenav-link flex items-center"           >
            <svg class="h-5 w-5 text-gray-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />  <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" /></svg>
-           <span> المدونة</span>
+           <span> {{trans('frontend.blog')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
          <a   href="guarantite.html"   class="sidenav-link flex items-center"           >
            <svg class="h-5 w-5"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M14 3v4a1 1 0 0 0 1 1h4" />  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />  <path d="M9 15l2 2l4 -4" /></svg>
-           <span> ضمان الحقوق</span>
+           <span> {{trans('frontend.gurantite')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
          <a   href="faqs.html"   class="sidenav-link flex items-center"           >
            <svg  class="h-4 w-5 text-gray-700" fill="#393737" width="64px" height="64px" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" stroke="#605c5c"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g> <path d="M48,0A24.0275,24.0275,0,0,0,24,24a6,6,0,0,0,12,0,12,12,0,0,1,24,0c0,5.2031-3.0586,8.3965-8.0859,13.0371C47.2617,41.32,42,46.1719,42,54a6,6,0,0,0,12,0c0-2.4434,2.2969-4.6875,6.0469-8.1445C65.0859,41.2031,72,34.834,72,24A24.0275,24.0275,0,0,0,48,0Z"></path> <path d="M48,72A12,12,0,1,0,60,84,12.0119,12.0119,0,0,0,48,72Z"></path> </g> </g></svg>
-           <span>الأسئلة الشائعة</span>
+           <span>{{trans('frontend.faqs')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
          <a   href="conditions.html"   class="sidenav-link flex items-center"           >
            <svg class="h-5 w-5 text-gray-700"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />  <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />  <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />  <line x1="11" y1="6" x2="20" y2="6" />  <line x1="11" y1="12" x2="20" y2="12" />  <line x1="11" y1="18" x2="20" y2="18" /></svg>
-           <span>  شروط الاستخدام</span>
+           <span> {{trans('frontend.use_conditions')}}</span>
          </a>
        </li>
        <li class="group relative my-2">
@@ -198,7 +207,7 @@ x-transition:leave-end="-translate-x-full opacity-0"
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
            </svg>
            
-           <span>بيان الخصوصية</span>
+           <span>{{trans('frontend.use_privacy')}}</span>
          </a>
        </li>
        

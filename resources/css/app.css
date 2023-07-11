@@ -341,3 +341,5 @@ html[dir="rtl"] select{
 .filepond--drop-label,.filepond--browser{@apply min-h-[6rem]}
 .filepond--root.filepond--hopper,.filament-forms-section-header-wrapper,.filament-forms-section-component,.choices__inner{@apply rounded-none bg-white}
 /* div[role="navigatio] */
+.choices__inner,.choices.is-focused .choices__inner,.choices__input.choices__input--cloned .choices__inner{@apply shadow-none border-0 p-0}
+.choices__input choices__input--cloned{@apply rounded-none}

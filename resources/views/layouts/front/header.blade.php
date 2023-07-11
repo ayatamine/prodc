@@ -53,25 +53,25 @@
                       class="submenu top-dropdown px-0 py-1 shadow-black drop-shadow-md"
                     >
                       <a
-                        href="about.html"
+                        href="{{route('front_pages',['slug'=>'about'])}}"
                         class="topnav-link m-0 w-full" style="padding:0.25rem 1rem;margin:0"
                         
                       >
-                        من نحن
+                      {{trans('frontend.pages.about')}}
                       </a>
                       <a
-                        href="values.html"
+                        href="{{route('front_pages',['slug'=>'values'])}}"
                         class="topnav-link m-0 w-full" style="padding:0.25rem 1rem;margin:0"
                         
                       >
-                      قيمنا
+                      {{trans('frontend.pages.values')}}
                       </a>
                       <a
-                        href="vision.html"
+                        href="{{route('front_pages',['slug'=>'vision'])}}"
                         class="topnav-link m-0 w-full" style="padding:0.25rem 1rem;margin:0"
                         
                       >
-                      أهدافنا
+                      {{trans('frontend.pages.vision')}}
                       </a>
                      
                     </div>
@@ -86,26 +86,26 @@
                   </li>
                   <li class="group relative">
                     <a
-                      href="#about-us"
+                      href="{{route('home')}}#about-us"
                       class="ud-menu-scroll topnav-link "
                     >
-                       المحترف القوي الأمين
+                       {{trans('frontend.prodc')}}
                     </a>
                   </li>                 
                   <li class="group relative">
                     <a
-                      href="#prodc-network"
+                      href="{{route('home')}}#prodc-network"
                       class="ud-menu-scroll topnav-link "
                     >
-                      شبكة القوي الأمين
+                    {{trans('frontend.prodc_professionals')}}
                     </a>
                   </li>
                   <li class="group relative">
                     <a
-                      href="categories.html"
+                      href="{{route('categories')}}"
                       class="ud-menu-scroll topnav-link "
                     >
-                      الفئات
+                      {{trans('frontend.categories')}}
                     </a>
                   </li>
                   <li class="group relative">
@@ -113,7 +113,7 @@
                       href="blog.html"
                       class="ud-menu-scroll topnav-link "
                     >
-                      المدونة
+                    {{trans('frontend.blog')}}
                     </a>
                   </li>
                   <!-- <li class="submenu-item group relative">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use App\Models\User;
+use App\Models\Speciality;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -31,8 +33,14 @@ class HomeController extends Controller
         return view('page',compact('page'));
     }
     public function userShow($username){
-        $user = User::with('professional')->with('client')->whereUsername($username)->firstOrFail();
-        return view('professional.show',compact('user'));
-        
+        $user = User::with('professional')->with('client')->with('skills')->whereUsername($username)->firstOrFail();
+        return view('professional.show',compact('user'));  
+    }
+    public function categories(){
+        // $specialities = Cache::remember('jobs', 540, function () {
+            $specialities = Speciality::with('jobs')->withCount('jobs')
+            ->orderBy('jobs_count', 'desc')->get()->toArray();
+        // });
+        return view('categories',compact('specialities'));
     }
 }

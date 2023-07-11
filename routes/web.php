@@ -13,9 +13,11 @@ use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
+use App\Http\Controllers\Auth\FacebookSocialiteController;
+use App\Http\Controllers\Auth\TwitterSocialiteController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Livewire\Dashboard\{
-    Dashboard, PersonalData,WebsitePersonalData,MyPortfolios,MyServices,MyTickets,MyVerifications,PayCommission,SelectAccountType,CompleteAccountdetails,SavedWorks
+    Dashboard, PersonalData,WebsitePersonalData,MyPortfolios,MyServices,MyTickets,MyVerifications,PayCommission,SelectAccountType,CompleteAccountDetails,SavedWorks
 };
 
 
@@ -72,6 +74,12 @@ Route::middleware('auth')->group(function () {
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
+Route::get('auth/facebook', [FacebookSocialiteController::class, 'redirectToFacebook']);
+Route::get('callback/facebook', [FacebookSocialiteController::class, 'handleCallback']);
+
+Route::get('auth/twitter', [TwitterSocialiteController::class, 'redirectToTwitter']);
+Route::get('callback/twitter', [TwitterSocialiteController::class, 'handleCallback']);
+
 Route::middleware('auth','verified','auth.account_type_selected','auth.professional_account_completed')->group(function () {
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
     Route::get('/profile/personal-data',PersonalData::class)->name('personal_data');
@@ -93,3 +101,4 @@ Route::resource('professionals',ProfessionalController::class);
 Route::get('u/{username}',[HomeController::class,'userShow'])->name('users.show_by_username');
 Route::get('charter',[HomeController::class,'charter'])->name('charter');
 Route::get('pages/{slug}',[HomeController::class,'pages'])->name('front_pages');
+Route::get('categories',[HomeController::class,'categories'])->name('categories');

@@ -39,7 +39,7 @@
                             @if($specialities && count($specialities))
                             @foreach ($specialities as $sp)
                             
-                            <div class="bg-white rounded shadow-lg overflow-hidden ">
+                            <div class="bg-white rounded shadow-lg overflow-hidden h-fit ">
                               <div class="{{$random_bg[array_rand($random_bg)]}} text-white flex flex-col items-center justify-center py-2">
                                <img src="{{$sp['image']}}" class="h-12 w-12 mb-2 " alt="">
                                 <span class="text-lg font-bold ml-2 mb-2 text-white">{{app()->getLocale() != 'en' ? $sp['title_'.app()->getLocale()] : $sp['title']}}</span>

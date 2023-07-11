@@ -32,7 +32,7 @@ class GoogleSocialiteController extends Controller
      
             $user = Socialite::driver('google')->stateless()->user();
   
-            $finduser = User::where('social_id', $user->id)->first();
+            $finduser = User::where('social_id', $user->id)->orWhere('email',$user->email)->first();
       
             if($finduser){
       
@@ -47,7 +47,7 @@ class GoogleSocialiteController extends Controller
                     'email' => $user->email,
                     'social_id'=> $user->id,
                     'social_type'=> 'google',
-                    'password' => encrypt('my-google'),
+                    'password' => encrypt('password'),
                     'profile_photo_path' => $user->avatar ?? generate_avatar($user->name),
                 ]);
                 if($user->user['email_verified']){

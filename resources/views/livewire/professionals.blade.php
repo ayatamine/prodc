@@ -70,7 +70,7 @@
                                         @if($specialities && count($specialities))
                                         @foreach ($specialities as $sp)
 
-                                        <div class="bg-white rounded shadow-lg overflow-hidden ">
+                                        <div class="bg-white rounded shadow-lg overflow-hidden h-fit  ">
                                             <div
                                                 class="{{$random_bg[array_rand($random_bg)]}} text-white flex flex-col items-center justify-center py-2">
                                                 <img src="{{$sp['image']}}" class="h-12 w-12 mb-2 " alt="">
@@ -801,7 +801,7 @@
                                 {{$pro->user->full_name}}
                                 <span class="h-3 w-3 rounded-full bg-green-500 mr-2 ltr!ml-2"></span>
                             </a>
-                            <a href="hire_prodc.html"
+                            <a href="{{route('users.show_by_username',['username'=>$pro->user->username])}}"
                                 class="flex items-center justify-center gap-x-1 px-4 py-1 text-sm md:text-md font-medium text-white bg-primaryTextColor rounded hover:bg-primaryTextColorDarken">
                                 <svg class="h-4 w-4 mt-1 text-white" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -861,7 +861,7 @@
                             </div>
                             <!-- tags -->
                             <div class="truncate ">
-                                {{$pro->user->job->title.', '.$pro->user->job_position_title}}
+                                {{$pro->user?->job?->title.', '.$pro->user?->job_position_title}}
                             </div>
                         </div>
                         <!-- short description -->
@@ -908,7 +908,7 @@
                                         </path>
                                     </g>
                                 </svg>
-                                <span> {{\Illuminate\Support\Str::limit($pro->user->job->title,22).', '.\Illuminate\Support\Str::limit($pro->user->job_position_title,22)}}<span>
+                                <span> {{\Illuminate\Support\Str::limit($pro->user?->job?->title,22).', '.\Illuminate\Support\Str::limit($pro->user?->job_position_title,22)}}<span>
                             </div>
                             @if($pro->user->nationality || $pro->user->city)
                             <div class="flex items-center gap-1 text-[13px] " >
