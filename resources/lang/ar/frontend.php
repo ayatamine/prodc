@@ -209,5 +209,12 @@ return [
    'search_prodc'=>'البحث عن محترفين',
    'contact_prodc'=>'تواصل مع محترفين أكفاء وأمناء في جميع القطاعات والمجالات',
    'contact_prodc_placeholder'=>'إسم الصنف أو الإختصاص أو إسم الشركة أو إسم المحترف',
-   'search'=>"بحث"
+   'search'=>"بحث",
+   'article'=>"مقال",
+   'add_your_comment'=>"أضف تعليقك",
+   'name'=>"الإسم",
+   'email_not_published'=>"البريد الالكتروني (لن يتم نشره)",
+   'add_comment'=>"إضافة التعليق",
+   'see_also'=>"إقرأ أيضا",
+   'no_related_post_found'=>"لم يتم العثور على مقالات مشابهة",
 ];

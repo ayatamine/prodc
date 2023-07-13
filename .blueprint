@@ -1,104 +1,8 @@
 created:
-    - app/Http/Controllers/LanguageController.php
-    - app/Http/Controllers/SpecialityController.php
-    - app/Http/Controllers/SkillController.php
-    - app/Http/Controllers/ProfessionalController.php
-    - app/Http/Controllers/ProjectController.php
-    - app/Http/Controllers/FAQController.php
-    - app/Http/Controllers/WorkController.php
-    - database/factories/LanguageFactory.php
-    - database/factories/SpecialityFactory.php
-    - database/factories/SkillFactory.php
-    - database/factories/CountryFactory.php
-    - database/factories/ProfessionalSkillFactory.php
-    - database/factories/JobFactory.php
-    - database/factories/ProfessionalFactory.php
-    - database/factories/ProfessionalSubscriptionFactory.php
-    - database/factories/ProfessionalCompanyFactory.php
-    - database/factories/SubscriptionPlanFactory.php
-    - database/factories/ClientFactory.php
-    - database/factories/ProjectFactory.php
-    - database/factories/ProjectSkillFactory.php
-    - database/factories/ProjectReviewFactory.php
-    - database/factories/OffersFactory.php
-    - database/factories/PurchaseFactory.php
-    - database/factories/FAQFactory.php
-    - database/factories/BadgeFactory.php
-    - database/factories/WorkFactory.php
-    - database/factories/AttachementFactory.php
-    - database/factories/PageFactory.php
-    - database/migrations/2023_06_16_150701_create_languages_table.php
-    - database/migrations/2023_06_16_150702_create_specialities_table.php
-    - database/migrations/2023_06_16_150703_create_skills_table.php
-    - database/migrations/2023_06_16_150704_create_countries_table.php
-    - database/migrations/2023_06_16_150705_create_professional_skills_table.php
-    - database/migrations/2023_06_16_150706_create_jobs_table.php
-    - database/migrations/2023_06_16_150707_create_professionals_table.php
-    - database/migrations/2023_06_16_150708_create_professional_subscriptions_table.php
-    - database/migrations/2023_06_16_150709_create_professional_companies_table.php
-    - database/migrations/2023_06_16_150710_create_subscription_plans_table.php
-    - database/migrations/2023_06_16_150711_create_clients_table.php
-    - database/migrations/2023_06_16_150712_create_projects_table.php
-    - database/migrations/2023_06_16_150713_create_project_skills_table.php
-    - database/migrations/2023_06_16_150714_create_project_reviews_table.php
-    - database/migrations/2023_06_16_150715_create_offers_table.php
-    - database/migrations/2023_06_16_150716_create_purchases_table.php
-    - database/migrations/2023_06_16_150717_create_f_a_q_s_table.php
-    - database/migrations/2023_06_16_150718_create_badges_table.php
-    - database/migrations/2023_06_16_150719_create_works_table.php
-    - database/migrations/2023_06_16_150720_create_attachements_table.php
-    - database/migrations/2023_06_16_150721_create_pages_table.php
-    - app/Models/Language.php
-    - app/Models/Speciality.php
-    - app/Models/Skill.php
-    - app/Models/Country.php
-    - app/Models/ProfessionalSkill.php
-    - app/Models/Job.php
-    - app/Models/Professional.php
-    - app/Models/ProfessionalSubscription.php
-    - app/Models/ProfessionalCompany.php
-    - app/Models/SubscriptionPlan.php
-    - app/Models/Client.php
-    - app/Models/Project.php
-    - app/Models/ProjectSkill.php
-    - app/Models/ProjectReview.php
-    - app/Models/offers.php
-    - app/Models/Purchase.php
-    - app/Models/FAQ.php
-    - app/Models/Badge.php
-    - app/Models/Work.php
-    - app/Models/Attachement.php
-    - app/Models/Page.php
-    - database/seeders/LanguageSeeder.php
-    - database/seeders/SpecialitySeeder.php
-    - database/seeders/SkillSeeder.php
-    - database/seeders/ProfessionalSeeder.php
-    - database/seeders/ProjectSeeder.php
-    - database/seeders/FAQSeeder.php
-    - database/seeders/WorkSeeder.php
-    - database/seeders/BadgeSeeder.php
-    - tests/Feature/Http/Controllers/LanguageControllerTest.php
-    - tests/Feature/Http/Controllers/SpecialityControllerTest.php
-    - tests/Feature/Http/Controllers/SkillControllerTest.php
-    - tests/Feature/Http/Controllers/ProfessionalControllerTest.php
-    - tests/Feature/Http/Controllers/ProjectControllerTest.php
-    - tests/Feature/Http/Controllers/FAQControllerTest.php
-    - tests/Feature/Http/Controllers/WorkControllerTest.php
-    - resources/views/language/index.blade.php
-    - resources/views/speciality/index.blade.php
-    - resources/views/speciality/show.blade.php
-    - resources/views/skill/index.blade.php
-    - resources/views/skill/show.blade.php
-    - resources/views/professional/index.blade.php
-    - resources/views/professional/show.blade.php
-    - resources/views/project/index.blade.php
-    - resources/views/project/show.blade.php
-    - resources/views/faq/index.blade.php
-    - resources/views/faq/show.blade.php
-    - resources/views/work/index.blade.php
-    - resources/views/work/show.blade.php
-updated:
-    - routes/web.php
+    - database/factories/PostCommentFactory.php
+    - database/migrations/2023_07_13_143848_create_post_comments_table.php
+    - app/Models/PostComment.php
+    - database/seeders/PostCommentSeeder.php
 models:
     User: {  }
     Language: { id: id, name: string, label: string, file: string, direction: string, status: 'boolean default:true' }
@@ -122,3 +26,7 @@ models:
     Work: { id: id, title: string, slug: string, image: mediumText, views_count: 'integer default:0', link: 'string nullable', status: 'boolean default:false', professional_id: 'id forign', job_id: 'id forign', price: 'float default :0.00' }
     Attachement: { id: id, path: string, attacheable_type: string, attacheable_id: 'bigInteger unsigned' }
     Page: { id: id, title: string, slug: string, content: text, image: string, meta_title: string, meta_description: string, laguage_id: 'id foreign' }
+    PostCategory: { id: id, title: string, title_ar: string, title_fr: string, slug: string }
+    Post: { id: id, title: string, slug: string, content: text, tags: mediumText, keywords: mediumText, meta_seo: string, is_publishable: boolean, language_id: 'id foreign', postcategory_id: 'id foreign' }
+    PostParentCategory: { id: id, title: string, title_ar: string, title_fr: string }
+    PostComment: { id: id, content: text, commenter_name: string, commenter_email: string, post_id: 'id foreign' }

@@ -8,7 +8,7 @@
             <a href="index.html" class="navbar-logo block  py-2 md-py-3" >
               <img
               src="{{asset('assets/images/logo/WhatsApp Image 2023-05-03 at 5.54.05 PM.jpeg')}}"
-              alt="logo"
+              alt="{{ config('app.name') }}"
               class="header-logo h-full w-full object-contain"
             />
             </a>

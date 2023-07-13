@@ -6,7 +6,7 @@
             <p class="mx-auto font-normal text-smd text-center my-6 max-w-lg text-white">{{trans('frontned.contact_prodc')}}</p>
             <div class="flex items-center bg-white rounded-sm overflow-hidden px-2 py-0 md:py-0.5 justify-between max-w-4xl mx-auto">
               <input wire:model.lazy="search" class="text-sm text-gray-500  flex-grow outline-none px-2 " type="text" placeholder="{{trans('frontend.contact_prodc_placeholder')}}" />
-              <div class="flex items-center px-2 pb-1 rounded  mx-auto gap-x-2 ">
+              <div class="flex items-center px-2  rounded  mx-auto gap-x-2 ">
                 <select id="cities" wire:model.lazy="country" class="hidden md:inline-block white-input-select text-sm" style="    padding-top: 0;">
                   <option disabled value="" selected>{{trans('frontend.company.country')}}</option>
                   @if($countries)

@@ -28,7 +28,7 @@ class JobFactory extends Factory
             'title_fr' => $this->faker->sentence(4),
             'status' => $this->faker->boolean,
             'speciality_id' => Speciality::first()?->id ?? Speciality::factory(),
-            'language_id' => Language::first()?->id ?? Language::factory(),
+            // 'language_id' => Language::first()?->id ?? Language::factory(),
         ];
     }
 }

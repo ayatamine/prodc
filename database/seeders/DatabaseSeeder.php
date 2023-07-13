@@ -6,18 +6,20 @@ namespace Database\Seeders;
 
 use App\Models\FAQ;
 use App\Models\Job;
+use App\Models\Post;
 use App\Models\Work;
 use App\Models\Badge;
 use App\Models\Skill;
 use App\Models\Client;
 use App\Models\Country;
+use App\Models\Package;
 use App\Models\Project;
 use App\Models\Language;
-use App\Models\Package;
 use App\Models\Speciality;
 use App\Models\Professional;
 use Illuminate\Database\Seeder;
 use App\Models\ProfessionalSkill;
+use App\Models\PostParentCategory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -41,9 +43,12 @@ class DatabaseSeeder extends Seeder
         if(!Country::count()) $this->call(CountrySeeder::class);
         if(!Client::count()) $this->call(ClientSeeder::class);
         if(!Professional::count()) $this->call(ProfessionalSeeder::class);
-        if(!ProfessionalSkill::count()) $this->call(ProfessionalSkillSeeder::class);
+        // if(!ProfessionalSkill::count()) $this->call(ProfessionalSkillSeeder::class);
         if(!Project::count()) $this->call(ProjectSeeder::class);
         if(!Work::count()) $this->call(WorkSeeder::class);
         if(!Package::count()) $this->call(PackageSeeder::class);
+        if(!Package::count()) $this->call(PackageSeeder::class);
+        if(!PostParentCategory::count()) $this->call(PostParentCategorySeeder::class);
+        if(!Post::count()) $this->call(PostSeeder::class);
     }
 }

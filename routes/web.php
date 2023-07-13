@@ -7,7 +7,7 @@ use App\Http\Livewire\Auth\Register;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\Professionalcontroller;
+use App\Http\Controllers\ProfessionalController;
 use App\Http\Livewire\Auth\Passwords\Email;
 use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Passwords\Confirm;
@@ -102,3 +102,11 @@ Route::get('u/{username}',[HomeController::class,'userShow'])->name('users.show_
 Route::get('charter',[HomeController::class,'charter'])->name('charter');
 Route::get('pages/{slug}',[HomeController::class,'pages'])->name('front_pages');
 Route::get('categories',[HomeController::class,'categories'])->name('categories');
+
+    Route::get('blog/',[HomeController::class,'blogPage'])->name('blog.index');
+    Route::get('blog/{slug}',[HomeController::class,'blogPageDetails'])->name('blog.show');
+
+// Route::domain('blog.' . env('APP_URL'))->group(function () {
+//     Route::get('/',[HomeController::class,'blogPage'])->name('blog');
+//     Route::get('/{slug}',[HomeController::class,'blogPageDetails'])->name('blogDetails');
+// });
