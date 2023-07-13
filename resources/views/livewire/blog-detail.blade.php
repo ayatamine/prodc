@@ -20,18 +20,18 @@
           <hr class="my-4 mt-8">
           <!-- banner -->
           <div class="mt-10 changed-font-p">
-             <h2 class="text-base md:text-xl font-bold my-3  text-gray-700">احصل على عمل مستقل في سوق المواهب المستقلة على موقع المحترف القوي الأمين            </h2>
+             <h2 class="text-base md:text-xl font-bold my-3  text-gray-700">{{trans('frontend.commentbox_title')}}  </h2>
              <p class="leading-7 text-[14px]">
-              سواء كنت جديدًا في المحترف القوي الأمين أو تعمل وتتطلع إلى الارتقاء بالمهارات الخاصة بك، يمكن لمنصات التعلم التي توفر أفضل الدورات التدريبية للمستقلين أن تساعد في توسيع مجموعة المهارات والخدمات التي تقدمها. تلجأ الشركات من جميع الأحجام إلى منصات العمل المستقل كمكان للعثور على مهنيين محترفين موهوبين للغاية مع مجموعة المهارات المثالية لخدمتهم التالية.
+                {{trans('frontend.comment_box_sub_title')}}
              </p>
              <p class="leading-7 text-[14px] mt-2">
-              كل ما عليك فعله هو إنشاء ملف تعريف على منصة المحترف القوي الأمين والبدء في تقديم عروض للمشاريع. اربح المزيد من الوظائف من خلال تعلم مهارة جديدة تمامًا أو أن تصبح خبيرًا في مهارة عملت عليها لفترة من الوقت. إن تحسين المهارات كموظف مستقل هو كيفية الحفاظ على قدرتك التنافسية، وجذب عملاء جدد، وإظهار الخبرة في مجالك.
+                {{trans('frontend.comment_box_sub_title2')}}
              </p>
              <div class=" my-8 mx-6 border-4 rounded border-primaryTextColor  text-center min-h-[170px]">
                 <img src="{{asset('assets/images/logo/WhatsApp Image 2023-05-03 at 5.54.05 PM.jpeg')}}" class="h-12 mx-auto my-3" alt="المحترف القوي الامين">
-                <h4 class="text-base font-semibold my-3 mb-6">وظف أفضل المحترفين لانجاز أعمالك      </h4>
+                <h4 class="text-base font-semibold my-3 mb-6">{{trans('frontend.wazzif')}}     </h4>
                <div>
-                <a href="{{route('home')}}" class="md-button primary-btn">اطلب خدمتك الأن</a>
+                <a href="{{route('home')}}" class="md-button primary-btn">{{trans('frontend.demande_your_service_now')}}</a>
                </div>
              </div>
           </div>

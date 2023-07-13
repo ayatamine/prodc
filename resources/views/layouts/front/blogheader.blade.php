@@ -107,7 +107,7 @@ class="ud-header absolute top-0 left-0 z-40 flex w-full items-center bg-white"
         </button>
     
         <!-- primary button -->
-        <a href="index.html" class="primary-btn md-button block w-max">اطلب خدمتك</a>
+        <a href="index.html" class="primary-btn md-button block w-max">{{trans('frontend.demande_your_service')}}</a>
       </div>
     </div>
   </div>
