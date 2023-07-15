@@ -110,7 +110,7 @@
                   </li>
                   <li class="group relative">
                     <a
-                      href="blog.html"
+                      href="{{route('blog.index')}}"
                       class="ud-menu-scroll topnav-link "
                     >
                     {{trans('frontend.blog')}}
