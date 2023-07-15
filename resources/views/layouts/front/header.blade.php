@@ -5,7 +5,7 @@
       <div class="container">
         <div class="relative -mx-4 flex items-center justify-between">
           <div class="w-64 max-w-full px-4">
-            <a href="index.html" class="navbar-logo block  py-2 md-py-3" >
+            <a href="{{route('home')}}" class="navbar-logo block  py-2 md-py-3" >
               <img
               src="{{asset('assets/images/logo/WhatsApp Image 2023-05-03 at 5.54.05 PM.jpeg')}}"
               alt="{{ config('app.name') }}"
@@ -44,7 +44,7 @@
                   </li>
                   <li class="submenu-item group relative">
                     <a
-                      href="index.html"
+                      href="{{route('home')}}"
                       class="relative topnav-link"
                     >
                       {{trans('frontend.home')}}
@@ -134,7 +134,7 @@
                         اتصل بنا
                       </a>
                       <a
-                        href="index.html"
+                        href="{{route('home')}}"
                         class="topnav-link m-0 w-full" style="padding:0.25rem 1rem;margin:0"
                         style="margin-right:0 !important;margin-left:0 !important"
                       >
