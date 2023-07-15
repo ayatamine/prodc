@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Request;
 
 class ProfessionalActions
 {
@@ -13,6 +14,7 @@ class ProfessionalActions
      */
     public function viewAny(User $user): bool
     {
+        if(Request::segment(1) == 'admin') return true;
         return auth()->user()->professional()->first();
     }
 
@@ -30,38 +32,43 @@ class ProfessionalActions
      */
     public function create(User $user): bool
     {
-        //
+        if(Request::segment(1) == 'admin') return true;
+        return auth()->user()->professional()->first();
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Post $post): bool
+    public function update(User $user): bool
     {
-        //
+        if(Request::segment(1) == 'admin') return true;
+        return auth()->user()->professional()->first();
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Post $post): bool
+    public function delete(User $user)
     {
-        //
+        if(Request::segment(1) == 'admin') return true;
+        return auth()->user()->professional()->first();
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Post $post): bool
+    public function restore(User $user): bool
     {
-        //
+        if(Request::segment(1) == 'admin') return true;
+        return auth()->user()->professional()->first();
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Post $post): bool
+    public function forceDelete(User $user): bool
     {
-        //
+        if(Request::segment(1) == 'admin') return true;
+        return auth()->user()->professional()->first();
     }
 }

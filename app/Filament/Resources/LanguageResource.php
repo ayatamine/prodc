@@ -19,8 +19,11 @@ class LanguageResource extends Resource
 {
     protected static ?string $model = Language::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
-
+    protected static ?string $navigationIcon = 'icons.language';
+    public static function getNavigationLabel(): string
+    {
+        return trans('frontend.languages');
+    } 
     public static function form(Form $form): Form
     {
         return $form
@@ -49,7 +52,7 @@ class LanguageResource extends Resource
             ->columns([
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('label')->searchable()->sortable(),
-                TextColumn::make('file')->searchable()->sortable(),
+                // TextColumn::make('file')->searchable()->sortable(),
                 TextColumn::make('direction')->searchable()->sortable(),
                 ToggleColumn::make('status')->searchable()->sortable(),
 
@@ -62,6 +65,7 @@ class LanguageResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

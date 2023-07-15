@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PostCategoryResource\Pages;
-use App\Filament\Resources\PostCategoryResource\RelationManagers;
-use App\Models\PostCategory;
+use App\Filament\Resources\PostParentCategoryResource\Pages;
+use App\Filament\Resources\PostParentCategoryResource\RelationManagers;
+use App\Models\PostParentCategory;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,23 +13,24 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PostCategoryResource extends Resource
+class PostParentCategoryResource extends Resource
 {
-    protected static ?string $model = PostCategory::class;
-    // protected static ?string $navigationGroup = 'Blog';
-    protected static ?string $navigationIcon = 'icons.category';
+    protected static ?string $model = PostParentCategory::class;
+
+    protected static ?string $navigationGroup = 'Blog';
+    protected static ?string $navigationIcon = 'icons.specialities';
     protected static ?string $recordTitleAttribute = 'title';
-    public static function getNavigationLabel(): string
-    {
-        return trans('frontend.sub_categories');
-    }
     public static function getPluralModelLabel(): string
     {
         return self::getNavigationLabel();
     }
     public static function getModelLabel(): string
     {
-        return trans('frontend.sub_category');
+        return trans('frontend.main_category');
+    }  
+    public static function getNavigationLabel(): string
+    {
+        return trans('frontend.main_categories');
     }  
     public static function getNavigationGroup(): string
     {
@@ -48,21 +49,17 @@ class PostCategoryResource extends Resource
                 Forms\Components\TextInput::make('title_fr')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
             ]);
     }
 
     public static function table(Table $table): Table
     {
-        $parent_record = app()->getlocale() == "en" ? 'parentCategory.title' : 'parentCategory.title_'.app()->getLocale();
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make($parent_record)->limit(20),
+                Tables\Columns\TextColumn::make('title')->limit(20),
+                Tables\Columns\TextColumn::make('title')->limit(20),
                 Tables\Columns\TextColumn::make('title_ar')->limit(20),
                 Tables\Columns\TextColumn::make('title_fr')->limit(20),
-                Tables\Columns\TextColumn::make('slug')->limit(20),
             ])
             ->filters([
                 //
@@ -79,7 +76,7 @@ class PostCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManagePostCategories::route('/'),
+            'index' => Pages\ManagePostParentCategories::route('/'),
         ];
     }    
 }

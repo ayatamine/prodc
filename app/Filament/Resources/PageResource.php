@@ -20,8 +20,19 @@ class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
-
+    protected static ?string $navigationIcon = 'icons.pages';
+    public static function getPluralModelLabel(): string
+    {
+        return self::getNavigationLabel();
+    }
+    public static function getModelLabel(): string
+    {
+        return trans('frontend.page');
+    }  
+    public static function getNavigationLabel(): string
+    {
+        return trans('frontend.pages');
+    }  
     public static function form(Form $form): Form
     {
         return $form
@@ -69,18 +80,19 @@ class PageResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('language.name'),
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('slug')->label('URL'),
+                Tables\Columns\TextColumn::make('title')->limit(50),
+                Tables\Columns\TextColumn::make('slug')->label('URL')->limit(50),
                 // Tables\Columns\TextColumn::make('content'),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('meta_title'),
-                Tables\Columns\TextColumn::make('meta_description'),
+                Tables\Columns\TextColumn::make('meta_title')->limit(50),
+                // Tables\Columns\TextColumn::make('meta_description'),
             ])
             ->filters([
                
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

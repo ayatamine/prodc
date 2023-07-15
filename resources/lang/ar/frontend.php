@@ -223,5 +223,17 @@ return [
    'wazzif'=>'وظف أفضل المحترفين لانجاز أعمالك ',
    'demande_your_service_now'=>'اطلب خدمتك الأن',
    'demande_your_service'=>'اطلب خدمتك ',
-
+   'main_categories'=>'الأصناف الرئيسية',
+   'main_category'=>'الصنف الرئيسية',
+   'sub_categories'=>'الأصناف الفرعية',
+   'sub_category'=>'الصنف الفرعية',
+   'pages'=>'الصفحات',
+   'page'=>'الصفحة',
+   'languages'=>'اللغات',
+   'language'=>'اللغة',
+   'articles'=>'المقالات',
+   'client'=>'{1} عميل|[2,*] العملاء',
+   'user'=>'{1} مستخدم|[2,*] المستخدمين',
+   'points'=>'عدد النقاط',
+   'joined_at'=>'تاريخ الإنضمام',
 ];

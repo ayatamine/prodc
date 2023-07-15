@@ -1,5 +1,5 @@
 <div
-class="ud-header absolute top-0 left-0 z-40 flex w-full items-center bg-white"
+class="ud-header absolute top-0 left-0 z-36 flex w-full items-center bg-white"
 >
 <div class="container" x-data="{show_search:false}">
 
@@ -107,7 +107,7 @@ class="ud-header absolute top-0 left-0 z-40 flex w-full items-center bg-white"
         </button>
     
         <!-- primary button -->
-        <a href="index.html" class="primary-btn md-button block w-max">{{trans('frontend.demande_your_service')}}</a>
+        <a href="{{route('home')}}" class="primary-btn md-button block w-max">{{trans('frontend.demande_your_service')}}</a>
       </div>
     </div>
   </div>

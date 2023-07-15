@@ -56,4 +56,7 @@ return [
     'location'=>'الموقع',
     'search'=>'إبحث',
     'country'=>'البلد',
+    'username'=>'اسم المتخدم',
+    'account_status'=>'حالة الحساب',
+    'full_name'=>'الاسم الكامل',
 ];

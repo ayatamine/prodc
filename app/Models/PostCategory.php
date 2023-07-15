@@ -34,6 +34,6 @@ class PostCategory extends Model
     ];
     public function parentCategory():BelongsTo
     {
-        return $this->belongsTo(PostParentCategory::class);
+        return $this->belongsTo(PostParentCategory::class,'post_category_id','id');
     }
 }

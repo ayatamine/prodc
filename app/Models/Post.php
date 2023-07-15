@@ -45,6 +45,8 @@ class Post extends Model
         'is_publishable' => 'boolean',
         'language_id' => 'integer',
         'post_category_id' => 'integer',
+        'keywords' => 'array',
+        'tags' => 'array',
     ];
 
     public function language(): BelongsTo
