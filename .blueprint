@@ -1,8 +1,36 @@
 created:
-    - database/factories/PostCommentFactory.php
-    - database/migrations/2023_07_13_143848_create_post_comments_table.php
-    - app/Models/PostComment.php
-    - database/seeders/PostCommentSeeder.php
+    - database/factories/CurrencyExchangeRateFactory.php
+    - database/factories/CurrencyFactory.php
+    - database/factories/IntroCardFactory.php
+    - database/factories/PartnerFactory.php
+    - database/factories/AwardFactory.php
+    - database/factories/ClientAwardFactory.php
+    - database/factories/HomeCarouselFactory.php
+    - database/factories/TestimonialFactory.php
+    - database/factories/DhikrFactory.php
+    - database/migrations/2023_07_17_082713_create_currency_exchange_rates_table.php
+    - database/migrations/2023_07_17_082714_create_currencies_table.php
+    - database/migrations/2023_07_17_082715_create_intro_cards_table.php
+    - database/migrations/2023_07_17_082716_create_partners_table.php
+    - database/migrations/2023_07_17_082717_create_awards_table.php
+    - database/migrations/2023_07_17_082718_create_client_awards_table.php
+    - database/migrations/2023_07_17_082719_create_home_carousels_table.php
+    - database/migrations/2023_07_17_082720_create_testimonials_table.php
+    - database/migrations/2023_07_17_082721_create_dhikrs_table.php
+    - app/Models/CurrencyExchangeRate.php
+    - app/Models/Currency.php
+    - app/Models/IntroCard.php
+    - app/Models/Partner.php
+    - app/Models/Award.php
+    - app/Models/ClientAward.php
+    - app/Models/HomeCarousel.php
+    - app/Models/Testimonial.php
+    - app/Models/Dhikr.php
+    - database/seeders/DhikrSeeder.php
+    - database/seeders/PartnerSeeder.php
+    - database/seeders/TestimonialSeeder.php
+    - database/seeders/HomeCarouselSeeder.php
+    - database/seeders/IntroCardSeeder.php
 models:
     User: {  }
     Language: { id: id, name: string, label: string, file: string, direction: string, status: 'boolean default:true' }
@@ -30,3 +58,12 @@ models:
     Post: { id: id, title: string, slug: string, content: text, tags: mediumText, keywords: mediumText, meta_seo: string, is_publishable: boolean, language_id: 'id foreign', postcategory_id: 'id foreign' }
     PostParentCategory: { id: id, title: string, title_ar: string, title_fr: string }
     PostComment: { id: id, content: text, commenter_name: string, commenter_email: string, post_id: 'id foreign' }
+    CurrencyExchangeRate: { id: id, from_currency_id: 'bigInteger foreign:currencies.id', to_currency_id: 'bigInteger foreign:currencies.id', exchange_rate: double }
+    Currency: { id: id, name: 'string unique', symbol: 'string unique' }
+    IntroCard: { id: id, content: mediumText }
+    Partner: { id: id, name: string, image: string, link: string }
+    Award: { id: id, title: 'enum default:1', amount: 'double default:100 comment:"the amount in euro"', period_type: 'enum default:"monthly" comment:"monthly or yearly"' }
+    ClientAward: { id: id, client_id: 'id foreign', award_id: 'id foreign', month: 'tinyInteger nullable unsigned', year: 'year nullable default:"2023"' }
+    HomeCarousel: { id: id, title: string, image: string, text: mediumText, is_visible: boolean }
+    Testimonial: { id: id, comment: mediumText, image: string, commenter_name: string, commenter_position: string }
+    Dhikr: { id: id, content: mediumText, is_visible: boolean }

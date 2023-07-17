@@ -217,14 +217,58 @@ models:
     #     language_id: id foreign
     #     post_category_id: id foreign
     #     user_id: id foreign
-    PostComment:
-      id: id
-      content: text
-      commenter_name: string
-      commenter_email: string 
-      post_id: id foreign
+    # PostComment:
+    #   id: id
+    #   content: text
+    #   commenter_name: string
+    #   commenter_email: string 
+    #   post_id: id foreign
+    CurrencyExchangeRate:
+        id: id
+        from_currency_id: bigInteger foreign:currencies.id
+        to_currency_id: bigInteger foreign:currencies.id
+        exchange_rate: double
+    Currency:
+        id: id
+        name: string unique
+        symbol: string unique
+    IntroCard:
+        id: id
+        content: mediumText
+    Partner:
+        id: id
+        name: string
+        image: string
+        link: string
+    Award:
+        id: id
+        title: enum default:1
+        amount: double default:100 comment:"the amount in euro"
+        period_type: enum default:"monthly" comment:"monthly or yearly"
+    ClientAward:
+        id: id
+        client_id: id foreign
+        award_id: id foreign
+        month: tinyInteger nullable unsigned
+        year: year nullable default:"2023"
+    HomeCarousel:
+        id: id
+        title: string
+        image: string
+        text: mediumText
+        is_visible: boolean
+    Testimonial:
+        id: id
+        comment: mediumText
+        image: string
+        commenter_name: string
+        commenter_position: string
+    Dhikr:
+        id: id
+        content: mediumText
+        is_visible: boolean
 
-# controllers:
+controllers:
 #   Language:
 #     index:
 #       query: all
@@ -266,5 +310,6 @@ models:
 #     show:
 #       render: work.show with:job
 # seeders: Language, Speciality,Job, Skill, Professional, Project, FAQ, Work, Badge,Country, Client, Professional,ProfessionalSkill
-seeders:  PostCategory,Post,PostParentCategory,PostComment
+# seeders:  PostCategory,Post,PostParentCategory,PostComment,
+seeders: Dhikr,Partner,Testimonial,HomeCarousel,IntroCard
 

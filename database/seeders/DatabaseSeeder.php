@@ -9,13 +9,18 @@ use App\Models\Job;
 use App\Models\Post;
 use App\Models\Work;
 use App\Models\Badge;
+use App\Models\Dhikr;
 use App\Models\Skill;
 use App\Models\Client;
 use App\Models\Country;
 use App\Models\Package;
+use App\Models\Partner;
 use App\Models\Project;
 use App\Models\Language;
+use App\Models\IntroCard;
 use App\Models\Speciality;
+use App\Models\Testimonial;
+use App\Models\HomeCarousel;
 use App\Models\Professional;
 use Illuminate\Database\Seeder;
 use App\Models\ProfessionalSkill;
@@ -50,5 +55,11 @@ class DatabaseSeeder extends Seeder
         if(!Package::count()) $this->call(PackageSeeder::class);
         if(!PostParentCategory::count()) $this->call(PostParentCategorySeeder::class);
         if(!Post::count()) $this->call(PostSeeder::class);
+        // Dhikr,Partner,Testimonial,HomeCarousel,IntroCard
+        if(!Dhikr::count()) $this->call(DhikrSeeder::class);
+        if(!Partner::count()) $this->call(PartnerSeeder::class);
+        if(!Testimonial::count()) $this->call(TestimonialSeeder::class);
+        if(!HomeCarousel::count()) $this->call(HomeCarouselSeeder::class);
+        if(!IntroCard::count()) $this->call(IntroCardSeeder::class);
     }
 }
